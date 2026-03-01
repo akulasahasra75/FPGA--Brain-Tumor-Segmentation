@@ -7,9 +7,21 @@ __pycache__/
 02_hls_accelerator/otsu_hls/
 02_hls_accelerator/*.exe
 02_hls_accelerator/hls_output*.log
+02_hls_accelerator/logs/
+02_hls_accelerator/dfx_runtime.txt
 *.log
 *.jou
 .Xil/
+
+# Vivado project build outputs
+03_vivado_hardware/vivado_project/
+03_vivado_hardware/*.bit
+03_vivado_hardware/*.xsa
+03_vivado_hardware/*.ltx
+
+# Vitis build outputs
+04_vitis_software/build/
+04_vitis_software/*.elf
 
 # VS Code
 .vscode/
