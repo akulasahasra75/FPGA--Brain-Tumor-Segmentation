@@ -3,6 +3,17 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# HLS / Vivado build artifacts
+02_hls_accelerator/otsu_hls/
+02_hls_accelerator/*.exe
+02_hls_accelerator/hls_output*.log
+*.log
+*.jou
+.Xil/
+
+# VS Code
+.vscode/
+
 # C extensions
 *.so
 
