@@ -349,7 +349,7 @@ Total foreground pixels: 3845
 | --------------------- | ------------------------------------------------------- |
 | `vitis_hls` not found | Use `vitis-run.bat --tcl` instead (Vitis 2025.1)        |
 | Cosim timeout         | Comment out cosim in `run_hls.tcl` (csim is sufficient) |
-| Synthesis fails       | Check target part matches `xc7a100tcsg324-1`             |
+| Synthesis fails       | Check target part matches `xc7a100tcsg324-1`            |
 
 ### Vivado phase
 
@@ -364,5 +364,5 @@ Total foreground pixels: 3845
 | Problem               | Solution                                                      |
 | --------------------- | ------------------------------------------------------------- |
 | No serial output      | Check baud rate = 115200, correct COM port                    |
-| LEDs not working      | Verify XDC constraints match Nexys A7 schematic                |
+| LEDs not working      | Verify XDC constraints match Nexys A7 schematic               |
 | Program fails to load | Check Hardware Manager connection, re-program bitstream first |

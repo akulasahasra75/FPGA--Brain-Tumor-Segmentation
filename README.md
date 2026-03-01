@@ -23,7 +23,7 @@ No manual parameter tuning is required.
 | Parameter | Value                       |
 | --------- | --------------------------- |
 | Board     | Digilent Nexys A7-100T      |
-| FPGA      | Artix-7 xc7a100tcsg324-1     |
+| FPGA      | Artix-7 xc7a100tcsg324-1    |
 | Clock     | 100 MHz                     |
 | Processor | MicroBlaze (area-optimised) |
 | Tools     | Vitis / Vivado 2025.1       |

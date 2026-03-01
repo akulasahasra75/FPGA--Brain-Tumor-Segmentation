@@ -179,14 +179,14 @@ Input Image (256×256 grayscale)
 
 ### 5.1 HLS Synthesis Summary
 
-| Metric          | Value                     |
-| --------------- | ------------------------- |
+| Metric          | Value                      |
+| --------------- | -------------------------- |
 | Target Device   | xc7a100tcsg324-1 (Artix-7) |
-| Target Clock    | 100 MHz (10 ns)           |
-| Estimated Clock | Meets timing              |
-| C Simulation    | PASSED (all 9 test cases) |
-| C Synthesis     | PASSED                    |
-| IP Export       | PASSED                    |
+| Target Clock    | 100 MHz (10 ns)            |
+| Estimated Clock | Meets timing               |
+| C Simulation    | PASSED (all 9 test cases)  |
+| C Synthesis     | PASSED                     |
+| IP Export       | PASSED                     |
 
 ### 5.2 Resource Utilisation (HLS IP only)
 
