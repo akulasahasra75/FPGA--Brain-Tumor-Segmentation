@@ -43,6 +43,8 @@ def add_title_slide(prs):
     set_slide_bg(slide, TITLE_COLOR)
 
     # Main title
+    txBox = slide.shapes.add_textbox(
+        Inches(0.8), Inches(1.5), Inches(8.4), Inches(1.5))
     txBox = slide.shapes.add_textbox(Inches(0.8), Inches(1.5), Inches(8.4), Inches(1.5))
     tf = txBox.text_frame
     tf.word_wrap = True
@@ -54,6 +56,8 @@ def add_title_slide(prs):
     p.alignment = PP_ALIGN.CENTER
 
     # Subtitle
+    txBox2 = slide.shapes.add_textbox(
+        Inches(0.8), Inches(3.2), Inches(8.4), Inches(0.8))
     txBox2 = slide.shapes.add_textbox(Inches(0.8), Inches(3.2), Inches(8.4), Inches(0.8))
     tf2 = txBox2.text_frame
     tf2.word_wrap = True
@@ -70,6 +74,13 @@ def add_title_slide(prs):
         "Board: Nexys A7-100T (Artix-7 xc7a100tcsg324-1)",
         "Tools: Vitis HLS / Vivado 2025.1",
     ]
+    txBox3 = slide.shapes.add_textbox(
+        Inches(1.5), Inches(4.5), Inches(7), Inches(2))
+    tf3 = txBox3.text_frame
+    tf3.word_wrap = True
+    for d in details:
+        p3 = tf3.add_paragraph(
+        ) if tf3.paragraphs[0].text else tf3.paragraphs[0]
     txBox3 = slide.shapes.add_textbox(Inches(1.5), Inches(4.5), Inches(7), Inches(2))
     tf3 = txBox3.text_frame
     tf3.word_wrap = True
@@ -93,6 +104,8 @@ def add_content_slide(prs, title, bullets, sub_bullets=None):
     shape.fill.fore_color.rgb = TITLE_COLOR
     shape.line.fill.background()
 
+    txBox = slide.shapes.add_textbox(
+        Inches(0.5), Inches(0.15), Inches(9), Inches(0.8))
     txBox = slide.shapes.add_textbox(Inches(0.5), Inches(0.15), Inches(9), Inches(0.8))
     tf = txBox.text_frame
     p = tf.paragraphs[0]
@@ -102,11 +115,15 @@ def add_content_slide(prs, title, bullets, sub_bullets=None):
     p.font.color.rgb = WHITE
 
     # Body bullets
+    txBox2 = slide.shapes.add_textbox(
+        Inches(0.6), Inches(1.4), Inches(8.8), Inches(5.5))
     txBox2 = slide.shapes.add_textbox(Inches(0.6), Inches(1.4), Inches(8.8), Inches(5.5))
     tf2 = txBox2.text_frame
     tf2.word_wrap = True
 
     for i, b in enumerate(bullets):
+        p2 = tf2.add_paragraph(
+        ) if i > 0 or tf2.paragraphs[0].text else tf2.paragraphs[0]
         p2 = tf2.add_paragraph() if i > 0 or tf2.paragraphs[0].text else tf2.paragraphs[0]
         p2.text = b
         p2.font.size = Pt(18)
@@ -135,6 +152,8 @@ def add_table_slide(prs, title, headers, rows):
     shape.fill.fore_color.rgb = TITLE_COLOR
     shape.line.fill.background()
 
+    txBox = slide.shapes.add_textbox(
+        Inches(0.5), Inches(0.15), Inches(9), Inches(0.8))
     txBox = slide.shapes.add_textbox(Inches(0.5), Inches(0.15), Inches(9), Inches(0.8))
     tf = txBox.text_frame
     p = tf.paragraphs[0]
@@ -151,6 +170,8 @@ def add_table_slide(prs, title, headers, rows):
     width = Inches(8.4)
     height = Inches(0.5 * num_rows)
 
+    table_shape = slide.shapes.add_table(
+        num_rows, num_cols, left, top, width, height)
     table_shape = slide.shapes.add_table(num_rows, num_cols, left, top, width, height)
     table = table_shape.table
 
@@ -198,6 +219,13 @@ def main():
 
     # Slide 3: Novelty
     add_table_slide(prs, "Novelty – Adaptive Mode Selection",
+                    ["Image Quality", "Mode", "Behaviour"],
+                    [
+                        ["High contrast", "FAST", "Minimal processing, max speed"],
+                        ["Medium contrast", "NORMAL", "Standard Otsu + cleanup"],
+                        ["Low contrast", "CAREFUL",
+                            "Adaptive threshold + full morph"],
+                    ])
         ["Image Quality", "Mode", "Behaviour"],
         [
             ["High contrast", "FAST", "Minimal processing, max speed"],
@@ -235,6 +263,41 @@ def main():
 
     # Slide 7: HLS Results
     add_table_slide(prs, "HLS Synthesis Results",
+                    ["Step", "Status", "Details"],
+                    [
+                        ["C Simulation", "✅ PASSED", "All 9 tests, all 3 modes"],
+                        ["C Synthesis", "✅ 97 MHz", "II=1 on all major loops"],
+                        ["IP Export", "✅ Generated",
+                            "custom_hls_otsu_threshold_top_1_0.zip"],
+                    ])
+
+    # Slide 8: Resource Usage
+    add_table_slide(prs, "FPGA Resource Usage (Estimated)",
+                    ["Resource", "Used", "Available", "Utilisation"],
+                    [
+                        ["LUT", "~7,600", "63,400", "~12%"],
+                        ["FF", "~3,800", "126,800", "~3%"],
+                        ["BRAM", "5.5", "135", "~4%"],
+                        ["DSP", "7", "240", "~3%"],
+                    ])
+
+    # Slide 9: Segmentation Results
+    add_table_slide(prs, "Segmentation Results",
+                    ["Image", "Dice Score", "Mode Selected"],
+                    [
+                        ["brain_01 (bright tumor)", "0.98", "FAST"],
+                        ["brain_02 (subtle tumor)", "0.98", "NORMAL"],
+                        ["brain_03 (no tumor)", "0.19", "CAREFUL"],
+                    ])
+
+    # Slide 10: Performance Comparison
+    add_table_slide(prs, "Performance Comparison: SW vs FPGA",
+                    ["Metric", "SW (Python/CPU)", "HW (FPGA)", "Improvement"],
+                    [
+                        ["Processing time", "~18 ms", "~2 ms", "8.9× speedup"],
+                        ["Power", "15 W", "0.7 W", "21× lower"],
+                        ["Energy per image", "~270 mJ", "~1.4 mJ", ">99% savings"],
+                    ])
         ["Step", "Status", "Details"],
         [
             ["C Simulation", "✅ PASSED", "All 9 tests, all 3 modes"],
@@ -305,6 +368,8 @@ def main():
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(slide, TITLE_COLOR)
 
+    txBox = slide.shapes.add_textbox(
+        Inches(1), Inches(2.5), Inches(8), Inches(1.5))
     txBox = slide.shapes.add_textbox(Inches(1), Inches(2.5), Inches(8), Inches(1.5))
     tf = txBox.text_frame
     p = tf.paragraphs[0]
@@ -314,6 +379,8 @@ def main():
     p.font.color.rgb = WHITE
     p.alignment = PP_ALIGN.CENTER
 
+    txBox2 = slide.shapes.add_textbox(
+        Inches(1), Inches(4.2), Inches(8), Inches(1))
     txBox2 = slide.shapes.add_textbox(Inches(1), Inches(4.2), Inches(8), Inches(1))
     tf2 = txBox2.text_frame
     p2 = tf2.paragraphs[0]
@@ -322,6 +389,8 @@ def main():
     p2.font.color.rgb = ACCENT_COLOR
     p2.alignment = PP_ALIGN.CENTER
 
+    txBox3 = slide.shapes.add_textbox(
+        Inches(1), Inches(5.5), Inches(8), Inches(0.5))
     txBox3 = slide.shapes.add_textbox(Inches(1), Inches(5.5), Inches(8), Inches(0.5))
     tf3 = txBox3.text_frame
     p3 = tf3.paragraphs[0]
