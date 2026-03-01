@@ -45,16 +45,16 @@ static void led_set_mode(uint8_t mode)
 /* ---- HLS accelerator control ---- */
 static void hls_start(uint8_t mode)
 {
-    /* Set image pointers */
-    REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_IMG_IN_LO, IMG_INPUT_BASE);
-    REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_IMG_IN_HI, 0);
-    REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_IMG_OUT_LO, IMG_OUTPUT_BASE);
-    REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_IMG_OUT_HI, 0);
+    /* Set image pointers via s_axi_control_r */
+    REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_IN_LO, IMG_INPUT_BASE);
+    REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_IN_HI, 0);
+    REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_LO, IMG_OUTPUT_BASE);
+    REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_HI, 0);
 
-    /* Set processing mode */
+    /* Set processing mode via s_axi_control */
     REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_MODE, mode);
 
-    /* Start accelerator (ap_start = bit 0) */
+    /* Start accelerator (ap_start = bit 0) via s_axi_control */
     REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL, 0x01);
 }
 
@@ -82,7 +82,7 @@ static uint32_t hls_get_fg_pixels(void)
 
 static uint8_t hls_get_mode_used(void)
 {
-    return (uint8_t)REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_MODE);
+    return (uint8_t)REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_MODE_USED);
 }
 
 /* ---- Process one image end-to-end ---- */

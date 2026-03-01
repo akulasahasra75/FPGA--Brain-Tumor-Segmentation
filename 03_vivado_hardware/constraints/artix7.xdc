@@ -39,8 +39,8 @@ set_property -dict { PACKAGE_PIN K15  IOSTANDARD LVCMOS33 } [get_ports {led[1]}]
 set_property -dict { PACKAGE_PIN J13  IOSTANDARD LVCMOS33 } [get_ports {led[2]}]
 set_property -dict { PACKAGE_PIN N14  IOSTANDARD LVCMOS33 } [get_ports {led[3]}]
 
-# Done LED = LD4
-set_property -dict { PACKAGE_PIN R18  IOSTANDARD LVCMOS33 } [get_ports done_led]
+# Done LED = LD4 (active-high)
+set_property -dict { PACKAGE_PIN R18  IOSTANDARD LVCMOS33 } [get_ports {led[4]}]
 
 # ==============================================================================
 # Configuration
