@@ -13,7 +13,7 @@
  *   7. Measure energy & print report
  *   8. Repeat for each test image
  *
- * Target: Basys 3 (Artix-7 xc7a35tcpg236-1) + MicroBlaze
+ * Target: Nexys A7-100T (Artix-7 xc7a100tcsg324-1) + MicroBlaze
  *****************************************************************************/
 
 #include <stdint.h>
@@ -162,7 +162,7 @@ int main(void)
     uart_print("\r\n");
     uart_print("========================================\r\n");
     uart_print(" Brain Tumor Segmentation – FPGA SoC\r\n");
-    uart_print(" Basys 3 / Artix-7 / MicroBlaze\r\n");
+    uart_print(" Nexys A7-100T / Artix-7 / MicroBlaze\r\n");
     uart_print("========================================\r\n");
     uart_print("\r\n");
 

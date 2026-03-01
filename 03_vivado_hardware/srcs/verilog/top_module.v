@@ -8,7 +8,7 @@
 //                     ├── Otsu HLS IP      (accelerator)
 //                     └── AXI UART Lite    (debug output)
 //
-// Target: Artix-7 xc7a35tcpg236-1 (Basys 3) @ 100 MHz
+// Target: Artix-7 xc7a100tcsg324-1 (Nexys A7-100T) @ 100 MHz
 ////////////////////////////////////////////////////////////////////////////////
 
 module top_module (

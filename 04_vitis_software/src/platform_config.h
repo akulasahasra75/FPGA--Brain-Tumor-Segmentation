@@ -2,7 +2,7 @@
  * platform_config.h
  * ------------------
  * Hardware base addresses and system-wide constants for the Brain Tumor
- * Segmentation SoC running on Basys 3 (Artix-7).
+ * Segmentation SoC running on Nexys A7-100T (Artix-7).
  *
  * These addresses must match the Vivado block design address map
  * (see 03_vivado_hardware/build.tcl, Step 5).
