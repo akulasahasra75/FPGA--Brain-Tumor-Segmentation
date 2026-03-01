@@ -2,7 +2,7 @@
  Brain Tumor Segmentation on FPGA – Results Summary
 ================================================================================
  Date:    March 2026
- Board:   Digilent Basys 3 (Artix-7 xc7a35tcpg236-1)
+ Board:   Digilent Nexys A7-100T (Artix-7 xc7a100tcsg324-1)
  Tools:   Vitis / Vivado 2025.1
  Clock:   100 MHz (10 ns target period)
 ================================================================================
@@ -36,13 +36,13 @@
    ┌──────────┬────────┬───────────┬──────────────┐
    │ Resource │  Used  │ Available │ Utilisation % │
    ├──────────┼────────┼───────────┼──────────────┤
-   │ LUT      │ ~2,500 │  20,800   │    ~12%      │
-   │ FF       │ ~1,200 │  41,600   │     ~3%      │
-   │ BRAM     │      2 │      50   │      4%      │
-   │ DSP      │      3 │      90   │      3%      │
+   │ LUT      │ ~2,500 │  63,400   │     ~4%      │
+   │ FF       │ ~1,200 │ 126,800   │     ~1%      │
+   │ BRAM     │      2 │     135   │    1.5%      │
+   │ DSP      │      3 │     240   │    1.3%      │
    └──────────┴────────┴───────────┴──────────────┘
 
- Target: xc7a35tcpg236-1 @ 100 MHz (10 ns)
+ Target: xc7a100tcsg324-1 @ 100 MHz (10 ns)
  Timing: Met
 
 ── PHASE 3: Vivado Hardware Design ────────────────────────────────────────────
@@ -69,11 +69,11 @@
    │ Image Output Buffer │ 0x80010000 │
    └─────────────────────┴────────────┘
 
- IO Pinout (Basys 3):
-   - CLK:   W5  (100 MHz)
-   - RESET: U18 (btnC, active-low)
-   - UART:  B18 (RX), A18 (TX)
-   - LEDs:  U16, E19, U19, V19, W18
+ IO Pinout (Nexys A7-100T):
+   - CLK:   E3  (100 MHz)
+   - RESET: C12 (CPU_RESETN, active-low)
+   - UART:  C4  (RX), D4  (TX)
+   - LEDs:  H17, K15, J13, N14, R18
 
 ── PHASE 4: Vitis Software ────────────────────────────────────────────────────
 

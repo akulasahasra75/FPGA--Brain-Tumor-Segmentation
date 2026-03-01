@@ -4,7 +4,7 @@
 # Vivado non-project-mode TCL script for the Brain Tumor Segmentation SoC.
 #
 # What it does
-#   1. Creates a Vivado project targeting Basys 3 (xc7a35tcpg236-1)
+#   1. Creates a Vivado project targeting Nexys A7-100T (xc7a100tcsg324-1)
 #   2. Imports the HLS Otsu IP from ip_repo/
 #   3. Creates a MicroBlaze block design with:
 #        – MicroBlaze (area-optimised)
@@ -28,8 +28,8 @@
 # ==============================================================================
 set project_name   "brain_tumor_soc"
 set project_dir    "./vivado_project"
-set part           "xc7a35tcpg236-1"
-set board_part     "digilentinc.com:basys3:part0:1.2"
+set part           "xc7a100tcsg324-1"
+set board_part     "digilentinc.com:nexys-a7-100t:part0:1.3"
 set ip_repo_path   "./ip_repo"
 set rtl_dir        "./srcs/verilog"
 set xdc_file       "./constraints/artix7.xdc"

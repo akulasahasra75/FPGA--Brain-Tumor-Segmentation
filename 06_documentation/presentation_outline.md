@@ -8,10 +8,10 @@
 ## Slide 1: Title
 
 **Brain Tumor Segmentation on FPGA**
-*with Adaptive Processing Mode Selection*
+_with Adaptive Processing Mode Selection_
 
 - Course: Digital System Design Lab
-- Board: Basys 3 (Artix-7)
+- Board: Nexys A7-100T (Artix-7)
 - Tools: Vitis HLS / Vivado 2025.1
 
 ---
@@ -29,11 +29,11 @@
 
 **What makes this project unique:**
 
-| Image Quality | Mode Selected | Behaviour |
-|---------------|---------------|-----------|
-| High contrast | FAST | Minimal processing, max speed |
-| Medium contrast | NORMAL | Standard Otsu + cleanup |
-| Low contrast | CAREFUL | Adaptive threshold + full morph |
+| Image Quality   | Mode Selected | Behaviour                       |
+| --------------- | ------------- | ------------------------------- |
+| High contrast   | FAST          | Minimal processing, max speed   |
+| Medium contrast | NORMAL        | Standard Otsu + cleanup         |
+| Low contrast    | CAREFUL       | Adaptive threshold + full morph |
 
 - Automatic – no manual parameter tuning
 - Based on: mean, std dev, contrast (single-pass computation)
@@ -80,13 +80,14 @@ Phase 6: Docs → Report & presentation
 
 ## Slide 7: HLS Results
 
-| Step | Status |
-|------|--------|
-| C Simulation | ✅ 9/9 tests passed |
-| Synthesis | ✅ Timing met @ 100 MHz |
-| IP Export | ✅ Generated |
+| Step         | Status                  |
+| ------------ | ----------------------- |
+| C Simulation | ✅ 9/9 tests passed     |
+| Synthesis    | ✅ Timing met @ 100 MHz |
+| IP Export    | ✅ Generated            |
 
 Resource Usage:
+
 - LUT: ~12%, FF: ~3%, BRAM: 4%, DSP: 3%
 - Plenty of room on Artix-7
 
@@ -94,29 +95,29 @@ Resource Usage:
 
 ## Slide 8: Segmentation Results
 
-| Image | Dice | Mode |
-|-------|------|------|
-| brain_01 (bright) | 0.98 | FAST |
-| brain_02 (subtle) | 0.98 | NORMAL |
-| brain_03 (none) | 0.19 | CAREFUL |
+| Image             | Dice | Mode    |
+| ----------------- | ---- | ------- |
+| brain_01 (bright) | 0.98 | FAST    |
+| brain_02 (subtle) | 0.98 | NORMAL  |
+| brain_03 (none)   | 0.19 | CAREFUL |
 
-*(Show side-by-side: original → segmentation → overlay)*
+_(Show side-by-side: original → segmentation → overlay)_
 
 ---
 
 ## Slide 9: Performance Comparison
 
-| | SW-only | HW-accel | Gain |
-|---|---------|----------|------|
-| Time | 20 ms | 0.5 ms | **40×** |
-| Power | 200 mW | 50 mW | **4×** |
-| Energy | 4000 µJ | 25 µJ | **>99%** |
+|        | SW-only | HW-accel | Gain     |
+| ------ | ------- | -------- | -------- |
+| Time   | 20 ms   | 0.5 ms   | **40×**  |
+| Power  | 200 mW  | 50 mW    | **4×**   |
+| Energy | 4000 µJ | 25 µJ    | **>99%** |
 
 ---
 
 ## Slide 10: Demo
 
-- Live demo on Basys 3 board
+- Live demo on Nexys A7-100T board
 - Serial terminal shows results
 - LEDs indicate processing mode
 - Process all 3 test images
@@ -131,6 +132,7 @@ Resource Usage:
 - ✅ Complete pipeline: Python → HLS → Vivado → Vitis
 
 ### Future Work
+
 - Higher resolution (512×512+)
 - DMA-based data transfer
 - Real MRI DICOM support

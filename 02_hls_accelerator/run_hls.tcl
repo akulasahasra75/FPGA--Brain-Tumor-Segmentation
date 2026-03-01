@@ -7,7 +7,7 @@
 #   vitis-run --tcl --input_file run_hls.tcl
 #   (Vitis 2025.1: vitis_hls is now vitis-run)
 #
-# Target: Xilinx Artix-7 (xc7a35tcpg236-1)
+# Target: Xilinx Artix-7 (xc7a100tcsg324-1, Nexys A7-100T)
 # Clock : 100 MHz (10 ns period)
 ################################################################################
 
@@ -15,7 +15,7 @@
 set PROJECT_NAME  "otsu_hls"
 set SOLUTION_NAME "solution1"
 set TOP_FUNCTION  "otsu_threshold_top"
-set PART          "xc7a35tcpg236-1"
+set PART          "xc7a100tcsg324-1"
 set CLOCK_PERIOD  10
 
 # --- Create / open project ---------------------------------------------------

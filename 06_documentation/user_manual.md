@@ -17,19 +17,21 @@
 ## 1. Prerequisites
 
 ### Hardware
-- **Digilent Basys 3** board (Xilinx Artix-7 xc7a35tcpg236-1)
+
+- **Digilent Nexys A7-100T** board (Xilinx Artix-7 xc7a100tcsg324-1)
 - Micro-USB cable (for programming + UART)
 
 ### Software
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Python | 3.8+ | Algorithm verification |
-| NumPy | ≥ 1.24 | Array operations |
-| OpenCV | ≥ 4.7 | Image I/O and processing |
-| Vitis HLS | 2025.1 | HLS synthesis |
-| Vivado | 2025.1 | FPGA design & bitstream |
-| Vitis IDE | 2025.1 | MicroBlaze firmware |
-| g++ (optional) | Any | Desktop HLS testing |
+
+| Tool           | Version | Purpose                  |
+| -------------- | ------- | ------------------------ |
+| Python         | 3.8+    | Algorithm verification   |
+| NumPy          | ≥ 1.24  | Array operations         |
+| OpenCV         | ≥ 4.7   | Image I/O and processing |
+| Vitis HLS      | 2025.1  | HLS synthesis            |
+| Vivado         | 2025.1  | FPGA design & bitstream  |
+| Vitis IDE      | 2025.1  | MicroBlaze firmware      |
+| g++ (optional) | Any     | Desktop HLS testing      |
 
 ### Installation
 
@@ -71,6 +73,7 @@ python run_all_tests.py
 ```
 
 This will:
+
 1. Generate 3 synthetic MRI test images (`generate_test_images.py`)
 2. Run Otsu + watershed segmentation (`otsu_watershed.py`)
 3. Compare results against expected masks (`verify_results.py`)
@@ -127,11 +130,11 @@ vitis_hls -f run_hls.tcl
 
 ### Expected results
 
-| Step | Status |
-|------|--------|
-| C Simulation (csim) | PASS |
+| Step                 | Status             |
+| -------------------- | ------------------ |
+| C Simulation (csim)  | PASS               |
 | C Synthesis (csynth) | PASS (~38 seconds) |
-| IP Export | PASS (~18 seconds) |
+| IP Export            | PASS (~18 seconds) |
 
 ### Output
 
@@ -159,6 +162,7 @@ vivado -mode batch -source build.tcl
 ```
 
 This automated script will:
+
 1. Create a Vivado project
 2. Set up MicroBlaze block design with all peripherals
 3. Import the HLS Otsu IP
@@ -245,9 +249,9 @@ To use full-size images in the firmware, include the generated headers in `04_vi
 
 ## 8. Running on Hardware
 
-### Step 1: Connect Basys 3
+### Step 1: Connect Nexys A7-100T
 
-1. Connect the Basys 3 via USB to your computer
+1. Connect the Nexys A7-100T via USB to your computer
 2. Ensure the power switch is ON
 3. Set boot mode jumper to JTAG
 
@@ -287,7 +291,7 @@ Use any serial terminal (PuTTY, Tera Term, or VS Code Serial Monitor):
 ```
 ========================================
  Brain Tumor Segmentation – FPGA SoC
- Basys 3 / Artix-7 / MicroBlaze
+ Nexys A7-100T / Artix-7 / MicroBlaze
 ========================================
 
 --- Adaptive Mode Selection ---
@@ -320,12 +324,12 @@ Total foreground pixels: 3845
 
 ### LED behaviour
 
-| LED | State | Meaning |
-|-----|-------|---------|
-| LD0 | Blinking | System alive (heartbeat) |
-| LD1 | ON | Currently processing |
-| LD2-3 | Binary | Mode (00=FAST, 01=NORMAL, 10=CAREFUL) |
-| LD4 | ON | Processing complete |
+| LED   | State    | Meaning                               |
+| ----- | -------- | ------------------------------------- |
+| LD0   | Blinking | System alive (heartbeat)              |
+| LD1   | ON       | Currently processing                  |
+| LD2-3 | Binary   | Mode (00=FAST, 01=NORMAL, 10=CAREFUL) |
+| LD4   | ON       | Processing complete                   |
 
 ---
 
@@ -333,32 +337,32 @@ Total foreground pixels: 3845
 
 ### Python phase
 
-| Problem | Solution |
-|---------|----------|
-| `ModuleNotFoundError: cv2` | `pip install opencv-python` |
+| Problem                       | Solution                                |
+| ----------------------------- | --------------------------------------- |
+| `ModuleNotFoundError: cv2`    | `pip install opencv-python`             |
 | Dice score = 0 for all images | Check that `test_images/` has PNG files |
-| Low Dice on brain_03 | Expected – brain_03 has no tumor |
+| Low Dice on brain_03          | Expected – brain_03 has no tumor        |
 
 ### HLS phase
 
-| Problem | Solution |
-|---------|----------|
-| `vitis_hls` not found | Use `vitis-run.bat --tcl` instead (Vitis 2025.1) |
-| Cosim timeout | Comment out cosim in `run_hls.tcl` (csim is sufficient) |
-| Synthesis fails | Check target part matches `xc7a35tcpg236-1` |
+| Problem               | Solution                                                |
+| --------------------- | ------------------------------------------------------- |
+| `vitis_hls` not found | Use `vitis-run.bat --tcl` instead (Vitis 2025.1)        |
+| Cosim timeout         | Comment out cosim in `run_hls.tcl` (csim is sufficient) |
+| Synthesis fails       | Check target part matches `xc7a100tcsg324-1`             |
 
 ### Vivado phase
 
-| Problem | Solution |
-|---------|----------|
-| HLS IP not found | Unzip IP in `ip_repo/`, run `update_ip_catalog` |
-| Timing not met | Reduce clock frequency or optimise critical path |
-| Board not detected | Install Digilent board files for Vivado |
+| Problem            | Solution                                         |
+| ------------------ | ------------------------------------------------ |
+| HLS IP not found   | Unzip IP in `ip_repo/`, run `update_ip_catalog`  |
+| Timing not met     | Reduce clock frequency or optimise critical path |
+| Board not detected | Install Digilent board files for Vivado          |
 
 ### Vitis / Runtime
 
-| Problem | Solution |
-|---------|----------|
-| No serial output | Check baud rate = 115200, correct COM port |
-| LEDs not working | Verify XDC constraints match Basys 3 schematic |
+| Problem               | Solution                                                      |
+| --------------------- | ------------------------------------------------------------- |
+| No serial output      | Check baud rate = 115200, correct COM port                    |
+| LEDs not working      | Verify XDC constraints match Nexys A7 schematic                |
 | Program fails to load | Check Hardware Manager connection, re-program bitstream first |
