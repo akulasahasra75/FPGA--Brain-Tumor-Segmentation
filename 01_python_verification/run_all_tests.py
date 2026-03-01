@@ -64,6 +64,8 @@ def main():
             f"  {'Time (s)':<23} {sw_time:<20.4f} {HW_TIME_S:<20.6f} {speedup:.1f}x speedup")
         print(
             f"  {'Power (W)':<23} {SW_POWER_W:<20.1f} {HW_POWER_W:<20.1f} {SW_POWER_W/HW_POWER_W:.1f}x lower")
+        print(f"  {'Time (s)':<23} {sw_time:<20.4f} {HW_TIME_S:<20.6f} {speedup:.1f}x speedup")
+        print(f"  {'Power (W)':<23} {SW_POWER_W:<20.1f} {HW_POWER_W:<20.1f} {SW_POWER_W/HW_POWER_W:.1f}x lower")
         print(f"  {'Energy (mJ)':<23} {sw_energy_j*1000:<20.2f} {hw_energy_j*1000:<20.4f} {energy_savings:.1f}% savings")
 
     # Summary across all images
@@ -81,6 +83,8 @@ def main():
         f"    Speedup:              {avg_speedup:.1f}x  (requirement: >1.9x ✅)")
     print(
         f"    Energy savings:       {avg_energy_savings:.1f}%  (requirement: >99% ✅)")
+    print(f"    Speedup:              {avg_speedup:.1f}x  (requirement: >1.9x ✅)")
+    print(f"    Energy savings:       {avg_energy_savings:.1f}%  (requirement: >99% ✅)")
     print(f"{'='*80}")
 
     print("\nOutputs saved in:", RESULTS_DIR)
