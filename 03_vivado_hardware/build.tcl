@@ -46,7 +46,15 @@ if { [file exists $project_dir] } {
 # Step 1 – Create project
 # ==============================================================================
 create_project $project_name $project_dir -part $part -force
-set_property board_part $board_part [current_project]
+
+# Set board_part if available (requires Digilent board files installed).
+# If board files are missing, we continue with the raw FPGA part only —
+# the design works fine without board-aware IP defaults.
+if { [catch {set_property board_part $board_part [current_project]} err] } {
+    puts "WARNING: Board part '$board_part' not found (Digilent board files"
+    puts "         not installed).  Continuing with part-only mode."
+    puts "         Design will still work — board_part is optional."
+}
 
 # Add IP repository (contains HLS Otsu IP)
 if { [file exists $ip_repo_path] } {
@@ -97,12 +105,13 @@ set_property -dict [list \
 # ---- Processor System Reset ----
 create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0
 
-# ---- MicroBlaze (area-optimised) ----
+# ---- MicroBlaze (area-optimised, with AXI peripheral bus) ----
 create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:11.0 microblaze_0
 set_property -dict [list \
     CONFIG.C_USE_BARREL        {1} \
     CONFIG.C_USE_HW_MUL        {1} \
     CONFIG.C_DEBUG_ENABLED     {1} \
+    CONFIG.C_D_AXI             {1} \
     CONFIG.C_ICACHE_BASEADDR   {0x00000000} \
     CONFIG.C_ICACHE_HIGHADDR   {0x3FFFFFFF} \
     CONFIG.C_DCACHE_BASEADDR   {0x00000000} \
@@ -183,7 +192,7 @@ set_property -dict [list \
 # ==============================================================================
 
 # ---- External ports ----
-create_bd_port -dir I -type clk clk_100mhz
+create_bd_port -dir I -type clk -freq_hz 100000000 clk_100mhz
 create_bd_port -dir I -type rst reset_n
 create_bd_port -dir I uart_rxd
 create_bd_port -dir O uart_txd

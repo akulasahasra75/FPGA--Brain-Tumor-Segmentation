@@ -1,21 +1,23 @@
 ################################################################################
 # Makefile for Brain Tumor Segmentation – MicroBlaze Application
 #
-# This Makefile is designed for use with the Vitis / Xilinx SDK toolchain.
-# It compiles the bare-metal MicroBlaze application.
+# Compiles directly with mb-gcc — no Vitis/SDK BSP needed!
+# The code is fully self-contained with bare-metal register access.
 #
 # Usage:
-#   make              – build the ELF
+#   make              – build the ELF (requires mb-gcc on PATH or set MB_PREFIX)
 #   make clean        – remove build artefacts
 #   make desktop      – build with gcc for desktop testing (no HW access)
 #
-# For actual FPGA deployment, use Vitis IDE or xsct to build and program.
+# Environment:
+#   MB_PREFIX  – path to MicroBlaze toolchain bin/ (default: auto-detect D:\2025.1)
 ################################################################################
 
 # ---- Toolchain (Xilinx MicroBlaze) ----
-MB_CC       = mb-gcc
-MB_OBJCOPY  = mb-objcopy
-MB_SIZE     = mb-size
+MB_PREFIX  ?= D:/2025.1/gnu/microblaze/nt/bin
+MB_CC       = $(MB_PREFIX)/mb-gcc
+MB_OBJCOPY  = $(MB_PREFIX)/mb-objcopy
+MB_SIZE     = $(MB_PREFIX)/mb-size
 
 # ---- Toolchain (Desktop testing) ----
 CC          = gcc
@@ -31,7 +33,8 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/watershed.c \
        $(SRC_DIR)/adaptive_controller.c \
        $(SRC_DIR)/energy_analyzer.c \
-       $(SRC_DIR)/uart_debug.c
+       $(SRC_DIR)/uart_debug.c \
+       $(SRC_DIR)/mb_stubs.c
 
 HDRS = $(SRC_DIR)/platform_config.h \
        $(SRC_DIR)/image_loader.h \
@@ -42,8 +45,8 @@ HDRS = $(SRC_DIR)/platform_config.h \
        $(SRC_DIR)/test_images.h
 
 # ---- MicroBlaze flags ----
-MB_CFLAGS  = -Wall -O2 -mno-xl-soft-mul
-MB_LDFLAGS = -Wl,-T -Wl,lscript.ld
+MB_CFLAGS  = -mcpu=v11.0 -Wall -Os -ffunction-sections -fdata-sections
+MB_LDFLAGS = -nodefaultlibs -Wl,--gc-sections -T lscript.ld -lgcc -lc -lgcc
 
 # ---- Desktop flags ----
 DESKTOP_CFLAGS  = -Wall -O2 -DDESKTOP_SIM -g
