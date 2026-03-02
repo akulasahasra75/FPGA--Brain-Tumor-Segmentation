@@ -60,10 +60,15 @@ if { [file exists $ip_repo_path] } {
 # ==============================================================================
 # Step 2 – Add RTL sources
 # ==============================================================================
-if { [file exists $rtl_dir] } {
-    add_files -norecurse [glob -nocomplain $rtl_dir/*.v]
-    puts "INFO: Added Verilog sources from $rtl_dir"
-}
+# NOTE: The standalone Verilog wrappers (top_module.v, axi_interface.v,
+# bram_controller.v) are reference designs only.  The actual top-level is
+# the auto-generated block-design wrapper (microblaze_soc_wrapper.v).
+# Adding them to the project causes synthesis warnings about orphaned
+# modules, so we skip them.
+# if { [file exists $rtl_dir] } {
+#     add_files -norecurse [glob -nocomplain $rtl_dir/*.v]
+#     puts "INFO: Added Verilog sources from $rtl_dir"
+# }
 
 # ==============================================================================
 # Step 3 – Add constraints

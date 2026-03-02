@@ -39,7 +39,14 @@ typedef struct
     uint8_t num_regions;             /* how many regions found   */
     RegionInfo regions[MAX_REGIONS]; /* region descriptors       */
     uint32_t total_foreground;       /* total foreground pixels  */
-    uint8_t label_map[IMG_SIZE];     /* per-pixel label map      */
+    /*
+     * Pointer to a caller-supplied label-map buffer (IMG_SIZE bytes).
+     * Using a pointer instead of an embedded array avoids putting
+     * 64 KB inside the struct (would blow the 64 KB MicroBlaze BRAM).
+     * On hardware the caller points this at the BRAM input region
+     * (which is free after HLS finishes reading the image).
+     */
+    uint8_t *label_map;              /* per-pixel label map      */
 } WatershedResult;
 
 /**

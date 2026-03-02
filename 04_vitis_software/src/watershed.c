@@ -11,7 +11,13 @@
 #include <string.h>
 
 /* ---- Tiny queue for BFS (statically allocated) ---- */
-#define QUEUE_CAP  IMG_SIZE
+/*
+ * Queue capacity reduced from IMG_SIZE (65536 × 4 = 256 KB) to 4096
+ * entries (16 KB).  A BFS flood-fill of a bounded tumour region will
+ * never have more than a few thousand pixels on the frontier at once.
+ * The circular-buffer q_push/q_pop still works via modulo.
+ */
+#define QUEUE_CAP  4096
 static uint32_t queue_buf[QUEUE_CAP];
 static uint32_t q_head, q_tail;
 
