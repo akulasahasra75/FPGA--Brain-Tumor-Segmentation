@@ -88,11 +88,14 @@ python convert_to_bin.py --from-phase1
 
 ## Results
 
-| Metric    | SW-only (MicroBlaze) | HW-accelerated | Improvement  |
-| --------- | -------------------- | -------------- | ------------ |
-| Otsu time | ~20 ms               | ~0.5 ms        | ~40×         |
-| Power     | ~200 mW              | ~50 mW         | 4× lower     |
-| Energy    | ~4,000 µJ            | ~25 µJ         | >99% savings |
+| Metric    | SW-only (MicroBlaze) | HW-accelerated (csynth est.)   | Improvement    |
+| --------- | -------------------- | ------------------------------ | -------------- |
+| Otsu time | ~20 ms               | ~3.4 ms (best) / ~5.6 ms (avg) | ~5.9× / ~3.6×  |
+| Power     | ~200 mW              | ~50 mW                         | 4× lower       |
+| Energy    | ~4,000 µJ            | ~169 µJ (best)                 | ~95.8% savings |
+
+> **Note:** HW latency from Vitis HLS csynth report (328,254–788,308 cycles @ 100 MHz).
+> Power numbers are estimates; actual values require post-impl Vivado power analysis.
 
 | Test Image              | Dice Score | Mode Selected |
 | ----------------------- | ---------- | ------------- |
