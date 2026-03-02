@@ -192,22 +192,22 @@ Input Image (256×256 grayscale)
 
 | Resource | Used   | Available | Utilisation |
 | -------- | ------ | --------- | ----------- |
-| LUT      | ~2,500 | 63,400    | ~4%         |
-| FF       | ~1,200 | 126,800   | ~1%         |
-| BRAM     | 2      | 135       | 1.5%        |
-| DSP      | 3      | 240       | 1.3%        |
+| LUT      | 30,969 | 63,400    | 48%         |
+| FF       | 33,247 | 126,800   | 26%         |
+| BRAM_18K | 168    | 270       | 62%         |
+| DSP      | 163    | 240       | 67%         |
 
-_Note: Exact values from Vitis HLS synthesis report. Full SoC utilisation will be higher._
+_Values from Vitis HLS csynth report. Full SoC utilisation (MicroBlaze + peripherals) will be higher._
 
 ### 5.3 Performance Comparison
 
-| Metric              | SW-only (MicroBlaze) | HW-accelerated | Improvement  |
-| ------------------- | -------------------- | -------------- | ------------ |
-| Otsu threshold time | ~20 ms               | ~0.5 ms        | ~40×         |
-| Power (estimated)   | 200 mW               | 50 mW          | 4× lower     |
-| Energy per image    | 4,000 µJ             | 25 µJ          | >99% savings |
+| Metric              | SW-only (MicroBlaze) | HW-accelerated (csynth est.)   | Improvement    |
+| ------------------- | -------------------- | ------------------------------ | -------------- |
+| Otsu threshold time | ~20 ms               | ~3.4 ms (best) / ~5.6 ms (avg) | ~5.9× / ~3.6×  |
+| Power (estimated)   | 200 mW               | 50 mW                          | 4× lower       |
+| Energy per image    | 4,000 µJ             | ~169 µJ (best)                 | ~95.8% savings |
 
-_Performance numbers are estimates based on HLS latency and typical Artix-7 power. Actual values require post-implementation measurement._
+_Performance numbers based on HLS csynth latency (328,254–788,308 cycles) and estimated Artix-7 power. Actual values require post-implementation Vivado power analysis._
 
 ### 5.4 Segmentation Accuracy
 

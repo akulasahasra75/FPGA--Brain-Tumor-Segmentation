@@ -88,8 +88,8 @@ Phase 6: Docs → Report & presentation
 
 Resource Usage:
 
-- LUT: ~12%, FF: ~3%, BRAM: 4%, DSP: 3%
-- Plenty of room on Artix-7
+- LUT: 48%, FF: 26%, BRAM_18K: 62%, DSP: 67%
+- Significant utilisation – optimisation may be needed for larger designs
 
 ---
 
@@ -107,11 +107,11 @@ _(Show side-by-side: original → segmentation → overlay)_
 
 ## Slide 9: Performance Comparison
 
-|        | SW-only | HW-accel | Gain     |
-| ------ | ------- | -------- | -------- |
-| Time   | 20 ms   | 0.5 ms   | **40×**  |
-| Power  | 200 mW  | 50 mW    | **4×**   |
-| Energy | 4000 µJ | 25 µJ    | **>99%** |
+|        | SW-only | HW-accel (best) | Gain       |
+| ------ | ------- | --------------- | ---------- |
+| Time   | 20 ms   | 3.4 ms          | **~5.9×**  |
+| Power  | 200 mW  | 50 mW           | **4×**     |
+| Energy | 4000 µJ | ~169 µJ         | **~95.8%** |
 
 ---
 
@@ -128,7 +128,7 @@ _(Show side-by-side: original → segmentation → overlay)_
 
 - ✅ Successfully implemented Otsu segmentation on FPGA
 - ✅ Adaptive mode selection – novel contribution
-- ✅ ~40× speedup, >99% energy savings
+- ✅ ~5.9× speedup (best-case), ~95.8% energy savings
 - ✅ Complete pipeline: Python → HLS → Vivado → Vitis
 
 ### Future Work
