@@ -11,7 +11,7 @@ IN_DIR = os.path.join(BASE_DIR, "test_images")
 OUT_SEG_DIR = os.path.join(IN_DIR, "results")
 os.makedirs(OUT_SEG_DIR, exist_ok=True)
 
-
+# Dice
 def dice_coef(pred: np.ndarray, gt: np.ndarray) -> float:
     pred_bool = (pred > 0).astype(np.uint8)
     gt_bool = (gt > 0).astype(np.uint8)
@@ -31,7 +31,7 @@ def iou(pred: np.ndarray, gt: np.ndarray) -> float:
         return 1.0 if inter == 0 else 0.0
     return inter / union
 
-
+# Image processing
 def process_image(img: np.ndarray, return_overlay=True, debug=True) -> Tuple[np.ndarray, np.ndarray]:
     """
     Otsu thresholding + watershed segmentation pipeline:
