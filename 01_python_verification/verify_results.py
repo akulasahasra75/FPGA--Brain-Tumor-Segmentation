@@ -18,7 +18,7 @@ def load_mask(path):
         return None
     return (m > 127).astype(np.uint8)
 
-
+# Main
 def main():
     res_files = sorted([f for f in os.listdir(
         RESULTS_DIR) if f.endswith("_seg.png")])
