@@ -22,7 +22,7 @@ _Digital System Design Lab — Otsu's thresholding on FPGA with runtime-adaptive
 
 ## The Problem
 
-Brain tumor segmentation from MRI scans is a critical step in medical diagnosis. Clinicians need fast, accurate delineation of tumor boundaries — but traditional software running on general-purpose processors is **power-hungry** and **too slow** for real-time edge deployment. Meanwhile, every MRI image is different: some have sharp, high-contrast tumors; others are noisy and ambiguous. Fixed-parameter systems can't adapt.
+Brain tumor segmentation from MRI scans is a critical step in medical diagnosis. Clinicians need fast, accurate delineation of tumor boundaries — but traditional software running on general-purpose processors is **power-hungry** and **too slow** for real-time edge deployment. Meanwhile, every MRI image is different: some have sharp, high-contrast tumors, while others are noisy and ambiguous. Fixed-parameter systems can't adapt to this.
 
 ## The Solution
 
