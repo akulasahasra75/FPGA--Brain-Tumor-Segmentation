@@ -131,24 +131,24 @@ Unlike fixed-configuration accelerators, the system **analyses each image at run
 ┌─────────────────────────────────────────────────────────┐
 │                 Nexys A7-100T  (Artix-7)                │
 │                                                         │
-│  ┌────────────┐       ┌─────────────┐                   │
-│  │ MicroBlaze │◄─AXI─►│  HLS Otsu   │                   │
-│  │   (CPU)    │       │ Accelerator │                   │
-│  └─────┬──────┘       └──────┬──────┘                   │
-│        │                     │                          │
-│  ┌─────┴──────┐       ┌──────┴──────┐                   │
-│  │  64 KB     │       │  64 KB      │                   │
-│  │  BRAM      │       │  Image BRAM │                   │
-│  └────────────┘       └─────────────┘                   │
-│        │                                                │
-│  ┌─────┴───────────────────────────────┐                │
-│  │         AXI Interconnect            │                │
-│  └──┬──────────┬──────────┬────────────┘                │
-│     │          │          │                             │
-│  ┌──┴───┐  ┌──┴───┐  ┌──┴──────┐  ┌──────┐            │
-│  │ UART │  │ GPIO │  │  Timer  │  │ LEDs │            │
-│  │115200│  │5-bit │  │ (perf)  │  │ ×5   │            │
-│  └──────┘  └──────┘  └─────────┘  └──────┘            │
+│          ┌────────────┐       ┌─────────────┐           │
+│          │ MicroBlaze │◄─AXI─►│  HLS Otsu   │           │
+│          │   (CPU)    │       │ Accelerator │           │
+│          └─────┬──────┘       └──────┬──────┘           │
+│                │                     │                  │
+│          ┌─────┴──────┐       ┌──────┴──────┐           │
+│          │  64 KB     │       │  64 KB      │           │
+│          │  BRAM      │       │  Image BRAM │           │
+│          └────────────┘       └─────────────┘           │
+│                │                                        │
+│          ┌─────┴───────────────────────────────┐        │
+│          │         AXI Interconnect            │        │
+│          └──┬──────────┬──────────┬────────────┘        │
+│             │          │          │                     │
+│          ┌──┴───┐   ┌──┴───┐   ┌──┴──────┐  ┌──────┐    │
+│          │ UART │   │ GPIO │   │  Timer  │  │ LEDs │    │
+│          │115200│   │5-bit │   │ (perf)  │  │ ×5   │    │
+│          └──────┘   └──────┘   └─────────┘  └──────┘    │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -158,14 +158,14 @@ Unlike fixed-configuration accelerators, the system **analyses each image at run
        ┌────────────────────────────────────────────────────────────────┐
        │                    HLS Accelerator (FPGA)                      │
        │                                                                │
-Input ─┤  Histogram ──► Otsu Threshold ──► Morphology (mode-dependent) ├──► Binary mask
-       │  (256-bin)     (inter-class var)   (erode / dilate)           │
+Input ─┤  Histogram ──► Otsu Threshold ──► Morphology (mode-dependent)  ├──► Binary mask
+       │  (256-bin)     (inter-class var)   (erode / dilate)            │
        └────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
                         ┌──────────────────────┐
-                        │ Watershed (MicroBlaze │
-                        │ BFS connected-comp.)  │
+                        │ Watershed (MicroBlaze│
+                        │ BFS connected-comp.) │
                         └──────────┬───────────┘
                                    │
                                    ▼
