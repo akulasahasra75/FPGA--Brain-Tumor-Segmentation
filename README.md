@@ -619,7 +619,7 @@ MIT License — Copyright (c) 2026 akulasahasra75
 | :---------------------- | :------------------------------------------------------------- | :----------------------------- |
 | **Arushi Pundir**       | [@arushipundir126](https://github.com/arushipundir126)         | arushipundir097@gmail.com      |
 | **Aneesh Venkatesha Rao** | [@AneeshVRao](https://github.com/AneeshVRao)                | aneeshvrao2017@gmail.com       |
-| **Akula Sahasra**       | [@akulasahasra75](https://github.com/akulasahasra75)           |                                |
+| **Akula Sahasra**       | [@akulasahasra75](https://github.com/akulasahasra75)           | akulasahasra0705@gmail.com     |
 
 > Digital System Design Lab Project — FPGA-based Brain Tumor Segmentation with Adaptive Processing
 
