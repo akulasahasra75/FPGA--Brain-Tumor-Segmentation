@@ -4,7 +4,7 @@
  * Embedded test image data for standalone on-board testing.
  *
  * Contains small representative patterns that exercise all three processing
- * modes.  Full 256×256 images are loaded from external memory or UART;
+ * modes.  Full 128×128 images are loaded from external memory or UART;
  * these are 16×16 thumbnails used during bring-up.
  *
  * For full-size test images, see 05_test_images/ which contains a Python

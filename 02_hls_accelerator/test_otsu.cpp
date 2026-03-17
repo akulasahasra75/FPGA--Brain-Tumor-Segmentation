@@ -3,7 +3,7 @@
  * --------------
  * C++ testbench for otsu_threshold_top and image_stats modules.
  *
- * Generates three synthetic 256×256 grayscale test images, runs all three
+ * Generates three synthetic 128×128 grayscale test images, runs all three
  * processing modes on each, and prints threshold / foreground-pixel / mode
  * results.  Also exercises the adaptive mode selector.
  *

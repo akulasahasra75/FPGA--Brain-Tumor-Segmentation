@@ -8,10 +8,9 @@
  *   2. Load test image into BRAM
  *   3. Compute image statistics → adaptive mode selection
  *   4. Invoke HLS Otsu accelerator
- *   5. Read result mask
- *   6. Run software watershed (connected-component labelling)
- *   7. Measure energy & print report
- *   8. Repeat for each test image
+ *   5. Run software watershed on HLS output (in image BRAM)
+ *   6. Measure energy & print report
+ *   7. Repeat for each test image
  *
  * Target: Nexys A7-100T (Artix-7 xc7a100tcsg324-1) + MicroBlaze
  *****************************************************************************/
@@ -87,12 +86,8 @@ static uint8_t hls_get_mode_used(void)
 
 /* ---- Process one image end-to-end ---- */
 static void process_image(const char *name,
-                          const uint8_t *img_data,
-                          uint32_t img_size)
+                          const uint8_t *img_data)
 {
-    uint8_t output_mask[IMG_SIZE];
-    uint8_t sw_mask[IMG_SIZE];
-
     uart_print_separator();
     uart_print("Processing: ");
     uart_print(name);
@@ -128,20 +123,17 @@ static void process_image(const char *name,
     uart_print_uint("  FG pixels:      ", fg_pixels);
     uart_print_uint("  Mode used:      ", mode_used);
 
-    /* ---- Step 4: Read output mask ---- */
-    image_read_from_bram(output_mask);
-
-    /* ---- Step 5: SW watershed post-processing ---- */
+    /* ---- Step 4: SW watershed directly on HLS output in image BRAM ---- */
     uart_print("  Running watershed segmentation...\r\n");
-    WatershedResult ws;
-    watershed_segment(output_mask, &ws);
+    static WatershedResult ws;
+    watershed_segment((const uint8_t *)IMG_OUTPUT_BASE, &ws);
     watershed_print_summary(&ws);
 
-    /* ---- Step 6: SW baseline for comparison ---- */
+    /* ---- Step 5: SW baseline for comparison ---- */
     uart_print("  Running SW baseline for comparison...\r\n");
-    uint32_t sw_cycles = energy_sw_baseline(img_data, sw_mask);
+    uint32_t sw_cycles = energy_sw_baseline(img_data, (uint8_t *)SW_MASK_BASE);
 
-    /* ---- Step 7: Energy report ---- */
+    /* ---- Step 6: Energy report ---- */
     EnergyReport report;
     energy_compute_report(hw_cycles, sw_cycles, &report);
     energy_print_report(&report);
@@ -168,50 +160,52 @@ int main(void)
 
     /*
      * NOTE: The 16×16 test images in test_images.h are for bring-up only.
-     * For full 256×256 images, load via UART or use the C arrays generated
+     * For full 128×128 images, load via UART or use the C arrays generated
      * by 05_test_images/convert_to_bin.py.
      *
      * Below we demonstrate the pipeline with the embedded 16×16 thumbnails.
      * In production, replace with full-size images and adjust IMG_SIZE
-     * accordingly (it's already 256×256 = 65536 in platform_config.h).
+     * accordingly (it's already 128×128 = 16384 in platform_config.h).
      */
 
-    /* For bring-up: pad 16×16 thumbnails into 256×256 buffers */
-    uint8_t full_img[IMG_SIZE];
+    /* For bring-up: pad 16×16 thumbnails into 128×128 buffers.
+     * full_img lives in the image BRAM build area (CPU_IMG_BUILD_BASE)
+     * to avoid consuming LMB BRAM stack/BSS space. */
+    uint8_t * const full_img = (uint8_t *)CPU_IMG_BUILD_BASE;
 
     /* --- Test 1: Bright circle (high contrast → FAST) --- */
     memset(full_img, 10, IMG_SIZE);
     for (int y = 0; y < 16; y++) {
         for (int x = 0; x < 16; x++) {
-            /* Place thumbnail in centre of 256×256 image */
-            int fy = 120 + y;
-            int fx = 120 + x;
+            /* Place thumbnail in centre of 128×128 image */
+            int fy = 56 + y;
+            int fx = 56 + x;
             full_img[fy * IMG_WIDTH + fx] = test_bright_circle_16x16[y * 16 + x];
         }
     }
-    process_image("Bright Circle (High Contrast)", full_img, IMG_SIZE);
+    process_image("Bright Circle (High Contrast)", full_img);
 
     /* --- Test 2: Low contrast (→ CAREFUL) --- */
     memset(full_img, 120, IMG_SIZE);
     for (int y = 0; y < 16; y++) {
         for (int x = 0; x < 16; x++) {
-            int fy = 120 + y;
-            int fx = 120 + x;
+            int fy = 56 + y;
+            int fx = 56 + x;
             full_img[fy * IMG_WIDTH + fx] = test_low_contrast_16x16[y * 16 + x];
         }
     }
-    process_image("Low Contrast (Noisy)", full_img, IMG_SIZE);
+    process_image("Low Contrast (Noisy)", full_img);
 
     /* --- Test 3: Medium contrast (→ NORMAL) --- */
     memset(full_img, 50, IMG_SIZE);
     for (int y = 0; y < 16; y++) {
         for (int x = 0; x < 16; x++) {
-            int fy = 120 + y;
-            int fx = 120 + x;
+            int fy = 56 + y;
+            int fx = 56 + x;
             full_img[fy * IMG_WIDTH + fx] = test_medium_contrast_16x16[y * 16 + x];
         }
     }
-    process_image("Medium Contrast", full_img, IMG_SIZE);
+    process_image("Medium Contrast", full_img);
 
     /* ---- All done ---- */
     uart_print("\r\n");

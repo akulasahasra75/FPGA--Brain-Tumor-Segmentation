@@ -8,7 +8,7 @@
  *   MODE_NORMAL   – standard Otsu + light morphological cleanup
  *   MODE_CAREFUL  – Otsu with adaptive fall-back threshold + full cleanup
  *
- * Target image: 256x256 8-bit grayscale.
+ * Target image: 128x128 8-bit grayscale.
  ******************************************************************************/
 #ifndef OTSU_THRESHOLD_H
 #define OTSU_THRESHOLD_H
@@ -18,9 +18,9 @@
 /*--------------------------------------------------------------------------
  * Image dimensions (fixed for HLS resource estimation)
  *------------------------------------------------------------------------*/
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define IMG_SIZE (IMG_WIDTH * IMG_HEIGHT) /* 65536 */
+#define IMG_WIDTH 128
+#define IMG_HEIGHT 128
+#define IMG_SIZE (IMG_WIDTH * IMG_HEIGHT) /* 16384 */
 #define NUM_BINS 256                      /* 8-bit histogram */
 
 /*--------------------------------------------------------------------------

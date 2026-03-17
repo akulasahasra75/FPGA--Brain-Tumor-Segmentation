@@ -33,7 +33,7 @@ typedef struct
 /**
  * Compute lightweight statistics for a grayscale image.
  *
- * @param img    Pointer to 256×256 8-bit grayscale image
+ * @param img    Pointer to 128×128 8-bit grayscale image
  * @param stats  Output statistics
  */
 void adaptive_compute_stats(const uint8_t *img, SwImageStats *stats);

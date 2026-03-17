@@ -38,7 +38,7 @@ HIST_ZERO:
 HIST_ACC:
     for (int i = 0; i < IMG_SIZE; i++)
     {
-#pragma HLS PIPELINE II = 1
+#pragma HLS PIPELINE II = 2
         hist[img_in[i]]++;
     }
 }
@@ -63,19 +63,19 @@ SUM_TOTAL:
     }
 
     uint64_t sum_bg = 0;    /* cumulative intensity sum of background */
-    uint32_t weight_bg = 0; /* cumulative pixel count of background   */
+    uint16_t weight_bg = 0; /* cumulative pixel count of background (≤16384) */
     uint64_t max_var = 0;   /* best inter-class variance (scaled)     */
     uint8_t best_thr = 0;
 
 OTSU_SWEEP:
     for (int t = 0; t < NUM_BINS; t++)
     {
-#pragma HLS PIPELINE II = 1
-        weight_bg += hist[t];
+#pragma HLS PIPELINE II = 2
+        weight_bg += (uint16_t)hist[t];
         if (weight_bg == 0)
             continue;
 
-        uint32_t weight_fg = total - weight_bg;
+        uint16_t weight_fg = (uint16_t)(total - weight_bg);
         if (weight_fg == 0)
             break;
 
@@ -84,18 +84,18 @@ OTSU_SWEEP:
 
         /*
          * σ²_B = w0 · w1 · (μ0 − μ1)²
-         * To avoid 64-bit overflow in diff², compute class means via
-         * integer division first, then form the product.
-         *   mean_bg  = sum_bg / weight_bg   (0..255)
-         *   mean_fg  = sum_fg / weight_fg   (0..255)
-         *   var_between = w0 * w1 * (mean_bg - mean_fg)²
-         * Max value: 65536² × 255² ≈ 2.8×10¹⁴  → fits uint64_t.
+         * For 128×128: weight ≤ 16384 (uint16), mean ≤ 255 (uint8).
+         * Split multiply to reduce DSP chain depth:
+         *   wt_prod  = w0 * w1          ≤ 8192² ≈ 2²⁶  (fits uint32)
+         *   diff_sq  = (μ0 − μ1)²      ≤ 255²  ≈ 2¹⁶  (fits uint32)
+         *   var_between = wt_prod * diff_sq ≤ 2⁴² (fits uint64)
          */
-        uint32_t mean_bg = (uint32_t)(sum_bg / weight_bg);
-        uint32_t mean_fg = (uint32_t)(sum_fg / weight_fg);
-        int32_t mean_diff = (int32_t)mean_bg - (int32_t)mean_fg;
-        uint64_t var_between = (uint64_t)weight_bg * weight_fg *
-                               (uint32_t)(mean_diff * mean_diff);
+        uint8_t  mean_bg  = (uint8_t)(sum_bg / weight_bg);
+        uint8_t  mean_fg  = (uint8_t)(sum_fg / weight_fg);
+        int16_t  mean_diff = (int16_t)mean_bg - (int16_t)mean_fg;
+        uint32_t diff_sq   = (uint32_t)((int32_t)mean_diff * mean_diff);
+        uint32_t wt_prod   = (uint32_t)weight_bg * (uint32_t)weight_fg;
+        uint64_t var_between = (uint64_t)wt_prod * diff_sq;
 
         if (var_between > max_var)
         {

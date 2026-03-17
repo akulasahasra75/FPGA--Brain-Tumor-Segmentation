@@ -33,13 +33,13 @@ typedef struct
 
 /**
  * Result of watershed post-processing.
+ * label_map is stored in WATERSHED_LABEL_BASE (image BRAM) to save LMB BRAM.
  */
 typedef struct
 {
     uint8_t num_regions;             /* how many regions found   */
     RegionInfo regions[MAX_REGIONS]; /* region descriptors       */
     uint32_t total_foreground;       /* total foreground pixels  */
-    uint8_t label_map[IMG_SIZE];     /* per-pixel label map      */
 } WatershedResult;
 
 /**
