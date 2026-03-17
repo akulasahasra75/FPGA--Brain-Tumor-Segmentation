@@ -62,8 +62,8 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
 {
     energy_timer_start();
 
-    /* --- Histogram --- */
-    uint32_t hist[256];
+    /* --- Histogram (static to avoid 1 KB stack allocation) --- */
+    static uint32_t hist[256];
     memset(hist, 0, sizeof(hist));
     for (uint32_t i = 0; i < IMG_SIZE; i++) {
         hist[img[i]]++;
@@ -77,7 +77,7 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
     }
 
     uint32_t sum_b = 0, w_b = 0;
-    uint32_t best_var = 0;
+    uint64_t best_var = 0;
     uint8_t  threshold = 0;
 
     for (uint16_t t = 0; t < 256; t++) {
@@ -98,9 +98,8 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
 
         uint64_t var = (uint64_t)w_b * w_f * diff * diff;
         if (var > best_var) {
-            best_var = (uint32_t)(var >> 16);  /* scale down to fit uint32 */
+            best_var  = var;
             threshold = (uint8_t)t;
-            best_var = (uint32_t)(var > 0xFFFFFFFF ? 0xFFFFFFFF : var);
         }
     }
 

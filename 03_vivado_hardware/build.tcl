@@ -24,6 +24,12 @@
 ################################################################################
 
 # ==============================================================================
+# Resolve working directory so build works regardless of where Vivado is invoked
+# ==============================================================================
+set SCRIPT_DIR [file dirname [file normalize [info script]]]
+cd $SCRIPT_DIR
+
+# ==============================================================================
 # User-configurable parameters
 # ==============================================================================
 set project_name   "brain_tumor_soc"
@@ -46,7 +52,8 @@ if { [file exists $project_dir] } {
 # Step 1 – Create project
 # ==============================================================================
 create_project $project_name $project_dir -part $part -force
-set_property board_part $board_part [current_project]
+# Board files may not be installed; use catch so build continues without them
+catch {set_property board_part $board_part [current_project]}
 
 # Add IP repository (contains HLS Otsu IP)
 if { [file exists $ip_repo_path] } {
@@ -94,6 +101,12 @@ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0
 
 # ---- MicroBlaze (area-optimised) ----
 create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:11.0 microblaze_0
+# Apply Microcontroller preset first (enables M_AXI_DP peripheral interface)
+set_property -dict [list \
+    CONFIG.G_TEMPLATE_LIST     {4} \
+    CONFIG.G_USE_EXCEPTIONS    {0} \
+] [get_bd_cells microblaze_0]
+# Then override performance-critical parameters
 set_property -dict [list \
     CONFIG.C_USE_BARREL        {1} \
     CONFIG.C_USE_HW_MUL        {1} \
@@ -299,6 +312,12 @@ connect_bd_net [get_bd_ports led] [get_bd_pins axi_gpio_0/gpio_io_o]
 # ==============================================================================
 # Step 5 – Address map
 # ==============================================================================
+# LMB BRAM – MicroBlaze instruction & data local memory at 0x0
+assign_bd_address -target_address_space /microblaze_0/Instruction \
+    [get_bd_addr_segs {ilmb_bram_if_cntlr/SLMB/Mem}] -range 64K -offset 0x00000000
+assign_bd_address -target_address_space /microblaze_0/Data \
+    [get_bd_addr_segs {dlmb_bram_if_cntlr/SLMB/Mem}] -range 64K -offset 0x00000000
+
 # MicroBlaze peripheral address map
 assign_bd_address -target_address_space /microblaze_0/Data \
     [get_bd_addr_segs {axi_uartlite_0/S_AXI/Reg}] -range 64K -offset 0x40600000
@@ -331,6 +350,10 @@ save_bd_design
 generate_target all [get_files $project_dir/$project_name.srcs/sources_1/bd/$bd_name/$bd_name.bd]
 make_wrapper -files [get_files $project_dir/$project_name.srcs/sources_1/bd/$bd_name/$bd_name.bd] -top
 add_files -norecurse $project_dir/$project_name.gen/sources_1/bd/$bd_name/hdl/${bd_name}_wrapper.v
+
+# Explicitly set the block-design wrapper as top (not the stub top_module.v)
+set_property top ${bd_name}_wrapper [current_fileset]
+update_compile_order -fileset sources_1
 
 # ==============================================================================
 # Step 7 – Synthesis
