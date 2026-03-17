@@ -27,7 +27,7 @@
 set SCRIPT_DIR [file dirname [file normalize [info script]]]
 set XSA_FILE   [file normalize "$SCRIPT_DIR/../03_vivado_hardware/vivado_project/brain_tumor_soc.xsa"]
 set BIT_FILE   [file normalize "$SCRIPT_DIR/../03_vivado_hardware/vivado_project/brain_tumor_soc.runs/impl_1/microblaze_soc_wrapper.bit"]
-set WS_DIR     "$SCRIPT_DIR/vitis_workspace"
+set WS_DIR     "C:/vws/brain_tumor"
 set SRC_DIR    "$SCRIPT_DIR/src"
 
 set PLATFORM_NAME "brain_tumor_platform"
@@ -66,8 +66,8 @@ platform write
 # ==============================================================================
 # Step 2 – Generate BSP (Board Support Package)
 # ==============================================================================
-puts "INFO: Generating BSP..."
-platform generate -domains
+puts "INFO: Generating and building BSP (this takes ~1-2 min)..."
+platform generate
 
 # ==============================================================================
 # Step 3 – Create application project
@@ -113,9 +113,17 @@ if { [file exists $BIT_FILE] } {
     puts "INFO: Programming bitstream: $BIT_FILE"
     targets -set -nocase -filter {name =~ "xc7a*"}
     fpga $BIT_FILE
+    after 2000
+    # Disconnect and reconnect so hw_server re-enumerates the JTAG chain
+    # and discovers the MicroBlaze embedded debug core.
+    disconnect
+    connect
     after 1000
 } else {
-    puts "INFO: Bitstream not found at $BIT_FILE – assuming already programmed."
+    puts "INFO: Bitstream not found – assuming already programmed, refreshing targets..."
+    disconnect
+    connect
+    after 1000
 }
 
 # Now switch to MicroBlaze to reset and download the ELF.
