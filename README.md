@@ -51,7 +51,7 @@ _Digital System Design Lab — Otsu's thresholding on FPGA with runtime-adaptive
 - [Contributing](#-contributing)
 - [References](#-references)
 - [License](#-license)
-- [Author & Credits](#-author--credits)
+- [Authors & Credits](#-authors--credits)
 
 ---
 
@@ -128,49 +128,49 @@ Unlike fixed-configuration accelerators, the system **analyses each image at run
 ### System Block Diagram
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                  Nexys A7-100T  (Artix-7)                │
-│                                                          │
-│  ┌────────────┐       ┌─────────────┐                    │
-│  │ MicroBlaze │◄─AXI─►│  HLS Otsu   │                    │
-│  │   (CPU)    │       │ Accelerator │                    │
-│  └─────┬──────┘       └──────┬──────┘                    │
-│        │                     │                           │
-│  ┌─────┴──────┐       ┌──────┴──────┐                    │
-│  │  64 KB     │       │  64 KB      │                    │
-│  │  BRAM      │       │  Image BRAM │                    │
-│  └────────────┘       └─────────────┘                    │
-│        │                                                 │
-│  ┌─────┴────────────────────────────────┐                │
-│  │          AXI Interconnect            │                │
-│  └──┬──────────┬──────────┬─────────────┘                │
-│     │          │          │                              │
-│  ┌──┴───┐  ┌──┴───┐  ┌──┴──────┐  ┌──────┐             │
-│  │ UART │  │ GPIO │  │  Timer  │  │ LEDs │             │
-│  │115200│  │5-bit │  │ (perf)  │  │ ×5   │             │
-│  └──────┘  └──────┘  └─────────┘  └──────┘             │
-└──────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│                 Nexys A7-100T  (Artix-7)                │
+│                                                         │
+│  ┌────────────┐       ┌─────────────┐                   │
+│  │ MicroBlaze │◄─AXI─►│  HLS Otsu   │                   │
+│  │   (CPU)    │       │ Accelerator │                   │
+│  └─────┬──────┘       └──────┬──────┘                   │
+│        │                     │                          │
+│  ┌─────┴──────┐       ┌──────┴──────┐                   │
+│  │  64 KB     │       │  64 KB      │                   │
+│  │  BRAM      │       │  Image BRAM │                   │
+│  └────────────┘       └─────────────┘                   │
+│        │                                                │
+│  ┌─────┴───────────────────────────────┐                │
+│  │         AXI Interconnect            │                │
+│  └──┬──────────┬──────────┬────────────┘                │
+│     │          │          │                             │
+│  ┌──┴───┐  ┌──┴───┐  ┌──┴──────┐  ┌──────┐            │
+│  │ UART │  │ GPIO │  │  Timer  │  │ LEDs │            │
+│  │115200│  │5-bit │  │ (perf)  │  │ ×5   │            │
+│  └──────┘  └──────┘  └─────────┘  └──────┘            │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ### Processing Pipeline
 
 ```
-       ┌─────────────────────────────────────────────────────────────────┐
-       │                    HLS Accelerator (FPGA)                       │
-       │                                                                 │
-Input ─┤  Histogram ──► Otsu Threshold ──► Morphology (mode-dependent)  ├──► Binary mask
-       │  (256-bin)     (inter-class var)   (erode / dilate)            │
-       └─────────────────────────────────────────────────────────────────┘
+       ┌────────────────────────────────────────────────────────────────┐
+       │                    HLS Accelerator (FPGA)                      │
+       │                                                                │
+Input ─┤  Histogram ──► Otsu Threshold ──► Morphology (mode-dependent) ├──► Binary mask
+       │  (256-bin)     (inter-class var)   (erode / dilate)           │
+       └────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
-                        ┌───────────────────────┐
-                        │  Watershed (MicroBlaze │
-                        │  BFS connected-comp.)  │
-                        └───────────┬───────────┘
-                                    │
-                                    ▼
-                          Labelled tumour regions
-                        (area, centroid, bounding box)
+                        ┌──────────────────────┐
+                        │ Watershed (MicroBlaze │
+                        │ BFS connected-comp.)  │
+                        └──────────┬───────────┘
+                                   │
+                                   ▼
+                         Labelled tumour regions
+                       (area, centroid, bounding box)
 ```
 
 ### HLS IP Register Interface
@@ -613,9 +613,13 @@ MIT License — Copyright (c) 2026 akulasahasra75
 
 ---
 
-## 👤 Author & Credits
+## 👥 Authors & Credits
 
-**Akula Sahasra** — [@akulasahasra75](https://github.com/akulasahasra75)
+| Name                    | GitHub                                                         | Email                          |
+| :---------------------- | :------------------------------------------------------------- | :----------------------------- |
+| **Arushi Pundir**       | [@arushipundir126](https://github.com/arushipundir126)         | arushipundir097@gmail.com      |
+| **Aneesh Venkatesha Rao** | [@AneeshVRao](https://github.com/AneeshVRao)                | aneeshvrao2017@gmail.com       |
+| **Akula Sahasra**       | [@akulasahasra75](https://github.com/akulasahasra75)           |                                |
 
 > Digital System Design Lab Project — FPGA-based Brain Tumor Segmentation with Adaptive Processing
 
