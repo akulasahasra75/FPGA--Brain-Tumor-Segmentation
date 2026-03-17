@@ -5,33 +5,41 @@
  *
  * Uses a simple scanline flood-fill (no recursion, constant stack) so it
  * runs safely on MicroBlaze with limited stack space.
+ *
+ * Large scratch buffers (BFS queue, label map) live in the image BRAM
+ * scratch area (WATERSHED_QUEUE_BASE / WATERSHED_LABEL_BASE) to avoid
+ * overflowing the 64 KB LMB BRAM.
  *****************************************************************************/
 #include "watershed.h"
 #include "uart_debug.h"
 #include <string.h>
 
-/* ---- Tiny queue for BFS (statically allocated) ---- */
-#define QUEUE_CAP  IMG_SIZE
-static uint32_t queue_buf[QUEUE_CAP];
+/* ---- BFS queue stored in image BRAM scratch (32 KB: uint16_t[16384]) ---- */
+#define QUEUE_CAP   IMG_SIZE
+#define QUEUE_BUF   ((volatile uint16_t *)(WATERSHED_QUEUE_BASE))
+
+/* ---- Per-pixel label map stored in image BRAM scratch (16 KB) ---- */
+#define LABEL_MAP   ((volatile uint8_t *)(WATERSHED_LABEL_BASE))
+
 static uint32_t q_head, q_tail;
 
-static void q_reset(void)       { q_head = q_tail = 0; }
-static int  q_empty(void)       { return q_head == q_tail; }
-static void q_push(uint32_t v)  { queue_buf[q_tail++ % QUEUE_CAP] = v; }
-static uint32_t q_pop(void)     { return queue_buf[q_head++ % QUEUE_CAP]; }
+static void q_reset(void)        { q_head = q_tail = 0; }
+static int  q_empty(void)        { return q_head == q_tail; }
+static void q_push(uint16_t v)   { QUEUE_BUF[q_tail++ % QUEUE_CAP] = v; }
+static uint16_t q_pop(void)      { return QUEUE_BUF[q_head++ % QUEUE_CAP]; }
 
 /* ------------------------------------------------------------------ */
 void watershed_segment(const uint8_t *mask, WatershedResult *result)
 {
     /* Clear output */
     memset(result, 0, sizeof(*result));
-    memset(result->label_map, 0, IMG_SIZE);
+    for (uint32_t i = 0; i < IMG_SIZE; i++) LABEL_MAP[i] = 0;
 
     uint8_t current_label = 0;
 
     for (uint32_t idx = 0; idx < IMG_SIZE; idx++) {
         /* Skip background or already labelled */
-        if (mask[idx] == 0 || result->label_map[idx] != 0)
+        if (mask[idx] == 0 || LABEL_MAP[idx] != 0)
             continue;
 
         if (current_label >= MAX_REGIONS)
@@ -49,11 +57,11 @@ void watershed_segment(const uint8_t *mask, WatershedResult *result)
 
         /* BFS flood fill */
         q_reset();
-        q_push(idx);
-        result->label_map[idx] = current_label;
+        q_push((uint16_t)idx);
+        LABEL_MAP[idx] = current_label;
 
         while (!q_empty()) {
-            uint32_t p = q_pop();
+            uint16_t p  = q_pop();
             uint16_t px = (uint16_t)(p % IMG_WIDTH);
             uint16_t py = (uint16_t)(p / IMG_WIDTH);
 
@@ -74,9 +82,9 @@ void watershed_segment(const uint8_t *mask, WatershedResult *result)
                 int16_t ny = (int16_t)py + dy[d];
                 if (nx < 0 || nx >= IMG_WIDTH || ny < 0 || ny >= IMG_HEIGHT)
                     continue;
-                uint32_t ni = (uint32_t)ny * IMG_WIDTH + (uint32_t)nx;
-                if (mask[ni] != 0 && result->label_map[ni] == 0) {
-                    result->label_map[ni] = current_label;
+                uint16_t ni = (uint16_t)((uint32_t)ny * IMG_WIDTH + (uint32_t)nx);
+                if (mask[ni] != 0 && LABEL_MAP[ni] == 0) {
+                    LABEL_MAP[ni] = current_label;
                     q_push(ni);
                 }
             }
@@ -116,3 +124,4 @@ void watershed_print_summary(const WatershedResult *result)
     }
     uart_print("=========================\r\n");
 }
+
