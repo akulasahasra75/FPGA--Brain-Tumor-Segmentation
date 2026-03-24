@@ -46,7 +46,19 @@ module top_module (
 
     // Use the 100 MHz input directly (no PLL needed for this clock rate)
     assign sys_clk = clk_100mhz;
-    assign sys_rst = ~reset_n;       // Convert active-low to active-high
+
+    // Two-stage synchronizer to prevent metastability on async reset
+    reg reset_sync_1, reset_sync_2;
+    always @(posedge sys_clk or negedge reset_n) begin
+        if (~reset_n) begin
+            reset_sync_1 <= 1'b1;
+            reset_sync_2 <= 1'b1;
+        end else begin
+            reset_sync_1 <= 1'b0;
+            reset_sync_2 <= reset_sync_1;
+        end
+    end
+    assign sys_rst = reset_sync_2;
 
     // =========================================================================
     // LED Status Indicators

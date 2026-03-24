@@ -39,9 +39,14 @@ void uart_init(void)
 /* ------------------------------------------------------------------ */
 void uart_putc(char c)
 {
-    /* Wait until TX FIFO is not full */
-    while (REG_READ(UART_BASE, UART_STATUS) & UART_SR_TX_FULL)
-        ;
+    /* Wait until TX FIFO is not full (with timeout protection) */
+    uint32_t timeout = 100000;  /* ~1ms at 100 MHz */
+    while ((REG_READ(UART_BASE, UART_STATUS) & UART_SR_TX_FULL) && timeout > 0)
+        timeout--;
+
+    if (timeout == 0)
+        return;  /* Timeout: drop character */
+
     REG_WRITE(UART_BASE, UART_TX_FIFO, (uint32_t)c);
 }
 
