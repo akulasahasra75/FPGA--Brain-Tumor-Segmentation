@@ -12,7 +12,7 @@
 ENTRY(_start)
 
 _TEXT_START_ADDR = 0x50;          /* after MicroBlaze vector table         */
-_STACK_SIZE      = 0x1000;        /* 4 KB stack (grows downward)           */
+_STACK_SIZE      = 0x2000;        /* 8 KB stack (grows downward)           */
 _HEAP_SIZE       = 0x0;           /* no dynamic allocation                 */
 
 MEMORY

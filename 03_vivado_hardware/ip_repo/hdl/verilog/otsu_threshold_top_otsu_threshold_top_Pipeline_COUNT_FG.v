@@ -46,26 +46,26 @@ reg    ap_enable_reg_pp0_iter1;
 reg    ap_enable_reg_pp0_iter2;
 reg    ap_idle_pp0;
 wire    ap_block_pp0_stage0_subdone;
-wire   [0:0] icmp_ln261_fu_89_p2;
+wire   [0:0] icmp_ln265_fu_89_p2;
 reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire    ap_block_pp0_stage0_11001;
-reg   [0:0] icmp_ln261_reg_161;
-wire   [0:0] icmp_ln264_fu_111_p2;
-reg   [0:0] icmp_ln264_reg_170;
-wire   [63:0] zext_ln261_fu_101_p1;
+reg   [0:0] icmp_ln265_reg_161;
+wire   [0:0] icmp_ln268_fu_111_p2;
+reg   [0:0] icmp_ln268_reg_170;
+wire   [63:0] zext_ln265_fu_101_p1;
 wire    ap_block_pp0_stage0;
 reg   [31:0] fg_count_fu_42;
 wire   [31:0] fg_count_1_fu_125_p3;
 wire    ap_loop_init;
 reg    ap_loop_exit_ready_pp0_iter1_reg;
 reg   [16:0] i_1_fu_46;
-wire   [16:0] add_ln261_fu_95_p2;
+wire   [16:0] add_ln265_fu_95_p2;
 reg   [16:0] ap_sig_allocacmp_i;
 wire    ap_block_pp0_stage0_01001;
 reg    local_in_ce0_local;
-wire   [31:0] add_ln265_fu_119_p2;
+wire   [31:0] add_ln269_fu_119_p2;
 reg    ap_done_reg;
 wire    ap_continue_int;
 reg    ap_done_int;
@@ -155,8 +155,8 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        if (((icmp_ln261_fu_89_p2 == 1'd0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
-            i_1_fu_46 <= add_ln261_fu_95_p2;
+        if (((icmp_ln265_fu_89_p2 == 1'd0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
+            i_1_fu_46 <= add_ln265_fu_95_p2;
         end else if ((ap_loop_init == 1'b1)) begin
             i_1_fu_46 <= 17'd0;
         end
@@ -166,13 +166,13 @@ end
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         ap_loop_exit_ready_pp0_iter1_reg <= ap_loop_exit_ready;
-        icmp_ln261_reg_161 <= icmp_ln261_fu_89_p2;
-        icmp_ln264_reg_170 <= icmp_ln264_fu_111_p2;
+        icmp_ln265_reg_161 <= icmp_ln265_fu_89_p2;
+        icmp_ln268_reg_170 <= icmp_ln268_fu_111_p2;
     end
 end
 
 always @ (*) begin
-    if (((icmp_ln261_fu_89_p2 == 1'd1) & (1'b0 == ap_block_pp0_stage0_subdone) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+    if (((icmp_ln265_fu_89_p2 == 1'd1) & (1'b0 == ap_block_pp0_stage0_subdone) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         ap_condition_exit_pp0_iter0_stage0 = 1'b1;
     end else begin
         ap_condition_exit_pp0_iter0_stage0 = 1'b0;
@@ -220,7 +220,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((ap_loop_exit_ready_pp0_iter1_reg == 1'b1) & (icmp_ln261_reg_161 == 1'd1) & (1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+    if (((ap_loop_exit_ready_pp0_iter1_reg == 1'b1) & (icmp_ln265_reg_161 == 1'd1) & (1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         fg_count_out_ap_vld = 1'b1;
     end else begin
         fg_count_out_ap_vld = 1'b0;
@@ -246,9 +246,9 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln261_fu_95_p2 = (ap_sig_allocacmp_i + 17'd1);
+assign add_ln265_fu_95_p2 = (ap_sig_allocacmp_i + 17'd1);
 
-assign add_ln265_fu_119_p2 = (fg_count_fu_42 + 32'd1);
+assign add_ln269_fu_119_p2 = (fg_count_fu_42 + 32'd1);
 
 assign ap_CS_fsm_pp0_stage0 = ap_CS_fsm[32'd0];
 
@@ -270,18 +270,18 @@ assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
 assign ap_ready = ap_ready_sig;
 
-assign fg_count_1_fu_125_p3 = ((icmp_ln264_reg_170[0:0] == 1'b1) ? add_ln265_fu_119_p2 : fg_count_fu_42);
+assign fg_count_1_fu_125_p3 = ((icmp_ln268_reg_170[0:0] == 1'b1) ? add_ln269_fu_119_p2 : fg_count_fu_42);
 
 assign fg_count_out = fg_count_fu_42;
 
-assign icmp_ln261_fu_89_p2 = ((ap_sig_allocacmp_i == 17'd65536) ? 1'b1 : 1'b0);
+assign icmp_ln265_fu_89_p2 = ((ap_sig_allocacmp_i == 17'd65536) ? 1'b1 : 1'b0);
 
-assign icmp_ln264_fu_111_p2 = ((local_in_q0 > thr) ? 1'b1 : 1'b0);
+assign icmp_ln268_fu_111_p2 = ((local_in_q0 > thr) ? 1'b1 : 1'b0);
 
-assign local_in_address0 = zext_ln261_fu_101_p1;
+assign local_in_address0 = zext_ln265_fu_101_p1;
 
 assign local_in_ce0 = local_in_ce0_local;
 
-assign zext_ln261_fu_101_p1 = ap_sig_allocacmp_i;
+assign zext_ln265_fu_101_p1 = ap_sig_allocacmp_i;
 
 endmodule //otsu_threshold_top_otsu_threshold_top_Pipeline_COUNT_FG

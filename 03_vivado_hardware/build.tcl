@@ -92,15 +92,12 @@ if { [file exists $xdc_file] } {
 set bd_name "microblaze_soc"
 create_bd_design $bd_name
 
-# ---- Clock wizard (100 MHz in → 100 MHz + reset out) ----
-create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0
-set_property -dict [list \
-    CONFIG.PRIM_IN_FREQ      {100.000} \
-    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {100.000} \
-    CONFIG.USE_LOCKED         {true} \
-    CONFIG.USE_RESET          {true} \
-    CONFIG.RESET_TYPE         {ACTIVE_LOW} \
-] [get_bd_cells clk_wiz_0]
+# ---- No clock wizard — use raw 100 MHz from E3 directly ----
+# (Clock wizard MMCM was not locking; 100→100 passthrough is unnecessary)
+
+# ---- Constant '1' for dcm_locked (no MMCM, clock is always valid) ----
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 const_vcc
+set_property CONFIG.CONST_VAL {1} [get_bd_cells const_vcc]
 
 # ---- Processor System Reset ----
 create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0
@@ -112,6 +109,7 @@ set_property -dict [list \
     CONFIG.C_USE_HW_MUL        {1} \
     CONFIG.C_DEBUG_ENABLED     {1} \
     CONFIG.C_D_AXI             {1} \
+    CONFIG.C_ENDIANNESS        {0} \
     CONFIG.C_ICACHE_BASEADDR   {0x00000000} \
     CONFIG.C_ICACHE_HIGHADDR   {0x3FFFFFFF} \
     CONFIG.C_DCACHE_BASEADDR   {0x00000000} \
@@ -198,15 +196,13 @@ create_bd_port -dir I uart_rxd
 create_bd_port -dir O uart_txd
 create_bd_port -dir O -from 4 -to 0 led
 
-# ---- Clock & reset infrastructure ----
-connect_bd_net [get_bd_ports clk_100mhz] [get_bd_pins clk_wiz_0/clk_in1]
-connect_bd_net [get_bd_ports reset_n]     [get_bd_pins clk_wiz_0/resetn]
-connect_bd_net [get_bd_pins clk_wiz_0/clk_out1]  [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
-connect_bd_net [get_bd_pins clk_wiz_0/locked]     [get_bd_pins proc_sys_reset_0/dcm_locked]
-connect_bd_net [get_bd_ports reset_n]              [get_bd_pins proc_sys_reset_0/ext_reset_in]
+# ---- Clock & reset infrastructure (no clock wizard) ----
+connect_bd_net [get_bd_ports clk_100mhz]  [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
+connect_bd_net [get_bd_pins const_vcc/dout] [get_bd_pins proc_sys_reset_0/dcm_locked]
+connect_bd_net [get_bd_ports reset_n]      [get_bd_pins proc_sys_reset_0/ext_reset_in]
 
 # Convenience variables
-set sys_clk    [get_bd_pins clk_wiz_0/clk_out1]
+set sys_clk    [get_bd_ports clk_100mhz]
 set sys_rst    [get_bd_pins proc_sys_reset_0/mb_reset]
 set periph_rst [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
 set ic_rst     [get_bd_pins proc_sys_reset_0/interconnect_aresetn]
@@ -313,7 +309,8 @@ connect_bd_net [get_bd_ports led] [get_bd_pins axi_gpio_0/gpio_io_o]
 # ==============================================================================
 # Step 5 – Address map
 # ==============================================================================
-# MicroBlaze peripheral address map
+
+# ---- AXI peripheral addresses (must match C code hardcoded addresses) ----
 assign_bd_address -target_address_space /microblaze_0/Data \
     [get_bd_addr_segs {axi_uartlite_0/S_AXI/Reg}] -range 64K -offset 0x40600000
 assign_bd_address -target_address_space /microblaze_0/Data \
@@ -329,12 +326,33 @@ if { $hls_ip_vlnv ne "" } {
         [get_bd_addr_segs {hls_otsu_0/s_axi_control/Reg}] -range 64K -offset 0x44A00000
     assign_bd_address -target_address_space /microblaze_0/Data \
         [get_bd_addr_segs {hls_otsu_0/s_axi_control_r/Reg}] -range 64K -offset 0x44A10000
-    # HLS gmem0 → image BRAM (via BRAM Controller B)
+    # HLS gmem0/gmem1 → image BRAM (via BRAM Controller B)
     assign_bd_address -target_address_space /hls_otsu_0/Data_m_axi_gmem0 \
         [get_bd_addr_segs {axi_bram_ctrl_1/S_AXI/Mem0}] -range 128K -offset 0x80000000
-    # HLS gmem1 → image BRAM (via BRAM Controller B)
     assign_bd_address -target_address_space /hls_otsu_0/Data_m_axi_gmem1 \
         [get_bd_addr_segs {axi_bram_ctrl_1/S_AXI/Mem0}] -range 128K -offset 0x80000000
+}
+
+# ---- LMB BRAM addresses (auto-assign catches what manual assign can't) ----
+# In Vivado 2025.1, LMB addr segs often can't be resolved by path.
+# assign_bd_address without arguments auto-maps all remaining unmapped
+# segments — including LMB BRAM controllers — to their default addresses.
+puts "INFO: Auto-assigning remaining address segments (LMB BRAM)..."
+assign_bd_address -quiet
+
+# Fix LMB ranges: auto-assign defaults to 8KB, we need 64KB for code+data
+puts "INFO: Resizing LMB segments to 64KB..."
+set_property range 0x10000 [get_bd_addr_segs {microblaze_0/Data/SEG_dlmb_bram_if_cntlr_Mem}]
+set_property range 0x10000 [get_bd_addr_segs {microblaze_0/Instruction/SEG_ilmb_bram_if_cntlr_Mem}]
+
+# Verify LMB was assigned
+puts "INFO: Address segments after auto-assign:"
+foreach seg [get_bd_addr_segs] {
+    catch {
+        set offset [get_property OFFSET $seg]
+        set range  [get_property RANGE  $seg]
+        puts "  $seg : offset=$offset range=$range"
+    }
 }
 
 # ==============================================================================

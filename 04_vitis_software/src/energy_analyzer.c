@@ -98,9 +98,8 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
 
         uint64_t var = (uint64_t)w_b * w_f * diff * diff;
         if (var > best_var) {
-            best_var = (uint32_t)(var >> 16);  /* scale down to fit uint32 */
+            best_var = (uint32_t)(var > 0xFFFFFFFFULL ? 0xFFFFFFFF : var);
             threshold = (uint8_t)t;
-            best_var = (uint32_t)(var > 0xFFFFFFFF ? 0xFFFFFFFF : var);
         }
     }
 

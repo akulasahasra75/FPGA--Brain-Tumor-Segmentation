@@ -151,8 +151,10 @@ ERODE_ROW:
             uint8_t val = 255;
             for (int dr = -1; dr <= 1; dr++)
             {
+#pragma HLS UNROLL
                 for (int dc = -1; dc <= 1; dc++)
                 {
+#pragma HLS UNROLL
                     int rr = r + dr;
                     int cc = c + dc;
                     if (rr >= 0 && rr < IMG_HEIGHT && cc >= 0 && cc < IMG_WIDTH)
@@ -184,8 +186,10 @@ DILATE_ROW:
             uint8_t val = 0;
             for (int dr = -1; dr <= 1; dr++)
             {
+#pragma HLS UNROLL
                 for (int dc = -1; dc <= 1; dc++)
                 {
+#pragma HLS UNROLL
                     int rr = r + dr;
                     int cc = c + dc;
                     if (rr >= 0 && rr < IMG_HEIGHT && cc >= 0 && cc < IMG_WIDTH)

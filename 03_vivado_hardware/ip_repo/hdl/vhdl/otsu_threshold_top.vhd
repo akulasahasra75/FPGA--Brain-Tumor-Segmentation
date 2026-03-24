@@ -309,10 +309,10 @@ architecture behav of otsu_threshold_top is
     signal thr_reg_807 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_CS_fsm_state15 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state15 : signal is "none";
-    signal icmp_ln256_fu_550_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln256_reg_814 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln269_fu_558_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln269_reg_818 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln260_fu_550_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln260_reg_814 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln273_fu_558_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln273_reg_818 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_CS_fsm_state17 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state17 : signal is "none";
     signal tmp_s_reg_822 : STD_LOGIC_VECTOR (7 downto 0);
@@ -322,14 +322,14 @@ architecture behav of otsu_threshold_top is
     signal s_reg_828 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_CS_fsm_state21 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state21 : signal is "none";
-    signal icmp_ln293_fu_591_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal icmp_ln293_reg_833 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln297_fu_591_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln297_reg_833 : STD_LOGIC_VECTOR (0 downto 0);
     signal conv44_fu_597_p1 : STD_LOGIC_VECTOR (15 downto 0);
     signal conv44_reg_837 : STD_LOGIC_VECTOR (15 downto 0);
     signal ap_CS_fsm_state22 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state22 : signal is "none";
-    signal sub_ln305_fu_619_p2 : STD_LOGIC_VECTOR (31 downto 0);
-    signal sub_ln305_reg_842 : STD_LOGIC_VECTOR (31 downto 0);
+    signal sub_ln309_fu_619_p2 : STD_LOGIC_VECTOR (31 downto 0);
+    signal sub_ln309_reg_842 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_CS_fsm_state24 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state24 : signal is "none";
     signal ap_CS_fsm_state25 : STD_LOGIC;
@@ -599,12 +599,12 @@ architecture behav of otsu_threshold_top is
     signal grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_ce0 : STD_LOGIC;
     signal grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out : STD_LOGIC_VECTOR (47 downto 0);
     signal grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out_ap_vld : STD_LOGIC;
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start : STD_LOGIC;
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done : STD_LOGIC;
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_idle : STD_LOGIC;
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready : STD_LOGIC;
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out : STD_LOGIC_VECTOR (30 downto 0);
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld : STD_LOGIC;
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start : STD_LOGIC;
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done : STD_LOGIC;
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_idle : STD_LOGIC;
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready : STD_LOGIC;
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out : STD_LOGIC_VECTOR (30 downto 0);
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld : STD_LOGIC;
     signal grp_apply_threshold_fu_435_ap_start : STD_LOGIC;
     signal grp_apply_threshold_fu_435_ap_done : STD_LOGIC;
     signal grp_apply_threshold_fu_435_ap_idle : STD_LOGIC;
@@ -926,8 +926,8 @@ architecture behav of otsu_threshold_top is
     signal gmem1_0_RFIFONUM : STD_LOGIC_VECTOR (10 downto 0);
     signal gmem1_0_BVALID : STD_LOGIC;
     signal gmem1_0_BREADY : STD_LOGIC;
-    signal ap_phi_mux_phi_ln305_phi_fu_370_p4 : STD_LOGIC_VECTOR (15 downto 0);
-    signal phi_ln305_reg_366 : STD_LOGIC_VECTOR (15 downto 0);
+    signal ap_phi_mux_phi_ln309_phi_fu_370_p4 : STD_LOGIC_VECTOR (15 downto 0);
+    signal phi_ln309_reg_366 : STD_LOGIC_VECTOR (15 downto 0);
     signal thr_2_fu_677_p3 : STD_LOGIC_VECTOR (7 downto 0);
     signal thr_1_reg_377 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_CS_fsm_state28 : STD_LOGIC;
@@ -954,7 +954,7 @@ architecture behav of otsu_threshold_top is
     signal grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state20 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state20 : signal is "none";
-    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg : STD_LOGIC := '0';
+    signal grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state23 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state23 : signal is "none";
     signal s_2_loc_fu_160 : STD_LOGIC_VECTOR (30 downto 0);
@@ -989,21 +989,21 @@ architecture behav of otsu_threshold_top is
     attribute fsm_encoding of ap_CS_fsm_state41 : signal is "none";
     signal grp_fu_539_p0 : STD_LOGIC_VECTOR (31 downto 0);
     signal grp_fu_539_p1 : STD_LOGIC_VECTOR (33 downto 0);
-    signal trunc_ln305_fu_607_p1 : STD_LOGIC_VECTOR (29 downto 0);
+    signal trunc_ln309_fu_607_p1 : STD_LOGIC_VECTOR (29 downto 0);
     signal p_shl_fu_611_p3 : STD_LOGIC_VECTOR (31 downto 0);
-    signal zext_ln298_fu_603_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal zext_ln302_fu_603_p1 : STD_LOGIC_VECTOR (31 downto 0);
     signal grp_fu_539_p2 : STD_LOGIC_VECTOR (50 downto 0);
     signal strict_t_fu_639_p2 : STD_LOGIC_VECTOR (15 downto 0);
     signal tmp_22_fu_648_p4 : STD_LOGIC_VECTOR (7 downto 0);
-    signal icmp_ln306_fu_658_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal trunc_ln305_1_fu_644_p1 : STD_LOGIC_VECTOR (7 downto 0);
-    signal icmp_ln308_fu_672_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln310_fu_658_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal trunc_ln309_1_fu_644_p1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal icmp_ln312_fu_672_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_24_fu_709_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_23_fu_699_p4 : STD_LOGIC_VECTOR (23 downto 0);
-    signal zext_ln347_fu_717_p1 : STD_LOGIC_VECTOR (7 downto 0);
-    signal trunc_ln347_fu_731_p1 : STD_LOGIC_VECTOR (15 downto 0);
+    signal zext_ln351_fu_717_p1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal trunc_ln351_fu_731_p1 : STD_LOGIC_VECTOR (15 downto 0);
     signal tmp_25_fu_721_p4 : STD_LOGIC_VECTOR (23 downto 0);
-    signal icmp_ln318_fu_685_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal icmp_ln322_fu_685_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (45 downto 0);
     signal ap_ST_fsm_state1_blk : STD_LOGIC;
     signal ap_ST_fsm_state2_blk : STD_LOGIC;
@@ -1197,13 +1197,13 @@ architecture behav of otsu_threshold_top is
         local_in_address0 : OUT STD_LOGIC_VECTOR (15 downto 0);
         local_in_ce0 : OUT STD_LOGIC;
         local_in_q0 : IN STD_LOGIC_VECTOR (7 downto 0);
-        zext_ln284_1 : IN STD_LOGIC_VECTOR (7 downto 0);
+        zext_ln288_1 : IN STD_LOGIC_VECTOR (7 downto 0);
         var_sum_out : OUT STD_LOGIC_VECTOR (47 downto 0);
         var_sum_out_ap_vld : OUT STD_LOGIC );
     end component;
 
 
-    component otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1 IS
+    component otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1 IS
     port (
         ap_clk : IN STD_LOGIC;
         ap_rst : IN STD_LOGIC;
@@ -2611,21 +2611,21 @@ begin
         local_in_address0 => grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_address0,
         local_in_ce0 => grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_ce0,
         local_in_q0 => local_in_q0,
-        zext_ln284_1 => tmp_s_reg_822,
+        zext_ln288_1 => tmp_s_reg_822,
         var_sum_out => grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out,
         var_sum_out_ap_vld => grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out_ap_vld);
 
-    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429 : component otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1
+    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429 : component otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start,
-        ap_done => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done,
-        ap_idle => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_idle,
-        ap_ready => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready,
+        ap_start => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start,
+        ap_done => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done,
+        ap_idle => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_idle,
+        ap_ready => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready,
         s_3 => s_reg_828,
-        s_2_out => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out,
-        s_2_out_ap_vld => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld);
+        s_2_out => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out,
+        s_2_out_ap_vld => grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld);
 
     grp_apply_threshold_fu_435 : component otsu_threshold_top_apply_threshold
     port map (
@@ -3353,7 +3353,7 @@ begin
             if (ap_rst_n_inv = '1') then
                 grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= ap_const_logic_0;
             else
-                if (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln256_fu_550_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then 
+                if (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln260_fu_550_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then 
                     grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= ap_const_logic_1;
                 elsif ((grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_ready = ap_const_logic_1)) then 
                     grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= ap_const_logic_0;
@@ -3401,7 +3401,7 @@ begin
             if (ap_rst_n_inv = '1') then
                 grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= ap_const_logic_0;
             else
-                if (((icmp_ln269_fu_558_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state17))) then 
+                if (((icmp_ln273_fu_558_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state17))) then 
                     grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= ap_const_logic_1;
                 elsif ((grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_ready = ap_const_logic_1)) then 
                     grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= ap_const_logic_0;
@@ -3427,16 +3427,16 @@ begin
     end process;
 
 
-    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg_assign_proc : process(ap_clk)
+    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= ap_const_logic_0;
+                grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= ap_const_logic_0;
             else
-                if (((icmp_ln293_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state22))) then 
-                    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready = ap_const_logic_1)) then 
-                    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= ap_const_logic_0;
+                if (((icmp_ln297_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state22))) then 
+                    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready = ap_const_logic_1)) then 
+                    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
@@ -3459,13 +3459,13 @@ begin
     end process;
 
 
-    phi_ln305_reg_366_assign_proc : process (ap_clk)
+    phi_ln309_reg_366_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((icmp_ln293_reg_833 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state22))) then 
-                phi_ln305_reg_366 <= ap_const_lv16_0;
-            elsif (((icmp_ln293_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state27))) then 
-                phi_ln305_reg_366 <= trunc_ln1_reg_852;
+            if (((icmp_ln297_reg_833 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state22))) then 
+                phi_ln309_reg_366 <= ap_const_lv16_0;
+            elsif (((icmp_ln297_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state27))) then 
+                phi_ln309_reg_366 <= trunc_ln1_reg_852;
             end if; 
         end if;
     end process;
@@ -3473,11 +3473,11 @@ begin
     thr_1_reg_377_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((icmp_ln269_fu_558_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state17))) then 
+            if (((icmp_ln273_fu_558_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state17))) then 
                 thr_1_reg_377 <= thr_reg_807;
-            elsif (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln256_fu_550_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state15))) then 
+            elsif (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln260_fu_550_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state15))) then 
                 thr_1_reg_377 <= grp_otsu_compute_fu_403_ap_return;
-            elsif (((icmp_ln269_reg_818 = ap_const_lv1_1) and (icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state28))) then 
+            elsif (((icmp_ln273_reg_818 = ap_const_lv1_1) and (icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state28))) then 
                 thr_1_reg_377 <= thr_2_fu_677_p3;
             end if; 
         end if;
@@ -3494,7 +3494,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state15)) then
-                icmp_ln256_reg_814 <= icmp_ln256_fu_550_p2;
+                icmp_ln260_reg_814 <= icmp_ln260_fu_550_p2;
                 thr_reg_807 <= grp_otsu_compute_fu_403_ap_return;
             end if;
         end if;
@@ -3503,7 +3503,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state17)) then
-                icmp_ln269_reg_818 <= icmp_ln269_fu_558_p2;
+                icmp_ln273_reg_818 <= icmp_ln273_fu_558_p2;
             end if;
         end if;
     end process;
@@ -3511,7 +3511,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state21)) then
-                icmp_ln293_reg_833 <= icmp_ln293_fu_591_p2;
+                icmp_ln297_reg_833 <= icmp_ln297_fu_591_p2;
                 s_reg_828 <= grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out(47 downto 16);
             end if;
         end if;
@@ -3529,8 +3529,8 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state23))) then
-                s_2_loc_fu_160 <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out;
+            if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state23))) then
+                s_2_loc_fu_160 <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out;
             end if;
         end if;
     end process;
@@ -3546,7 +3546,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state24)) then
-                sub_ln305_reg_842 <= sub_ln305_fu_619_p2;
+                sub_ln309_reg_842 <= sub_ln309_fu_619_p2;
             end if;
         end if;
     end process;
@@ -3568,7 +3568,7 @@ begin
     end process;
     conv44_reg_837(15 downto 8) <= "00000000";
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state2, ap_CS_fsm_state39, ap_CS_fsm_state46, ap_CS_fsm_state15, icmp_ln256_fu_550_p2, icmp_ln256_reg_814, icmp_ln269_fu_558_p2, ap_CS_fsm_state17, icmp_ln293_reg_833, ap_CS_fsm_state22, grp_otsu_threshold_top_Pipeline_READ_IN_fu_389_ap_done, grp_compute_histogram_fu_397_ap_done, grp_otsu_compute_fu_403_ap_done, grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_done, grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_done, grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_done, grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done, grp_apply_threshold_fu_435_ap_done, grp_erode_3x3_fu_453_ap_done, grp_dilate_3x3_fu_479_ap_done, grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_ap_done, grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_done, gmem0_0_ARREADY, gmem1_0_AWREADY, gmem1_0_BVALID, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state16, ap_CS_fsm_state18, ap_CS_fsm_state20, ap_CS_fsm_state23, ap_CS_fsm_state29, ap_CS_fsm_state31, ap_CS_fsm_state37, ap_CS_fsm_state33, ap_CS_fsm_state35, ap_CS_fsm_state41, icmp_ln318_fu_685_p2, ap_block_state37_on_subcall_done)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state2, ap_CS_fsm_state39, ap_CS_fsm_state46, ap_CS_fsm_state15, icmp_ln260_fu_550_p2, icmp_ln260_reg_814, icmp_ln273_fu_558_p2, ap_CS_fsm_state17, icmp_ln297_reg_833, ap_CS_fsm_state22, grp_otsu_threshold_top_Pipeline_READ_IN_fu_389_ap_done, grp_compute_histogram_fu_397_ap_done, grp_otsu_compute_fu_403_ap_done, grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_done, grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_done, grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_done, grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done, grp_apply_threshold_fu_435_ap_done, grp_erode_3x3_fu_453_ap_done, grp_dilate_3x3_fu_479_ap_done, grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_ap_done, grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_done, gmem0_0_ARREADY, gmem1_0_AWREADY, gmem1_0_BVALID, ap_CS_fsm_state11, ap_CS_fsm_state13, ap_CS_fsm_state16, ap_CS_fsm_state18, ap_CS_fsm_state20, ap_CS_fsm_state23, ap_CS_fsm_state29, ap_CS_fsm_state31, ap_CS_fsm_state37, ap_CS_fsm_state33, ap_CS_fsm_state35, ap_CS_fsm_state41, icmp_ln322_fu_685_p2, ap_block_state37_on_subcall_done)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -3616,9 +3616,9 @@ begin
             when ap_ST_fsm_state14 => 
                 ap_NS_fsm <= ap_ST_fsm_state15;
             when ap_ST_fsm_state15 => 
-                if (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln256_fu_550_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
+                if (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln260_fu_550_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
                     ap_NS_fsm <= ap_ST_fsm_state28;
-                elsif (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln256_fu_550_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
+                elsif (((grp_otsu_compute_fu_403_ap_done = ap_const_logic_1) and (icmp_ln260_fu_550_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state15))) then
                     ap_NS_fsm <= ap_ST_fsm_state16;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state15;
@@ -3630,7 +3630,7 @@ begin
                     ap_NS_fsm <= ap_ST_fsm_state16;
                 end if;
             when ap_ST_fsm_state17 => 
-                if (((icmp_ln269_fu_558_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state17))) then
+                if (((icmp_ln273_fu_558_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state17))) then
                     ap_NS_fsm <= ap_ST_fsm_state28;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state18;
@@ -3652,13 +3652,13 @@ begin
             when ap_ST_fsm_state21 => 
                 ap_NS_fsm <= ap_ST_fsm_state22;
             when ap_ST_fsm_state22 => 
-                if (((icmp_ln293_reg_833 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state22))) then
+                if (((icmp_ln297_reg_833 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state22))) then
                     ap_NS_fsm <= ap_ST_fsm_state27;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state23;
                 end if;
             when ap_ST_fsm_state23 => 
-                if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state23))) then
+                if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state23))) then
                     ap_NS_fsm <= ap_ST_fsm_state24;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state23;
@@ -3674,9 +3674,9 @@ begin
             when ap_ST_fsm_state28 => 
                 ap_NS_fsm <= ap_ST_fsm_state29;
             when ap_ST_fsm_state29 => 
-                if (((grp_apply_threshold_fu_435_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state29) and (icmp_ln318_fu_685_p2 = ap_const_lv1_1))) then
+                if (((grp_apply_threshold_fu_435_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state29) and (icmp_ln322_fu_685_p2 = ap_const_lv1_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state37;
-                elsif (((grp_apply_threshold_fu_435_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state29) and (icmp_ln318_fu_685_p2 = ap_const_lv1_0))) then
+                elsif (((grp_apply_threshold_fu_435_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state29) and (icmp_ln322_fu_685_p2 = ap_const_lv1_0))) then
                     ap_NS_fsm <= ap_ST_fsm_state30;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state29;
@@ -3692,9 +3692,9 @@ begin
             when ap_ST_fsm_state32 => 
                 ap_NS_fsm <= ap_ST_fsm_state33;
             when ap_ST_fsm_state33 => 
-                if (((grp_dilate_3x3_fu_479_ap_done = ap_const_logic_1) and (icmp_ln256_reg_814 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state33))) then
+                if (((grp_dilate_3x3_fu_479_ap_done = ap_const_logic_1) and (icmp_ln260_reg_814 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state33))) then
                     ap_NS_fsm <= ap_ST_fsm_state37;
-                elsif (((grp_dilate_3x3_fu_479_ap_done = ap_const_logic_1) and (icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state33))) then
+                elsif (((grp_dilate_3x3_fu_479_ap_done = ap_const_logic_1) and (icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state33))) then
                     ap_NS_fsm <= ap_ST_fsm_state34;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state33;
@@ -3862,9 +3862,9 @@ begin
     ap_ST_fsm_state21_blk <= ap_const_logic_0;
     ap_ST_fsm_state22_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state23_blk_assign_proc : process(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done)
+    ap_ST_fsm_state23_blk_assign_proc : process(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done)
     begin
-        if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done = ap_const_logic_0)) then 
+        if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state23_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state23_blk <= ap_const_logic_0;
@@ -3984,9 +3984,9 @@ begin
     ap_ST_fsm_state8_blk <= ap_const_logic_0;
     ap_ST_fsm_state9_blk <= ap_const_logic_0;
 
-    ap_block_state37_on_subcall_done_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_ap_done)
+    ap_block_state37_on_subcall_done_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_ap_done)
     begin
-                ap_block_state37_on_subcall_done <= ((grp_erode_3x3_fu_453_ap_done = ap_const_logic_0) and (icmp_ln256_reg_814 = ap_const_lv1_1));
+                ap_block_state37_on_subcall_done <= ((grp_erode_3x3_fu_453_ap_done = ap_const_logic_0) and (icmp_ln260_reg_814 = ap_const_lv1_1));
     end process;
 
 
@@ -4010,12 +4010,12 @@ begin
     end process;
 
 
-    ap_phi_mux_phi_ln305_phi_fu_370_p4_assign_proc : process(icmp_ln293_reg_833, trunc_ln1_reg_852, ap_CS_fsm_state27, phi_ln305_reg_366)
+    ap_phi_mux_phi_ln309_phi_fu_370_p4_assign_proc : process(icmp_ln297_reg_833, trunc_ln1_reg_852, ap_CS_fsm_state27, phi_ln309_reg_366)
     begin
-        if (((icmp_ln293_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state27))) then 
-            ap_phi_mux_phi_ln305_phi_fu_370_p4 <= trunc_ln1_reg_852;
+        if (((icmp_ln297_reg_833 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state27))) then 
+            ap_phi_mux_phi_ln309_phi_fu_370_p4 <= trunc_ln1_reg_852;
         else 
-            ap_phi_mux_phi_ln305_phi_fu_370_p4 <= phi_ln305_reg_366;
+            ap_phi_mux_phi_ln309_phi_fu_370_p4 <= phi_ln309_reg_366;
         end if; 
     end process;
 
@@ -4307,9 +4307,9 @@ begin
 
     grp_erode_3x3_fu_453_ap_start <= grp_erode_3x3_fu_453_ap_start_reg;
 
-    grp_erode_3x3_fu_453_src_0_q0_assign_proc : process(icmp_ln256_reg_814, tmp_q0, local_out_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_0_q0_assign_proc : process(icmp_ln260_reg_814, tmp_q0, local_out_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_0_q0 <= tmp_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_0_q0 <= local_out_q0;
@@ -4319,9 +4319,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_10_q0_assign_proc : process(icmp_ln256_reg_814, tmp_10_q0, local_out_10_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_10_q0_assign_proc : process(icmp_ln260_reg_814, tmp_10_q0, local_out_10_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_10_q0 <= tmp_10_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_10_q0 <= local_out_10_q0;
@@ -4331,9 +4331,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_1_q0_assign_proc : process(icmp_ln256_reg_814, tmp_1_q0, local_out_1_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_1_q0_assign_proc : process(icmp_ln260_reg_814, tmp_1_q0, local_out_1_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_1_q0 <= tmp_1_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_1_q0 <= local_out_1_q0;
@@ -4343,9 +4343,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_2_q0_assign_proc : process(icmp_ln256_reg_814, tmp_2_q0, local_out_2_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_2_q0_assign_proc : process(icmp_ln260_reg_814, tmp_2_q0, local_out_2_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_2_q0 <= tmp_2_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_2_q0 <= local_out_2_q0;
@@ -4355,9 +4355,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_3_q0_assign_proc : process(icmp_ln256_reg_814, tmp_3_q0, local_out_3_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_3_q0_assign_proc : process(icmp_ln260_reg_814, tmp_3_q0, local_out_3_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_3_q0 <= tmp_3_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_3_q0 <= local_out_3_q0;
@@ -4367,9 +4367,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_4_q0_assign_proc : process(icmp_ln256_reg_814, tmp_4_q0, local_out_4_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_4_q0_assign_proc : process(icmp_ln260_reg_814, tmp_4_q0, local_out_4_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_4_q0 <= tmp_4_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_4_q0 <= local_out_4_q0;
@@ -4379,9 +4379,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_5_q0_assign_proc : process(icmp_ln256_reg_814, tmp_5_q0, local_out_5_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_5_q0_assign_proc : process(icmp_ln260_reg_814, tmp_5_q0, local_out_5_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_5_q0 <= tmp_5_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_5_q0 <= local_out_5_q0;
@@ -4391,9 +4391,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_6_q0_assign_proc : process(icmp_ln256_reg_814, tmp_6_q0, local_out_6_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_6_q0_assign_proc : process(icmp_ln260_reg_814, tmp_6_q0, local_out_6_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_6_q0 <= tmp_6_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_6_q0 <= local_out_6_q0;
@@ -4403,9 +4403,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_7_q0_assign_proc : process(icmp_ln256_reg_814, tmp_7_q0, local_out_7_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_7_q0_assign_proc : process(icmp_ln260_reg_814, tmp_7_q0, local_out_7_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_7_q0 <= tmp_7_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_7_q0 <= local_out_7_q0;
@@ -4415,9 +4415,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_8_q0_assign_proc : process(icmp_ln256_reg_814, tmp_8_q0, local_out_8_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_8_q0_assign_proc : process(icmp_ln260_reg_814, tmp_8_q0, local_out_8_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_8_q0 <= tmp_8_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_8_q0 <= local_out_8_q0;
@@ -4427,9 +4427,9 @@ begin
     end process;
 
 
-    grp_erode_3x3_fu_453_src_9_q0_assign_proc : process(icmp_ln256_reg_814, tmp_9_q0, local_out_9_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
+    grp_erode_3x3_fu_453_src_9_q0_assign_proc : process(icmp_ln260_reg_814, tmp_9_q0, local_out_9_q0, ap_CS_fsm_state31, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             grp_erode_3x3_fu_453_src_9_q0 <= tmp_9_q0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state31)) then 
             grp_erode_3x3_fu_453_src_9_q0 <= local_out_9_q0;
@@ -4439,7 +4439,7 @@ begin
     end process;
 
     grp_fu_539_p0 <= grp_fu_539_p00(32 - 1 downto 0);
-    grp_fu_539_p00 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(sub_ln305_reg_842),51));
+    grp_fu_539_p00 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(sub_ln309_reg_842),51));
     grp_fu_539_p1 <= ap_const_lv51_19999999A(34 - 1 downto 0);
     grp_otsu_compute_fu_403_ap_start <= grp_otsu_compute_fu_403_ap_start_reg;
     grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start <= grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg;
@@ -4447,7 +4447,7 @@ begin
     grp_otsu_threshold_top_Pipeline_READ_IN_fu_389_ap_start <= grp_otsu_threshold_top_Pipeline_READ_IN_fu_389_ap_start_reg;
     grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start <= grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg;
     grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start <= grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start_reg;
-    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg;
+    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg;
     grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_start <= grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_start_reg;
 
     hist_address0_assign_proc : process(ap_CS_fsm_state15, grp_compute_histogram_fu_397_hist_address0, grp_otsu_compute_fu_403_hist_address0, ap_CS_fsm_state13)
@@ -4493,12 +4493,12 @@ begin
         end if; 
     end process;
 
-    icmp_ln256_fu_550_p2 <= "1" when (mode_read_reg_753 = ap_const_lv8_2) else "0";
-    icmp_ln269_fu_558_p2 <= "1" when (unsigned(grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_fg_count_out) > unsigned(ap_const_lv32_3333)) else "0";
-    icmp_ln293_fu_591_p2 <= "1" when (s_fu_581_p4 = ap_const_lv32_0) else "0";
-    icmp_ln306_fu_658_p2 <= "0" when (tmp_22_fu_648_p4 = ap_const_lv8_0) else "1";
-    icmp_ln308_fu_672_p2 <= "1" when (strict_t_1_reg_857 = ap_const_lv8_0) else "0";
-    icmp_ln318_fu_685_p2 <= "1" when (mode_read_reg_753 = ap_const_lv8_0) else "0";
+    icmp_ln260_fu_550_p2 <= "1" when (mode_read_reg_753 = ap_const_lv8_2) else "0";
+    icmp_ln273_fu_558_p2 <= "1" when (unsigned(grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_fg_count_out) > unsigned(ap_const_lv32_3333)) else "0";
+    icmp_ln297_fu_591_p2 <= "1" when (s_fu_581_p4 = ap_const_lv32_0) else "0";
+    icmp_ln310_fu_658_p2 <= "0" when (tmp_22_fu_648_p4 = ap_const_lv8_0) else "1";
+    icmp_ln312_fu_672_p2 <= "1" when (strict_t_1_reg_857 = ap_const_lv8_0) else "0";
+    icmp_ln322_fu_685_p2 <= "1" when (mode_read_reg_753 = ap_const_lv8_0) else "0";
 
     local_in_address0_assign_proc : process(grp_compute_histogram_fu_397_img_in_address0, grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_local_in_address0, grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_local_in_address0, grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_address0, grp_apply_threshold_fu_435_img_in_address0, ap_CS_fsm_state13, ap_CS_fsm_state16, ap_CS_fsm_state18, ap_CS_fsm_state20, ap_CS_fsm_state29)
     begin
@@ -4572,11 +4572,11 @@ begin
     end process;
 
 
-    local_out_10_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_10_address1, grp_erode_3x3_fu_453_dst_10_address1, grp_dilate_3x3_fu_479_dst_10_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_10_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_10_address1, grp_erode_3x3_fu_453_dst_10_address1, grp_dilate_3x3_fu_479_dst_10_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_10_address1 <= grp_dilate_3x3_fu_479_dst_10_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_10_address1 <= grp_erode_3x3_fu_453_dst_10_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_10_address1 <= grp_apply_threshold_fu_435_img_out_10_address1;
@@ -4602,11 +4602,11 @@ begin
     end process;
 
 
-    local_out_10_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_10_ce1, grp_erode_3x3_fu_453_dst_10_ce1, grp_dilate_3x3_fu_479_dst_10_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_10_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_10_ce1, grp_erode_3x3_fu_453_dst_10_ce1, grp_dilate_3x3_fu_479_dst_10_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_10_ce1 <= grp_dilate_3x3_fu_479_dst_10_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_10_ce1 <= grp_erode_3x3_fu_453_dst_10_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_10_ce1 <= grp_apply_threshold_fu_435_img_out_10_ce1;
@@ -4616,11 +4616,11 @@ begin
     end process;
 
 
-    local_out_10_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_10_d1, grp_erode_3x3_fu_453_dst_10_d1, grp_dilate_3x3_fu_479_dst_10_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_10_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_10_d1, grp_erode_3x3_fu_453_dst_10_d1, grp_dilate_3x3_fu_479_dst_10_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_10_d1 <= grp_dilate_3x3_fu_479_dst_10_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_10_d1 <= grp_erode_3x3_fu_453_dst_10_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_10_d1 <= grp_apply_threshold_fu_435_img_out_10_d1;
@@ -4630,11 +4630,11 @@ begin
     end process;
 
 
-    local_out_10_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_10_we1, grp_erode_3x3_fu_453_dst_10_we1, grp_dilate_3x3_fu_479_dst_10_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_10_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_10_we1, grp_erode_3x3_fu_453_dst_10_we1, grp_dilate_3x3_fu_479_dst_10_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_10_we1 <= grp_dilate_3x3_fu_479_dst_10_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_10_we1 <= grp_erode_3x3_fu_453_dst_10_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_10_we1 <= grp_apply_threshold_fu_435_img_out_10_we1;
@@ -4660,11 +4660,11 @@ begin
     end process;
 
 
-    local_out_1_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_1_address1, grp_erode_3x3_fu_453_dst_1_address1, grp_dilate_3x3_fu_479_dst_1_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_1_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_1_address1, grp_erode_3x3_fu_453_dst_1_address1, grp_dilate_3x3_fu_479_dst_1_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_1_address1 <= grp_dilate_3x3_fu_479_dst_1_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_1_address1 <= grp_erode_3x3_fu_453_dst_1_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_1_address1 <= grp_apply_threshold_fu_435_img_out_1_address1;
@@ -4690,11 +4690,11 @@ begin
     end process;
 
 
-    local_out_1_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_1_ce1, grp_erode_3x3_fu_453_dst_1_ce1, grp_dilate_3x3_fu_479_dst_1_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_1_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_1_ce1, grp_erode_3x3_fu_453_dst_1_ce1, grp_dilate_3x3_fu_479_dst_1_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_1_ce1 <= grp_dilate_3x3_fu_479_dst_1_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_1_ce1 <= grp_erode_3x3_fu_453_dst_1_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_1_ce1 <= grp_apply_threshold_fu_435_img_out_1_ce1;
@@ -4704,11 +4704,11 @@ begin
     end process;
 
 
-    local_out_1_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_1_d1, grp_erode_3x3_fu_453_dst_1_d1, grp_dilate_3x3_fu_479_dst_1_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_1_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_1_d1, grp_erode_3x3_fu_453_dst_1_d1, grp_dilate_3x3_fu_479_dst_1_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_1_d1 <= grp_dilate_3x3_fu_479_dst_1_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_1_d1 <= grp_erode_3x3_fu_453_dst_1_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_1_d1 <= grp_apply_threshold_fu_435_img_out_1_d1;
@@ -4718,11 +4718,11 @@ begin
     end process;
 
 
-    local_out_1_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_1_we1, grp_erode_3x3_fu_453_dst_1_we1, grp_dilate_3x3_fu_479_dst_1_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_1_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_1_we1, grp_erode_3x3_fu_453_dst_1_we1, grp_dilate_3x3_fu_479_dst_1_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_1_we1 <= grp_dilate_3x3_fu_479_dst_1_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_1_we1 <= grp_erode_3x3_fu_453_dst_1_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_1_we1 <= grp_apply_threshold_fu_435_img_out_1_we1;
@@ -4748,11 +4748,11 @@ begin
     end process;
 
 
-    local_out_2_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_2_address1, grp_erode_3x3_fu_453_dst_2_address1, grp_dilate_3x3_fu_479_dst_2_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_2_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_2_address1, grp_erode_3x3_fu_453_dst_2_address1, grp_dilate_3x3_fu_479_dst_2_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_2_address1 <= grp_dilate_3x3_fu_479_dst_2_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_2_address1 <= grp_erode_3x3_fu_453_dst_2_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_2_address1 <= grp_apply_threshold_fu_435_img_out_2_address1;
@@ -4778,11 +4778,11 @@ begin
     end process;
 
 
-    local_out_2_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_2_ce1, grp_erode_3x3_fu_453_dst_2_ce1, grp_dilate_3x3_fu_479_dst_2_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_2_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_2_ce1, grp_erode_3x3_fu_453_dst_2_ce1, grp_dilate_3x3_fu_479_dst_2_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_2_ce1 <= grp_dilate_3x3_fu_479_dst_2_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_2_ce1 <= grp_erode_3x3_fu_453_dst_2_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_2_ce1 <= grp_apply_threshold_fu_435_img_out_2_ce1;
@@ -4792,11 +4792,11 @@ begin
     end process;
 
 
-    local_out_2_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_2_d1, grp_erode_3x3_fu_453_dst_2_d1, grp_dilate_3x3_fu_479_dst_2_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_2_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_2_d1, grp_erode_3x3_fu_453_dst_2_d1, grp_dilate_3x3_fu_479_dst_2_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_2_d1 <= grp_dilate_3x3_fu_479_dst_2_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_2_d1 <= grp_erode_3x3_fu_453_dst_2_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_2_d1 <= grp_apply_threshold_fu_435_img_out_2_d1;
@@ -4806,11 +4806,11 @@ begin
     end process;
 
 
-    local_out_2_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_2_we1, grp_erode_3x3_fu_453_dst_2_we1, grp_dilate_3x3_fu_479_dst_2_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_2_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_2_we1, grp_erode_3x3_fu_453_dst_2_we1, grp_dilate_3x3_fu_479_dst_2_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_2_we1 <= grp_dilate_3x3_fu_479_dst_2_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_2_we1 <= grp_erode_3x3_fu_453_dst_2_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_2_we1 <= grp_apply_threshold_fu_435_img_out_2_we1;
@@ -4836,11 +4836,11 @@ begin
     end process;
 
 
-    local_out_3_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_3_address1, grp_erode_3x3_fu_453_dst_3_address1, grp_dilate_3x3_fu_479_dst_3_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_3_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_3_address1, grp_erode_3x3_fu_453_dst_3_address1, grp_dilate_3x3_fu_479_dst_3_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_3_address1 <= grp_dilate_3x3_fu_479_dst_3_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_3_address1 <= grp_erode_3x3_fu_453_dst_3_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_3_address1 <= grp_apply_threshold_fu_435_img_out_3_address1;
@@ -4866,11 +4866,11 @@ begin
     end process;
 
 
-    local_out_3_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_3_ce1, grp_erode_3x3_fu_453_dst_3_ce1, grp_dilate_3x3_fu_479_dst_3_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_3_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_3_ce1, grp_erode_3x3_fu_453_dst_3_ce1, grp_dilate_3x3_fu_479_dst_3_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_3_ce1 <= grp_dilate_3x3_fu_479_dst_3_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_3_ce1 <= grp_erode_3x3_fu_453_dst_3_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_3_ce1 <= grp_apply_threshold_fu_435_img_out_3_ce1;
@@ -4880,11 +4880,11 @@ begin
     end process;
 
 
-    local_out_3_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_3_d1, grp_erode_3x3_fu_453_dst_3_d1, grp_dilate_3x3_fu_479_dst_3_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_3_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_3_d1, grp_erode_3x3_fu_453_dst_3_d1, grp_dilate_3x3_fu_479_dst_3_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_3_d1 <= grp_dilate_3x3_fu_479_dst_3_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_3_d1 <= grp_erode_3x3_fu_453_dst_3_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_3_d1 <= grp_apply_threshold_fu_435_img_out_3_d1;
@@ -4894,11 +4894,11 @@ begin
     end process;
 
 
-    local_out_3_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_3_we1, grp_erode_3x3_fu_453_dst_3_we1, grp_dilate_3x3_fu_479_dst_3_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_3_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_3_we1, grp_erode_3x3_fu_453_dst_3_we1, grp_dilate_3x3_fu_479_dst_3_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_3_we1 <= grp_dilate_3x3_fu_479_dst_3_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_3_we1 <= grp_erode_3x3_fu_453_dst_3_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_3_we1 <= grp_apply_threshold_fu_435_img_out_3_we1;
@@ -4924,11 +4924,11 @@ begin
     end process;
 
 
-    local_out_4_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_4_address1, grp_erode_3x3_fu_453_dst_4_address1, grp_dilate_3x3_fu_479_dst_4_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_4_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_4_address1, grp_erode_3x3_fu_453_dst_4_address1, grp_dilate_3x3_fu_479_dst_4_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_4_address1 <= grp_dilate_3x3_fu_479_dst_4_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_4_address1 <= grp_erode_3x3_fu_453_dst_4_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_4_address1 <= grp_apply_threshold_fu_435_img_out_4_address1;
@@ -4954,11 +4954,11 @@ begin
     end process;
 
 
-    local_out_4_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_4_ce1, grp_erode_3x3_fu_453_dst_4_ce1, grp_dilate_3x3_fu_479_dst_4_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_4_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_4_ce1, grp_erode_3x3_fu_453_dst_4_ce1, grp_dilate_3x3_fu_479_dst_4_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_4_ce1 <= grp_dilate_3x3_fu_479_dst_4_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_4_ce1 <= grp_erode_3x3_fu_453_dst_4_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_4_ce1 <= grp_apply_threshold_fu_435_img_out_4_ce1;
@@ -4968,11 +4968,11 @@ begin
     end process;
 
 
-    local_out_4_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_4_d1, grp_erode_3x3_fu_453_dst_4_d1, grp_dilate_3x3_fu_479_dst_4_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_4_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_4_d1, grp_erode_3x3_fu_453_dst_4_d1, grp_dilate_3x3_fu_479_dst_4_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_4_d1 <= grp_dilate_3x3_fu_479_dst_4_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_4_d1 <= grp_erode_3x3_fu_453_dst_4_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_4_d1 <= grp_apply_threshold_fu_435_img_out_4_d1;
@@ -4982,11 +4982,11 @@ begin
     end process;
 
 
-    local_out_4_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_4_we1, grp_erode_3x3_fu_453_dst_4_we1, grp_dilate_3x3_fu_479_dst_4_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_4_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_4_we1, grp_erode_3x3_fu_453_dst_4_we1, grp_dilate_3x3_fu_479_dst_4_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_4_we1 <= grp_dilate_3x3_fu_479_dst_4_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_4_we1 <= grp_erode_3x3_fu_453_dst_4_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_4_we1 <= grp_apply_threshold_fu_435_img_out_4_we1;
@@ -5012,11 +5012,11 @@ begin
     end process;
 
 
-    local_out_5_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_5_address1, grp_erode_3x3_fu_453_dst_5_address1, grp_dilate_3x3_fu_479_dst_5_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_5_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_5_address1, grp_erode_3x3_fu_453_dst_5_address1, grp_dilate_3x3_fu_479_dst_5_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_5_address1 <= grp_dilate_3x3_fu_479_dst_5_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_5_address1 <= grp_erode_3x3_fu_453_dst_5_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_5_address1 <= grp_apply_threshold_fu_435_img_out_5_address1;
@@ -5042,11 +5042,11 @@ begin
     end process;
 
 
-    local_out_5_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_5_ce1, grp_erode_3x3_fu_453_dst_5_ce1, grp_dilate_3x3_fu_479_dst_5_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_5_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_5_ce1, grp_erode_3x3_fu_453_dst_5_ce1, grp_dilate_3x3_fu_479_dst_5_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_5_ce1 <= grp_dilate_3x3_fu_479_dst_5_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_5_ce1 <= grp_erode_3x3_fu_453_dst_5_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_5_ce1 <= grp_apply_threshold_fu_435_img_out_5_ce1;
@@ -5056,11 +5056,11 @@ begin
     end process;
 
 
-    local_out_5_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_5_d1, grp_erode_3x3_fu_453_dst_5_d1, grp_dilate_3x3_fu_479_dst_5_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_5_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_5_d1, grp_erode_3x3_fu_453_dst_5_d1, grp_dilate_3x3_fu_479_dst_5_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_5_d1 <= grp_dilate_3x3_fu_479_dst_5_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_5_d1 <= grp_erode_3x3_fu_453_dst_5_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_5_d1 <= grp_apply_threshold_fu_435_img_out_5_d1;
@@ -5070,11 +5070,11 @@ begin
     end process;
 
 
-    local_out_5_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_5_we1, grp_erode_3x3_fu_453_dst_5_we1, grp_dilate_3x3_fu_479_dst_5_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_5_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_5_we1, grp_erode_3x3_fu_453_dst_5_we1, grp_dilate_3x3_fu_479_dst_5_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_5_we1 <= grp_dilate_3x3_fu_479_dst_5_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_5_we1 <= grp_erode_3x3_fu_453_dst_5_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_5_we1 <= grp_apply_threshold_fu_435_img_out_5_we1;
@@ -5100,11 +5100,11 @@ begin
     end process;
 
 
-    local_out_6_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_6_address1, grp_erode_3x3_fu_453_dst_6_address1, grp_dilate_3x3_fu_479_dst_6_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_6_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_6_address1, grp_erode_3x3_fu_453_dst_6_address1, grp_dilate_3x3_fu_479_dst_6_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_6_address1 <= grp_dilate_3x3_fu_479_dst_6_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_6_address1 <= grp_erode_3x3_fu_453_dst_6_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_6_address1 <= grp_apply_threshold_fu_435_img_out_6_address1;
@@ -5130,11 +5130,11 @@ begin
     end process;
 
 
-    local_out_6_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_6_ce1, grp_erode_3x3_fu_453_dst_6_ce1, grp_dilate_3x3_fu_479_dst_6_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_6_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_6_ce1, grp_erode_3x3_fu_453_dst_6_ce1, grp_dilate_3x3_fu_479_dst_6_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_6_ce1 <= grp_dilate_3x3_fu_479_dst_6_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_6_ce1 <= grp_erode_3x3_fu_453_dst_6_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_6_ce1 <= grp_apply_threshold_fu_435_img_out_6_ce1;
@@ -5144,11 +5144,11 @@ begin
     end process;
 
 
-    local_out_6_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_6_d1, grp_erode_3x3_fu_453_dst_6_d1, grp_dilate_3x3_fu_479_dst_6_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_6_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_6_d1, grp_erode_3x3_fu_453_dst_6_d1, grp_dilate_3x3_fu_479_dst_6_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_6_d1 <= grp_dilate_3x3_fu_479_dst_6_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_6_d1 <= grp_erode_3x3_fu_453_dst_6_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_6_d1 <= grp_apply_threshold_fu_435_img_out_6_d1;
@@ -5158,11 +5158,11 @@ begin
     end process;
 
 
-    local_out_6_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_6_we1, grp_erode_3x3_fu_453_dst_6_we1, grp_dilate_3x3_fu_479_dst_6_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_6_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_6_we1, grp_erode_3x3_fu_453_dst_6_we1, grp_dilate_3x3_fu_479_dst_6_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_6_we1 <= grp_dilate_3x3_fu_479_dst_6_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_6_we1 <= grp_erode_3x3_fu_453_dst_6_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_6_we1 <= grp_apply_threshold_fu_435_img_out_6_we1;
@@ -5188,11 +5188,11 @@ begin
     end process;
 
 
-    local_out_7_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_7_address1, grp_erode_3x3_fu_453_dst_7_address1, grp_dilate_3x3_fu_479_dst_7_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_7_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_7_address1, grp_erode_3x3_fu_453_dst_7_address1, grp_dilate_3x3_fu_479_dst_7_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_7_address1 <= grp_dilate_3x3_fu_479_dst_7_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_7_address1 <= grp_erode_3x3_fu_453_dst_7_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_7_address1 <= grp_apply_threshold_fu_435_img_out_7_address1;
@@ -5218,11 +5218,11 @@ begin
     end process;
 
 
-    local_out_7_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_7_ce1, grp_erode_3x3_fu_453_dst_7_ce1, grp_dilate_3x3_fu_479_dst_7_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_7_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_7_ce1, grp_erode_3x3_fu_453_dst_7_ce1, grp_dilate_3x3_fu_479_dst_7_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_7_ce1 <= grp_dilate_3x3_fu_479_dst_7_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_7_ce1 <= grp_erode_3x3_fu_453_dst_7_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_7_ce1 <= grp_apply_threshold_fu_435_img_out_7_ce1;
@@ -5232,11 +5232,11 @@ begin
     end process;
 
 
-    local_out_7_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_7_d1, grp_erode_3x3_fu_453_dst_7_d1, grp_dilate_3x3_fu_479_dst_7_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_7_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_7_d1, grp_erode_3x3_fu_453_dst_7_d1, grp_dilate_3x3_fu_479_dst_7_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_7_d1 <= grp_dilate_3x3_fu_479_dst_7_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_7_d1 <= grp_erode_3x3_fu_453_dst_7_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_7_d1 <= grp_apply_threshold_fu_435_img_out_7_d1;
@@ -5246,11 +5246,11 @@ begin
     end process;
 
 
-    local_out_7_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_7_we1, grp_erode_3x3_fu_453_dst_7_we1, grp_dilate_3x3_fu_479_dst_7_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_7_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_7_we1, grp_erode_3x3_fu_453_dst_7_we1, grp_dilate_3x3_fu_479_dst_7_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_7_we1 <= grp_dilate_3x3_fu_479_dst_7_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_7_we1 <= grp_erode_3x3_fu_453_dst_7_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_7_we1 <= grp_apply_threshold_fu_435_img_out_7_we1;
@@ -5276,11 +5276,11 @@ begin
     end process;
 
 
-    local_out_8_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_8_address1, grp_erode_3x3_fu_453_dst_8_address1, grp_dilate_3x3_fu_479_dst_8_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_8_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_8_address1, grp_erode_3x3_fu_453_dst_8_address1, grp_dilate_3x3_fu_479_dst_8_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_8_address1 <= grp_dilate_3x3_fu_479_dst_8_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_8_address1 <= grp_erode_3x3_fu_453_dst_8_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_8_address1 <= grp_apply_threshold_fu_435_img_out_8_address1;
@@ -5306,11 +5306,11 @@ begin
     end process;
 
 
-    local_out_8_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_8_ce1, grp_erode_3x3_fu_453_dst_8_ce1, grp_dilate_3x3_fu_479_dst_8_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_8_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_8_ce1, grp_erode_3x3_fu_453_dst_8_ce1, grp_dilate_3x3_fu_479_dst_8_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_8_ce1 <= grp_dilate_3x3_fu_479_dst_8_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_8_ce1 <= grp_erode_3x3_fu_453_dst_8_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_8_ce1 <= grp_apply_threshold_fu_435_img_out_8_ce1;
@@ -5320,11 +5320,11 @@ begin
     end process;
 
 
-    local_out_8_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_8_d1, grp_erode_3x3_fu_453_dst_8_d1, grp_dilate_3x3_fu_479_dst_8_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_8_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_8_d1, grp_erode_3x3_fu_453_dst_8_d1, grp_dilate_3x3_fu_479_dst_8_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_8_d1 <= grp_dilate_3x3_fu_479_dst_8_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_8_d1 <= grp_erode_3x3_fu_453_dst_8_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_8_d1 <= grp_apply_threshold_fu_435_img_out_8_d1;
@@ -5334,11 +5334,11 @@ begin
     end process;
 
 
-    local_out_8_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_8_we1, grp_erode_3x3_fu_453_dst_8_we1, grp_dilate_3x3_fu_479_dst_8_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_8_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_8_we1, grp_erode_3x3_fu_453_dst_8_we1, grp_dilate_3x3_fu_479_dst_8_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_8_we1 <= grp_dilate_3x3_fu_479_dst_8_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_8_we1 <= grp_erode_3x3_fu_453_dst_8_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_8_we1 <= grp_apply_threshold_fu_435_img_out_8_we1;
@@ -5364,11 +5364,11 @@ begin
     end process;
 
 
-    local_out_9_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_9_address1, grp_erode_3x3_fu_453_dst_9_address1, grp_dilate_3x3_fu_479_dst_9_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_9_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_9_address1, grp_erode_3x3_fu_453_dst_9_address1, grp_dilate_3x3_fu_479_dst_9_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_9_address1 <= grp_dilate_3x3_fu_479_dst_9_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_9_address1 <= grp_erode_3x3_fu_453_dst_9_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_9_address1 <= grp_apply_threshold_fu_435_img_out_9_address1;
@@ -5394,11 +5394,11 @@ begin
     end process;
 
 
-    local_out_9_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_9_ce1, grp_erode_3x3_fu_453_dst_9_ce1, grp_dilate_3x3_fu_479_dst_9_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_9_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_9_ce1, grp_erode_3x3_fu_453_dst_9_ce1, grp_dilate_3x3_fu_479_dst_9_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_9_ce1 <= grp_dilate_3x3_fu_479_dst_9_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_9_ce1 <= grp_erode_3x3_fu_453_dst_9_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_9_ce1 <= grp_apply_threshold_fu_435_img_out_9_ce1;
@@ -5408,11 +5408,11 @@ begin
     end process;
 
 
-    local_out_9_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_9_d1, grp_erode_3x3_fu_453_dst_9_d1, grp_dilate_3x3_fu_479_dst_9_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_9_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_9_d1, grp_erode_3x3_fu_453_dst_9_d1, grp_dilate_3x3_fu_479_dst_9_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_9_d1 <= grp_dilate_3x3_fu_479_dst_9_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_9_d1 <= grp_erode_3x3_fu_453_dst_9_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_9_d1 <= grp_apply_threshold_fu_435_img_out_9_d1;
@@ -5422,11 +5422,11 @@ begin
     end process;
 
 
-    local_out_9_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_9_we1, grp_erode_3x3_fu_453_dst_9_we1, grp_dilate_3x3_fu_479_dst_9_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_9_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_9_we1, grp_erode_3x3_fu_453_dst_9_we1, grp_dilate_3x3_fu_479_dst_9_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_9_we1 <= grp_dilate_3x3_fu_479_dst_9_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_9_we1 <= grp_erode_3x3_fu_453_dst_9_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_9_we1 <= grp_apply_threshold_fu_435_img_out_9_we1;
@@ -5452,11 +5452,11 @@ begin
     end process;
 
 
-    local_out_address1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_0_address1, grp_erode_3x3_fu_453_dst_0_address1, grp_dilate_3x3_fu_479_dst_0_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_address1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_0_address1, grp_erode_3x3_fu_453_dst_0_address1, grp_dilate_3x3_fu_479_dst_0_address1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_address1 <= grp_dilate_3x3_fu_479_dst_0_address1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_address1 <= grp_erode_3x3_fu_453_dst_0_address1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_address1 <= grp_apply_threshold_fu_435_img_out_0_address1;
@@ -5482,11 +5482,11 @@ begin
     end process;
 
 
-    local_out_ce1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_0_ce1, grp_erode_3x3_fu_453_dst_0_ce1, grp_dilate_3x3_fu_479_dst_0_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_ce1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_0_ce1, grp_erode_3x3_fu_453_dst_0_ce1, grp_dilate_3x3_fu_479_dst_0_ce1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_ce1 <= grp_dilate_3x3_fu_479_dst_0_ce1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_ce1 <= grp_erode_3x3_fu_453_dst_0_ce1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_ce1 <= grp_apply_threshold_fu_435_img_out_0_ce1;
@@ -5496,11 +5496,11 @@ begin
     end process;
 
 
-    local_out_d1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_0_d1, grp_erode_3x3_fu_453_dst_0_d1, grp_dilate_3x3_fu_479_dst_0_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_d1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_0_d1, grp_erode_3x3_fu_453_dst_0_d1, grp_dilate_3x3_fu_479_dst_0_d1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_d1 <= grp_dilate_3x3_fu_479_dst_0_d1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_d1 <= grp_erode_3x3_fu_453_dst_0_d1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_d1 <= grp_apply_threshold_fu_435_img_out_0_d1;
@@ -5510,11 +5510,11 @@ begin
     end process;
 
 
-    local_out_we1_assign_proc : process(icmp_ln256_reg_814, grp_apply_threshold_fu_435_img_out_0_we1, grp_erode_3x3_fu_453_dst_0_we1, grp_dilate_3x3_fu_479_dst_0_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
+    local_out_we1_assign_proc : process(icmp_ln260_reg_814, grp_apply_threshold_fu_435_img_out_0_we1, grp_erode_3x3_fu_453_dst_0_we1, grp_dilate_3x3_fu_479_dst_0_we1, ap_CS_fsm_state29, ap_CS_fsm_state37, ap_CS_fsm_state33)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state33)) then 
             local_out_we1 <= grp_dilate_3x3_fu_479_dst_0_we1;
-        elsif (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        elsif (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             local_out_we1 <= grp_erode_3x3_fu_453_dst_0_we1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state29)) then 
             local_out_we1 <= grp_apply_threshold_fu_435_img_out_0_we1;
@@ -5523,8 +5523,8 @@ begin
         end if; 
     end process;
 
-    p_shl_fu_611_p3 <= (trunc_ln305_fu_607_p1 & ap_const_lv2_0);
-    result_o <= ((((((tmp_23_fu_699_p4 & mode_read_reg_753) & ap_const_lv8_0) & zext_ln347_fu_717_p1) & trunc_ln347_fu_731_p1) & tmp_25_fu_721_p4) & thr_1_reg_377);
+    p_shl_fu_611_p3 <= (trunc_ln309_fu_607_p1 & ap_const_lv2_0);
+    result_o <= ((((((tmp_23_fu_699_p4 & mode_read_reg_753) & ap_const_lv8_0) & zext_ln351_fu_717_p1) & trunc_ln351_fu_731_p1) & tmp_25_fu_721_p4) & thr_1_reg_377);
 
     result_o_ap_vld_assign_proc : process(ap_CS_fsm_state40)
     begin
@@ -5537,17 +5537,17 @@ begin
 
     s_fu_581_p4 <= grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out(47 downto 16);
     strict_t_1_fu_664_p3 <= 
-        ap_const_lv8_FF when (icmp_ln306_fu_658_p2(0) = '1') else 
-        trunc_ln305_1_fu_644_p1;
-    strict_t_fu_639_p2 <= std_logic_vector(unsigned(ap_phi_mux_phi_ln305_phi_fu_370_p4) + unsigned(conv44_reg_837));
-    sub_ln305_fu_619_p2 <= std_logic_vector(unsigned(p_shl_fu_611_p3) - unsigned(zext_ln298_fu_603_p1));
+        ap_const_lv8_FF when (icmp_ln310_fu_658_p2(0) = '1') else 
+        trunc_ln309_1_fu_644_p1;
+    strict_t_fu_639_p2 <= std_logic_vector(unsigned(ap_phi_mux_phi_ln309_phi_fu_370_p4) + unsigned(conv44_reg_837));
+    sub_ln309_fu_619_p2 <= std_logic_vector(unsigned(p_shl_fu_611_p3) - unsigned(zext_ln302_fu_603_p1));
     thr_2_fu_677_p3 <= 
-        ap_const_lv8_1 when (icmp_ln308_fu_672_p2(0) = '1') else 
+        ap_const_lv8_1 when (icmp_ln312_fu_672_p2(0) = '1') else 
         strict_t_1_reg_857;
 
-    tmp_10_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_10_ce0, ap_CS_fsm_state37)
+    tmp_10_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_10_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_10_ce0 <= grp_erode_3x3_fu_453_src_10_ce0;
         else 
             tmp_10_ce0 <= ap_const_logic_0;
@@ -5845,9 +5845,9 @@ begin
     end process;
 
 
-    tmp_1_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_1_ce0, ap_CS_fsm_state37)
+    tmp_1_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_1_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_1_ce0 <= grp_erode_3x3_fu_453_src_1_ce0;
         else 
             tmp_1_ce0 <= ap_const_logic_0;
@@ -5939,9 +5939,9 @@ begin
     tmp_24_fu_709_p3 <= grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_out(16 downto 16);
     tmp_25_fu_721_p4 <= result_i(31 downto 8);
 
-    tmp_2_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_2_ce0, ap_CS_fsm_state37)
+    tmp_2_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_2_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_2_ce0 <= grp_erode_3x3_fu_453_src_2_ce0;
         else 
             tmp_2_ce0 <= ap_const_logic_0;
@@ -5969,9 +5969,9 @@ begin
     end process;
 
 
-    tmp_3_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_3_ce0, ap_CS_fsm_state37)
+    tmp_3_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_3_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_3_ce0 <= grp_erode_3x3_fu_453_src_3_ce0;
         else 
             tmp_3_ce0 <= ap_const_logic_0;
@@ -5999,9 +5999,9 @@ begin
     end process;
 
 
-    tmp_4_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_4_ce0, ap_CS_fsm_state37)
+    tmp_4_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_4_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_4_ce0 <= grp_erode_3x3_fu_453_src_4_ce0;
         else 
             tmp_4_ce0 <= ap_const_logic_0;
@@ -6029,9 +6029,9 @@ begin
     end process;
 
 
-    tmp_5_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_5_ce0, ap_CS_fsm_state37)
+    tmp_5_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_5_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_5_ce0 <= grp_erode_3x3_fu_453_src_5_ce0;
         else 
             tmp_5_ce0 <= ap_const_logic_0;
@@ -6059,9 +6059,9 @@ begin
     end process;
 
 
-    tmp_6_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_6_ce0, ap_CS_fsm_state37)
+    tmp_6_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_6_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_6_ce0 <= grp_erode_3x3_fu_453_src_6_ce0;
         else 
             tmp_6_ce0 <= ap_const_logic_0;
@@ -6089,9 +6089,9 @@ begin
     end process;
 
 
-    tmp_7_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_7_ce0, ap_CS_fsm_state37)
+    tmp_7_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_7_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_7_ce0 <= grp_erode_3x3_fu_453_src_7_ce0;
         else 
             tmp_7_ce0 <= ap_const_logic_0;
@@ -6119,9 +6119,9 @@ begin
     end process;
 
 
-    tmp_8_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_8_ce0, ap_CS_fsm_state37)
+    tmp_8_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_8_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_8_ce0 <= grp_erode_3x3_fu_453_src_8_ce0;
         else 
             tmp_8_ce0 <= ap_const_logic_0;
@@ -6149,9 +6149,9 @@ begin
     end process;
 
 
-    tmp_9_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_9_ce0, ap_CS_fsm_state37)
+    tmp_9_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_9_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_9_ce0 <= grp_erode_3x3_fu_453_src_9_ce0;
         else 
             tmp_9_ce0 <= ap_const_logic_0;
@@ -6179,9 +6179,9 @@ begin
     end process;
 
 
-    tmp_ce0_assign_proc : process(icmp_ln256_reg_814, grp_erode_3x3_fu_453_src_0_ce0, ap_CS_fsm_state37)
+    tmp_ce0_assign_proc : process(icmp_ln260_reg_814, grp_erode_3x3_fu_453_src_0_ce0, ap_CS_fsm_state37)
     begin
-        if (((icmp_ln256_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
+        if (((icmp_ln260_reg_814 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state37))) then 
             tmp_ce0 <= grp_erode_3x3_fu_453_src_0_ce0;
         else 
             tmp_ce0 <= ap_const_logic_0;
@@ -6208,9 +6208,9 @@ begin
         end if; 
     end process;
 
-    trunc_ln305_1_fu_644_p1 <= strict_t_fu_639_p2(8 - 1 downto 0);
-    trunc_ln305_fu_607_p1 <= s_2_loc_fu_160(30 - 1 downto 0);
-    trunc_ln347_fu_731_p1 <= grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_out(16 - 1 downto 0);
-    zext_ln298_fu_603_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(s_2_loc_fu_160),32));
-    zext_ln347_fu_717_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_24_fu_709_p3),8));
+    trunc_ln309_1_fu_644_p1 <= strict_t_fu_639_p2(8 - 1 downto 0);
+    trunc_ln309_fu_607_p1 <= s_2_loc_fu_160(30 - 1 downto 0);
+    trunc_ln351_fu_731_p1 <= grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_out(16 - 1 downto 0);
+    zext_ln302_fu_603_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(s_2_loc_fu_160),32));
+    zext_ln351_fu_717_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_24_fu_709_p3),8));
 end behav;

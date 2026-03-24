@@ -3,9 +3,11 @@
 # -------------
 # Vitis HLS script for the Otsu threshold accelerator.
 #
-# Usage:
-#   vitis-run --tcl --input_file run_hls.tcl
-#   (Vitis 2025.1: vitis_hls is now vitis-run)
+# Usage (Vitis 2025.1):
+#   vitis-run --mode hls --tcl run_hls.tcl
+#
+# Alternative (older Vitis versions):
+#   vitis_hls -f run_hls.tcl
 #
 # Target: Xilinx Artix-7 (xc7a100tcsg324-1, Nexys A7-100T)
 # Clock : 100 MHz (10 ns period)

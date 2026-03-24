@@ -16,7 +16,7 @@ module otsu_threshold_top_otsu_threshold_top_Pipeline_SUM_VAR (
         local_in_address0,
         local_in_ce0,
         local_in_q0,
-        zext_ln284_1,
+        zext_ln288_1,
         var_sum_out,
         var_sum_out_ap_vld
 );
@@ -32,7 +32,7 @@ output   ap_ready;
 output  [15:0] local_in_address0;
 output   local_in_ce0;
 input  [7:0] local_in_q0;
-input  [7:0] zext_ln284_1;
+input  [7:0] zext_ln288_1;
 output  [47:0] var_sum_out;
 output   var_sum_out_ap_vld;
 
@@ -47,20 +47,20 @@ reg    ap_enable_reg_pp0_iter2;
 reg    ap_enable_reg_pp0_iter3;
 reg    ap_idle_pp0;
 wire    ap_block_pp0_stage0_subdone;
-wire   [0:0] icmp_ln284_fu_95_p2;
+wire   [0:0] icmp_ln288_fu_95_p2;
 reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire    ap_block_pp0_stage0_11001;
-wire   [8:0] zext_ln284_1_cast_fu_78_p1;
-reg   [8:0] zext_ln284_1_cast_reg_175;
-reg   [0:0] icmp_ln284_reg_180;
-reg   [0:0] icmp_ln284_reg_180_pp0_iter1_reg;
+wire   [8:0] zext_ln288_1_cast_fu_78_p1;
+reg   [8:0] zext_ln288_1_cast_reg_175;
+reg   [0:0] icmp_ln288_reg_180;
+reg   [0:0] icmp_ln288_reg_180_pp0_iter1_reg;
 wire   [8:0] diff_fu_121_p2;
 reg   [8:0] diff_reg_189;
-wire   [17:0] mul_ln288_fu_129_p2;
-reg   [17:0] mul_ln288_reg_194;
-wire   [63:0] zext_ln284_fu_107_p1;
+wire   [17:0] mul_ln292_fu_129_p2;
+reg   [17:0] mul_ln292_reg_194;
+wire   [63:0] zext_ln288_fu_107_p1;
 wire    ap_block_pp0_stage0;
 reg   [47:0] var_sum_fu_44;
 wire   [47:0] var_sum_1_fu_145_p2;
@@ -68,16 +68,16 @@ wire    ap_loop_init;
 reg    ap_loop_exit_ready_pp0_iter1_reg;
 reg    ap_loop_exit_ready_pp0_iter2_reg;
 reg   [16:0] i_fu_48;
-wire   [16:0] add_ln284_fu_101_p2;
+wire   [16:0] add_ln288_fu_101_p2;
 reg   [16:0] ap_sig_allocacmp_i_2;
 wire    ap_block_pp0_stage0_01001;
 reg    local_in_ce0_local;
-wire   [8:0] zext_ln287_fu_117_p1;
-wire  signed [8:0] mul_ln288_fu_129_p0;
-wire  signed [17:0] sext_ln288_fu_126_p1;
-wire  signed [8:0] mul_ln288_fu_129_p1;
-wire  signed [31:0] sext_ln288_1_fu_138_p1;
-wire   [47:0] zext_ln288_fu_141_p1;
+wire   [8:0] zext_ln291_fu_117_p1;
+wire  signed [8:0] mul_ln292_fu_129_p0;
+wire  signed [17:0] sext_ln292_fu_126_p1;
+wire  signed [8:0] mul_ln292_fu_129_p1;
+wire  signed [31:0] sext_ln292_1_fu_138_p1;
+wire   [47:0] zext_ln292_fu_141_p1;
 reg    ap_done_reg;
 wire    ap_continue_int;
 reg    ap_done_int;
@@ -106,9 +106,9 @@ otsu_threshold_top_mul_9s_9s_18_1_1 #(
     .din1_WIDTH( 9 ),
     .dout_WIDTH( 18 ))
 mul_9s_9s_18_1_1_U33(
-    .din0(mul_ln288_fu_129_p0),
-    .din1(mul_ln288_fu_129_p1),
-    .dout(mul_ln288_fu_129_p2)
+    .din0(mul_ln292_fu_129_p0),
+    .din1(mul_ln292_fu_129_p1),
+    .dout(mul_ln292_fu_129_p2)
 );
 
 otsu_threshold_top_flow_control_loop_pipe_sequential_init flow_control_loop_pipe_sequential_init_U(
@@ -180,8 +180,8 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        if (((icmp_ln284_fu_95_p2 == 1'd0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
-            i_fu_48 <= add_ln284_fu_101_p2;
+        if (((icmp_ln288_fu_95_p2 == 1'd0) & (ap_enable_reg_pp0_iter0 == 1'b1))) begin
+            i_fu_48 <= add_ln288_fu_101_p2;
         end else if ((ap_loop_init == 1'b1)) begin
             i_fu_48 <= 17'd0;
         end
@@ -203,20 +203,20 @@ always @ (posedge ap_clk) begin
         ap_loop_exit_ready_pp0_iter1_reg <= ap_loop_exit_ready;
         ap_loop_exit_ready_pp0_iter2_reg <= ap_loop_exit_ready_pp0_iter1_reg;
         diff_reg_189 <= diff_fu_121_p2;
-        icmp_ln284_reg_180 <= icmp_ln284_fu_95_p2;
-        icmp_ln284_reg_180_pp0_iter1_reg <= icmp_ln284_reg_180;
-        zext_ln284_1_cast_reg_175[7 : 0] <= zext_ln284_1_cast_fu_78_p1[7 : 0];
+        icmp_ln288_reg_180 <= icmp_ln288_fu_95_p2;
+        icmp_ln288_reg_180_pp0_iter1_reg <= icmp_ln288_reg_180;
+        zext_ln288_1_cast_reg_175[7 : 0] <= zext_ln288_1_cast_fu_78_p1[7 : 0];
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b0 == ap_block_pp0_stage0_11001)) begin
-        mul_ln288_reg_194 <= mul_ln288_fu_129_p2;
+        mul_ln292_reg_194 <= mul_ln292_fu_129_p2;
     end
 end
 
 always @ (*) begin
-    if (((icmp_ln284_fu_95_p2 == 1'd1) & (1'b0 == ap_block_pp0_stage0_subdone) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
+    if (((icmp_ln288_fu_95_p2 == 1'd1) & (1'b0 == ap_block_pp0_stage0_subdone) & (ap_enable_reg_pp0_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         ap_condition_exit_pp0_iter0_stage0 = 1'b1;
     end else begin
         ap_condition_exit_pp0_iter0_stage0 = 1'b0;
@@ -272,7 +272,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln284_reg_180_pp0_iter1_reg == 1'd1) & (1'b0 == ap_block_pp0_stage0_11001) & (ap_loop_exit_ready_pp0_iter2_reg == 1'b1))) begin
+    if (((icmp_ln288_reg_180_pp0_iter1_reg == 1'd1) & (1'b0 == ap_block_pp0_stage0_11001) & (ap_loop_exit_ready_pp0_iter2_reg == 1'b1))) begin
         var_sum_out_ap_vld = 1'b1;
     end else begin
         var_sum_out_ap_vld = 1'b0;
@@ -290,7 +290,7 @@ always @ (*) begin
     endcase
 end
 
-assign add_ln284_fu_101_p2 = (ap_sig_allocacmp_i_2 + 17'd1);
+assign add_ln288_fu_101_p2 = (ap_sig_allocacmp_i_2 + 17'd1);
 
 assign ap_CS_fsm_pp0_stage0 = ap_CS_fsm[32'd0];
 
@@ -312,36 +312,36 @@ assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
 assign ap_ready = ap_ready_sig;
 
-assign diff_fu_121_p2 = (zext_ln287_fu_117_p1 - zext_ln284_1_cast_reg_175);
+assign diff_fu_121_p2 = (zext_ln291_fu_117_p1 - zext_ln288_1_cast_reg_175);
 
-assign icmp_ln284_fu_95_p2 = ((ap_sig_allocacmp_i_2 == 17'd65536) ? 1'b1 : 1'b0);
+assign icmp_ln288_fu_95_p2 = ((ap_sig_allocacmp_i_2 == 17'd65536) ? 1'b1 : 1'b0);
 
-assign local_in_address0 = zext_ln284_fu_107_p1;
+assign local_in_address0 = zext_ln288_fu_107_p1;
 
 assign local_in_ce0 = local_in_ce0_local;
 
-assign mul_ln288_fu_129_p0 = sext_ln288_fu_126_p1;
+assign mul_ln292_fu_129_p0 = sext_ln292_fu_126_p1;
 
-assign mul_ln288_fu_129_p1 = sext_ln288_fu_126_p1;
+assign mul_ln292_fu_129_p1 = sext_ln292_fu_126_p1;
 
-assign sext_ln288_1_fu_138_p1 = $signed(mul_ln288_reg_194);
+assign sext_ln292_1_fu_138_p1 = $signed(mul_ln292_reg_194);
 
-assign sext_ln288_fu_126_p1 = $signed(diff_reg_189);
+assign sext_ln292_fu_126_p1 = $signed(diff_reg_189);
 
-assign var_sum_1_fu_145_p2 = (zext_ln288_fu_141_p1 + var_sum_fu_44);
+assign var_sum_1_fu_145_p2 = (zext_ln292_fu_141_p1 + var_sum_fu_44);
 
 assign var_sum_out = var_sum_fu_44;
 
-assign zext_ln284_1_cast_fu_78_p1 = zext_ln284_1;
+assign zext_ln288_1_cast_fu_78_p1 = zext_ln288_1;
 
-assign zext_ln284_fu_107_p1 = ap_sig_allocacmp_i_2;
+assign zext_ln288_fu_107_p1 = ap_sig_allocacmp_i_2;
 
-assign zext_ln287_fu_117_p1 = local_in_q0;
+assign zext_ln291_fu_117_p1 = local_in_q0;
 
-assign zext_ln288_fu_141_p1 = $unsigned(sext_ln288_1_fu_138_p1);
+assign zext_ln292_fu_141_p1 = $unsigned(sext_ln292_1_fu_138_p1);
 
 always @ (posedge ap_clk) begin
-    zext_ln284_1_cast_reg_175[8] <= 1'b0;
+    zext_ln288_1_cast_reg_175[8] <= 1'b0;
 end
 
 endmodule //otsu_threshold_top_otsu_threshold_top_Pipeline_SUM_VAR

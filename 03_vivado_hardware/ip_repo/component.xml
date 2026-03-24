@@ -1891,7 +1891,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>fd41718f</spirit:value>
+            <spirit:value>ba474a06</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1907,7 +1907,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>fffd0bf3</spirit:value>
+            <spirit:value>b8fb307a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1923,7 +1923,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>90db80f5</spirit:value>
+            <spirit:value>788af327</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1939,7 +1939,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>57e3a153</spirit:value>
+            <spirit:value>bfb2d281</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -4482,7 +4482,7 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1.v</spirit:name>
+        <spirit:name>hdl/verilog/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -4672,7 +4672,7 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1.v</spirit:name>
+        <spirit:name>hdl/verilog/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -4844,7 +4844,7 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -4874,7 +4874,7 @@
       <spirit:file>
         <spirit:name>hdl/vhdl/otsu_threshold_top.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_c61e16cd</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_9e198363</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -5035,7 +5035,7 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -5405,8 +5405,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>otsu_threshold</xilinx:displayName>
       <xilinx:definitionSource>HLS</xilinx:definitionSource>
-      <xilinx:coreRevision>2114502217</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-03-01T12:07:22Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2114535360</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2026-03-24T12:31:38Z</xilinx:coreCreationDateTime>
       <xilinx:sdxKernelAttributes>
         <xilinx:sdx_kernel>true</xilinx:sdx_kernel>
         <xilinx:sdx_kernel_type>hls</xilinx:sdx_kernel_type>
@@ -5417,7 +5417,7 @@
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="81c0c88e"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="f5f2820a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="6059da3e"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1dc99676"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="8f9aee2d"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="8404cf31"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="3655e44f"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="8d7c2f47"/>

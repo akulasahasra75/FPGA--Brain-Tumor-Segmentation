@@ -373,23 +373,23 @@ reg   [63:0] img_in_read_reg_766;
 wire   [7:0] grp_otsu_compute_fu_403_ap_return;
 reg   [7:0] thr_reg_807;
 wire    ap_CS_fsm_state15;
-wire   [0:0] icmp_ln256_fu_550_p2;
-reg   [0:0] icmp_ln256_reg_814;
-wire   [0:0] icmp_ln269_fu_558_p2;
-reg   [0:0] icmp_ln269_reg_818;
+wire   [0:0] icmp_ln260_fu_550_p2;
+reg   [0:0] icmp_ln260_reg_814;
+wire   [0:0] icmp_ln273_fu_558_p2;
+reg   [0:0] icmp_ln273_reg_818;
 wire    ap_CS_fsm_state17;
 reg   [7:0] tmp_s_reg_822;
 wire    ap_CS_fsm_state19;
 wire   [31:0] s_fu_581_p4;
 reg   [31:0] s_reg_828;
 wire    ap_CS_fsm_state21;
-wire   [0:0] icmp_ln293_fu_591_p2;
-reg   [0:0] icmp_ln293_reg_833;
+wire   [0:0] icmp_ln297_fu_591_p2;
+reg   [0:0] icmp_ln297_reg_833;
 wire   [15:0] conv44_fu_597_p1;
 reg   [15:0] conv44_reg_837;
 wire    ap_CS_fsm_state22;
-wire   [31:0] sub_ln305_fu_619_p2;
-reg   [31:0] sub_ln305_reg_842;
+wire   [31:0] sub_ln309_fu_619_p2;
+reg   [31:0] sub_ln309_reg_842;
 wire    ap_CS_fsm_state24;
 wire    ap_CS_fsm_state25;
 reg   [15:0] trunc_ln1_reg_852;
@@ -655,12 +655,12 @@ wire   [15:0] grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_address0;
 wire    grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_ce0;
 wire   [47:0] grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out;
 wire    grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out_ap_vld;
-wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start;
-wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done;
-wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_idle;
-wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready;
-wire   [30:0] grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out;
-wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld;
+wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start;
+wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done;
+wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_idle;
+wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready;
+wire   [30:0] grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out;
+wire    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld;
 wire    grp_apply_threshold_fu_435_ap_start;
 wire    grp_apply_threshold_fu_435_ap_done;
 wire    grp_apply_threshold_fu_435_ap_idle;
@@ -982,8 +982,8 @@ wire   [7:0] gmem1_0_RDATA;
 wire   [10:0] gmem1_0_RFIFONUM;
 wire    gmem1_0_BVALID;
 reg    gmem1_0_BREADY;
-reg   [15:0] ap_phi_mux_phi_ln305_phi_fu_370_p4;
-reg   [15:0] phi_ln305_reg_366;
+reg   [15:0] ap_phi_mux_phi_ln309_phi_fu_370_p4;
+reg   [15:0] phi_ln309_reg_366;
 wire   [7:0] thr_2_fu_677_p3;
 reg   [7:0] thr_1_reg_377;
 wire    ap_CS_fsm_state28;
@@ -1001,7 +1001,7 @@ reg    grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg;
 wire    ap_CS_fsm_state18;
 reg    grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start_reg;
 wire    ap_CS_fsm_state20;
-reg    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg;
+reg    grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg;
 wire    ap_CS_fsm_state23;
 reg   [30:0] s_2_loc_fu_160;
 reg    grp_apply_threshold_fu_435_ap_start_reg;
@@ -1023,21 +1023,21 @@ wire    ap_CS_fsm_state40;
 wire    ap_CS_fsm_state41;
 wire   [31:0] grp_fu_539_p0;
 wire   [33:0] grp_fu_539_p1;
-wire   [29:0] trunc_ln305_fu_607_p1;
+wire   [29:0] trunc_ln309_fu_607_p1;
 wire   [31:0] p_shl_fu_611_p3;
-wire   [31:0] zext_ln298_fu_603_p1;
+wire   [31:0] zext_ln302_fu_603_p1;
 wire   [50:0] grp_fu_539_p2;
 wire   [15:0] strict_t_fu_639_p2;
 wire   [7:0] tmp_22_fu_648_p4;
-wire   [0:0] icmp_ln306_fu_658_p2;
-wire   [7:0] trunc_ln305_1_fu_644_p1;
-wire   [0:0] icmp_ln308_fu_672_p2;
+wire   [0:0] icmp_ln310_fu_658_p2;
+wire   [7:0] trunc_ln309_1_fu_644_p1;
+wire   [0:0] icmp_ln312_fu_672_p2;
 wire   [0:0] tmp_24_fu_709_p3;
 wire   [23:0] tmp_23_fu_699_p4;
-wire   [7:0] zext_ln347_fu_717_p1;
-wire   [15:0] trunc_ln347_fu_731_p1;
+wire   [7:0] zext_ln351_fu_717_p1;
+wire   [15:0] trunc_ln351_fu_731_p1;
 wire   [23:0] tmp_25_fu_721_p4;
-wire   [0:0] icmp_ln318_fu_685_p2;
+wire   [0:0] icmp_ln322_fu_685_p2;
 reg   [45:0] ap_NS_fsm;
 reg    ap_ST_fsm_state1_blk;
 reg    ap_ST_fsm_state2_blk;
@@ -1098,7 +1098,7 @@ initial begin
 #0 grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg = 1'b0;
 #0 grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg = 1'b0;
 #0 grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start_reg = 1'b0;
-#0 grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg = 1'b0;
+#0 grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg = 1'b0;
 #0 grp_apply_threshold_fu_435_ap_start_reg = 1'b0;
 #0 grp_erode_3x3_fu_453_ap_start_reg = 1'b0;
 #0 grp_dilate_3x3_fu_479_ap_start_reg = 1'b0;
@@ -1798,21 +1798,21 @@ otsu_threshold_top_otsu_threshold_top_Pipeline_SUM_VAR grp_otsu_threshold_top_Pi
     .local_in_address0(grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_address0),
     .local_in_ce0(grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_local_in_ce0),
     .local_in_q0(local_in_q0),
-    .zext_ln284_1(tmp_s_reg_822),
+    .zext_ln288_1(tmp_s_reg_822),
     .var_sum_out(grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out),
     .var_sum_out_ap_vld(grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out_ap_vld)
 );
 
-otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1 grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429(
+otsu_threshold_top_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1 grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst_n_inv),
-    .ap_start(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start),
-    .ap_done(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done),
-    .ap_idle(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_idle),
-    .ap_ready(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready),
+    .ap_start(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start),
+    .ap_done(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done),
+    .ap_idle(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_idle),
+    .ap_ready(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready),
     .s_3(s_reg_828),
-    .s_2_out(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out),
-    .s_2_out_ap_vld(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld)
+    .s_2_out(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out),
+    .s_2_out_ap_vld(grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld)
 );
 
 otsu_threshold_top_apply_threshold grp_apply_threshold_fu_435(
@@ -2511,7 +2511,7 @@ always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
         grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= 1'b0;
     end else begin
-        if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln256_fu_550_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+        if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln260_fu_550_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
             grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= 1'b1;
         end else if ((grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_ready == 1'b1)) begin
             grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_ap_start_reg <= 1'b0;
@@ -2547,7 +2547,7 @@ always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
         grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= 1'b0;
     end else begin
-        if (((icmp_ln269_fu_558_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state17))) begin
+        if (((icmp_ln273_fu_558_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state17))) begin
             grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= 1'b1;
         end else if ((grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_ready == 1'b1)) begin
             grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start_reg <= 1'b0;
@@ -2569,12 +2569,12 @@ end
 
 always @ (posedge ap_clk) begin
     if (ap_rst_n_inv == 1'b1) begin
-        grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= 1'b0;
+        grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= 1'b0;
     end else begin
-        if (((icmp_ln293_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state22))) begin
-            grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= 1'b1;
-        end else if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_ready == 1'b1)) begin
-            grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg <= 1'b0;
+        if (((icmp_ln297_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state22))) begin
+            grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= 1'b1;
+        end else if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_ready == 1'b1)) begin
+            grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg <= 1'b0;
         end
     end
 end
@@ -2592,19 +2592,19 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln293_reg_833 == 1'd1) & (1'b1 == ap_CS_fsm_state22))) begin
-        phi_ln305_reg_366 <= 16'd0;
-    end else if (((icmp_ln293_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state27))) begin
-        phi_ln305_reg_366 <= trunc_ln1_reg_852;
+    if (((icmp_ln297_reg_833 == 1'd1) & (1'b1 == ap_CS_fsm_state22))) begin
+        phi_ln309_reg_366 <= 16'd0;
+    end else if (((icmp_ln297_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state27))) begin
+        phi_ln309_reg_366 <= trunc_ln1_reg_852;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln269_fu_558_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state17))) begin
+    if (((icmp_ln273_fu_558_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state17))) begin
         thr_1_reg_377 <= thr_reg_807;
-    end else if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln256_fu_550_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
+    end else if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln260_fu_550_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
         thr_1_reg_377 <= grp_otsu_compute_fu_403_ap_return;
-    end else if (((icmp_ln269_reg_818 == 1'd1) & (icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state28))) begin
+    end else if (((icmp_ln273_reg_818 == 1'd1) & (icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state28))) begin
         thr_1_reg_377 <= thr_2_fu_677_p3;
     end
 end
@@ -2617,20 +2617,20 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state15)) begin
-        icmp_ln256_reg_814 <= icmp_ln256_fu_550_p2;
+        icmp_ln260_reg_814 <= icmp_ln260_fu_550_p2;
         thr_reg_807 <= grp_otsu_compute_fu_403_ap_return;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state17)) begin
-        icmp_ln269_reg_818 <= icmp_ln269_fu_558_p2;
+        icmp_ln273_reg_818 <= icmp_ln273_fu_558_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state21)) begin
-        icmp_ln293_reg_833 <= icmp_ln293_fu_591_p2;
+        icmp_ln297_reg_833 <= icmp_ln297_fu_591_p2;
         s_reg_828 <= {{grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out[47:16]}};
     end
 end
@@ -2644,8 +2644,8 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state23))) begin
-        s_2_loc_fu_160 <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_s_2_out;
+    if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out_ap_vld == 1'b1) & (1'b1 == ap_CS_fsm_state23))) begin
+        s_2_loc_fu_160 <= grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_s_2_out;
     end
 end
 
@@ -2657,7 +2657,7 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state24)) begin
-        sub_ln305_reg_842 <= sub_ln305_fu_619_p2;
+        sub_ln309_reg_842 <= sub_ln309_fu_619_p2;
     end
 end
 
@@ -2744,7 +2744,7 @@ assign ap_ST_fsm_state21_blk = 1'b0;
 assign ap_ST_fsm_state22_blk = 1'b0;
 
 always @ (*) begin
-    if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done == 1'b0)) begin
+    if ((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done == 1'b0)) begin
         ap_ST_fsm_state23_blk = 1'b1;
     end else begin
         ap_ST_fsm_state23_blk = 1'b0;
@@ -2884,10 +2884,10 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln293_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state27))) begin
-        ap_phi_mux_phi_ln305_phi_fu_370_p4 = trunc_ln1_reg_852;
+    if (((icmp_ln297_reg_833 == 1'd0) & (1'b1 == ap_CS_fsm_state27))) begin
+        ap_phi_mux_phi_ln309_phi_fu_370_p4 = trunc_ln1_reg_852;
     end else begin
-        ap_phi_mux_phi_ln305_phi_fu_370_p4 = phi_ln305_reg_366;
+        ap_phi_mux_phi_ln309_phi_fu_370_p4 = phi_ln309_reg_366;
     end
 end
 
@@ -3120,7 +3120,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_0_q0 = tmp_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_0_q0 = local_out_q0;
@@ -3130,7 +3130,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_10_q0 = tmp_10_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_10_q0 = local_out_10_q0;
@@ -3140,7 +3140,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_1_q0 = tmp_1_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_1_q0 = local_out_1_q0;
@@ -3150,7 +3150,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_2_q0 = tmp_2_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_2_q0 = local_out_2_q0;
@@ -3160,7 +3160,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_3_q0 = tmp_3_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_3_q0 = local_out_3_q0;
@@ -3170,7 +3170,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_4_q0 = tmp_4_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_4_q0 = local_out_4_q0;
@@ -3180,7 +3180,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_5_q0 = tmp_5_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_5_q0 = local_out_5_q0;
@@ -3190,7 +3190,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_6_q0 = tmp_6_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_6_q0 = local_out_6_q0;
@@ -3200,7 +3200,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_7_q0 = tmp_7_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_7_q0 = local_out_7_q0;
@@ -3210,7 +3210,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_8_q0 = tmp_8_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_8_q0 = local_out_8_q0;
@@ -3220,7 +3220,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         grp_erode_3x3_fu_453_src_9_q0 = tmp_9_q0;
     end else if ((1'b1 == ap_CS_fsm_state31)) begin
         grp_erode_3x3_fu_453_src_9_q0 = local_out_9_q0;
@@ -3330,7 +3330,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_10_address1 = grp_dilate_3x3_fu_479_dst_10_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_10_address1 = grp_erode_3x3_fu_453_dst_10_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_10_address1 = grp_apply_threshold_fu_435_img_out_10_address1;
@@ -3356,7 +3356,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_10_ce1 = grp_dilate_3x3_fu_479_dst_10_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_10_ce1 = grp_erode_3x3_fu_453_dst_10_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_10_ce1 = grp_apply_threshold_fu_435_img_out_10_ce1;
@@ -3368,7 +3368,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_10_d1 = grp_dilate_3x3_fu_479_dst_10_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_10_d1 = grp_erode_3x3_fu_453_dst_10_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_10_d1 = grp_apply_threshold_fu_435_img_out_10_d1;
@@ -3380,7 +3380,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_10_we1 = grp_dilate_3x3_fu_479_dst_10_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_10_we1 = grp_erode_3x3_fu_453_dst_10_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_10_we1 = grp_apply_threshold_fu_435_img_out_10_we1;
@@ -3406,7 +3406,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_1_address1 = grp_dilate_3x3_fu_479_dst_1_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_1_address1 = grp_erode_3x3_fu_453_dst_1_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_1_address1 = grp_apply_threshold_fu_435_img_out_1_address1;
@@ -3432,7 +3432,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_1_ce1 = grp_dilate_3x3_fu_479_dst_1_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_1_ce1 = grp_erode_3x3_fu_453_dst_1_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_1_ce1 = grp_apply_threshold_fu_435_img_out_1_ce1;
@@ -3444,7 +3444,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_1_d1 = grp_dilate_3x3_fu_479_dst_1_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_1_d1 = grp_erode_3x3_fu_453_dst_1_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_1_d1 = grp_apply_threshold_fu_435_img_out_1_d1;
@@ -3456,7 +3456,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_1_we1 = grp_dilate_3x3_fu_479_dst_1_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_1_we1 = grp_erode_3x3_fu_453_dst_1_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_1_we1 = grp_apply_threshold_fu_435_img_out_1_we1;
@@ -3482,7 +3482,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_2_address1 = grp_dilate_3x3_fu_479_dst_2_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_2_address1 = grp_erode_3x3_fu_453_dst_2_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_2_address1 = grp_apply_threshold_fu_435_img_out_2_address1;
@@ -3508,7 +3508,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_2_ce1 = grp_dilate_3x3_fu_479_dst_2_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_2_ce1 = grp_erode_3x3_fu_453_dst_2_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_2_ce1 = grp_apply_threshold_fu_435_img_out_2_ce1;
@@ -3520,7 +3520,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_2_d1 = grp_dilate_3x3_fu_479_dst_2_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_2_d1 = grp_erode_3x3_fu_453_dst_2_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_2_d1 = grp_apply_threshold_fu_435_img_out_2_d1;
@@ -3532,7 +3532,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_2_we1 = grp_dilate_3x3_fu_479_dst_2_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_2_we1 = grp_erode_3x3_fu_453_dst_2_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_2_we1 = grp_apply_threshold_fu_435_img_out_2_we1;
@@ -3558,7 +3558,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_3_address1 = grp_dilate_3x3_fu_479_dst_3_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_3_address1 = grp_erode_3x3_fu_453_dst_3_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_3_address1 = grp_apply_threshold_fu_435_img_out_3_address1;
@@ -3584,7 +3584,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_3_ce1 = grp_dilate_3x3_fu_479_dst_3_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_3_ce1 = grp_erode_3x3_fu_453_dst_3_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_3_ce1 = grp_apply_threshold_fu_435_img_out_3_ce1;
@@ -3596,7 +3596,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_3_d1 = grp_dilate_3x3_fu_479_dst_3_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_3_d1 = grp_erode_3x3_fu_453_dst_3_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_3_d1 = grp_apply_threshold_fu_435_img_out_3_d1;
@@ -3608,7 +3608,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_3_we1 = grp_dilate_3x3_fu_479_dst_3_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_3_we1 = grp_erode_3x3_fu_453_dst_3_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_3_we1 = grp_apply_threshold_fu_435_img_out_3_we1;
@@ -3634,7 +3634,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_4_address1 = grp_dilate_3x3_fu_479_dst_4_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_4_address1 = grp_erode_3x3_fu_453_dst_4_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_4_address1 = grp_apply_threshold_fu_435_img_out_4_address1;
@@ -3660,7 +3660,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_4_ce1 = grp_dilate_3x3_fu_479_dst_4_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_4_ce1 = grp_erode_3x3_fu_453_dst_4_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_4_ce1 = grp_apply_threshold_fu_435_img_out_4_ce1;
@@ -3672,7 +3672,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_4_d1 = grp_dilate_3x3_fu_479_dst_4_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_4_d1 = grp_erode_3x3_fu_453_dst_4_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_4_d1 = grp_apply_threshold_fu_435_img_out_4_d1;
@@ -3684,7 +3684,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_4_we1 = grp_dilate_3x3_fu_479_dst_4_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_4_we1 = grp_erode_3x3_fu_453_dst_4_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_4_we1 = grp_apply_threshold_fu_435_img_out_4_we1;
@@ -3710,7 +3710,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_5_address1 = grp_dilate_3x3_fu_479_dst_5_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_5_address1 = grp_erode_3x3_fu_453_dst_5_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_5_address1 = grp_apply_threshold_fu_435_img_out_5_address1;
@@ -3736,7 +3736,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_5_ce1 = grp_dilate_3x3_fu_479_dst_5_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_5_ce1 = grp_erode_3x3_fu_453_dst_5_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_5_ce1 = grp_apply_threshold_fu_435_img_out_5_ce1;
@@ -3748,7 +3748,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_5_d1 = grp_dilate_3x3_fu_479_dst_5_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_5_d1 = grp_erode_3x3_fu_453_dst_5_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_5_d1 = grp_apply_threshold_fu_435_img_out_5_d1;
@@ -3760,7 +3760,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_5_we1 = grp_dilate_3x3_fu_479_dst_5_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_5_we1 = grp_erode_3x3_fu_453_dst_5_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_5_we1 = grp_apply_threshold_fu_435_img_out_5_we1;
@@ -3786,7 +3786,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_6_address1 = grp_dilate_3x3_fu_479_dst_6_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_6_address1 = grp_erode_3x3_fu_453_dst_6_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_6_address1 = grp_apply_threshold_fu_435_img_out_6_address1;
@@ -3812,7 +3812,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_6_ce1 = grp_dilate_3x3_fu_479_dst_6_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_6_ce1 = grp_erode_3x3_fu_453_dst_6_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_6_ce1 = grp_apply_threshold_fu_435_img_out_6_ce1;
@@ -3824,7 +3824,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_6_d1 = grp_dilate_3x3_fu_479_dst_6_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_6_d1 = grp_erode_3x3_fu_453_dst_6_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_6_d1 = grp_apply_threshold_fu_435_img_out_6_d1;
@@ -3836,7 +3836,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_6_we1 = grp_dilate_3x3_fu_479_dst_6_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_6_we1 = grp_erode_3x3_fu_453_dst_6_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_6_we1 = grp_apply_threshold_fu_435_img_out_6_we1;
@@ -3862,7 +3862,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_7_address1 = grp_dilate_3x3_fu_479_dst_7_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_7_address1 = grp_erode_3x3_fu_453_dst_7_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_7_address1 = grp_apply_threshold_fu_435_img_out_7_address1;
@@ -3888,7 +3888,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_7_ce1 = grp_dilate_3x3_fu_479_dst_7_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_7_ce1 = grp_erode_3x3_fu_453_dst_7_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_7_ce1 = grp_apply_threshold_fu_435_img_out_7_ce1;
@@ -3900,7 +3900,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_7_d1 = grp_dilate_3x3_fu_479_dst_7_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_7_d1 = grp_erode_3x3_fu_453_dst_7_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_7_d1 = grp_apply_threshold_fu_435_img_out_7_d1;
@@ -3912,7 +3912,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_7_we1 = grp_dilate_3x3_fu_479_dst_7_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_7_we1 = grp_erode_3x3_fu_453_dst_7_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_7_we1 = grp_apply_threshold_fu_435_img_out_7_we1;
@@ -3938,7 +3938,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_8_address1 = grp_dilate_3x3_fu_479_dst_8_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_8_address1 = grp_erode_3x3_fu_453_dst_8_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_8_address1 = grp_apply_threshold_fu_435_img_out_8_address1;
@@ -3964,7 +3964,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_8_ce1 = grp_dilate_3x3_fu_479_dst_8_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_8_ce1 = grp_erode_3x3_fu_453_dst_8_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_8_ce1 = grp_apply_threshold_fu_435_img_out_8_ce1;
@@ -3976,7 +3976,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_8_d1 = grp_dilate_3x3_fu_479_dst_8_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_8_d1 = grp_erode_3x3_fu_453_dst_8_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_8_d1 = grp_apply_threshold_fu_435_img_out_8_d1;
@@ -3988,7 +3988,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_8_we1 = grp_dilate_3x3_fu_479_dst_8_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_8_we1 = grp_erode_3x3_fu_453_dst_8_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_8_we1 = grp_apply_threshold_fu_435_img_out_8_we1;
@@ -4014,7 +4014,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_9_address1 = grp_dilate_3x3_fu_479_dst_9_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_9_address1 = grp_erode_3x3_fu_453_dst_9_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_9_address1 = grp_apply_threshold_fu_435_img_out_9_address1;
@@ -4040,7 +4040,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_9_ce1 = grp_dilate_3x3_fu_479_dst_9_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_9_ce1 = grp_erode_3x3_fu_453_dst_9_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_9_ce1 = grp_apply_threshold_fu_435_img_out_9_ce1;
@@ -4052,7 +4052,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_9_d1 = grp_dilate_3x3_fu_479_dst_9_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_9_d1 = grp_erode_3x3_fu_453_dst_9_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_9_d1 = grp_apply_threshold_fu_435_img_out_9_d1;
@@ -4064,7 +4064,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_9_we1 = grp_dilate_3x3_fu_479_dst_9_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_9_we1 = grp_erode_3x3_fu_453_dst_9_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_9_we1 = grp_apply_threshold_fu_435_img_out_9_we1;
@@ -4090,7 +4090,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_address1 = grp_dilate_3x3_fu_479_dst_0_address1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_address1 = grp_erode_3x3_fu_453_dst_0_address1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_address1 = grp_apply_threshold_fu_435_img_out_0_address1;
@@ -4116,7 +4116,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_ce1 = grp_dilate_3x3_fu_479_dst_0_ce1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_ce1 = grp_erode_3x3_fu_453_dst_0_ce1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_ce1 = grp_apply_threshold_fu_435_img_out_0_ce1;
@@ -4128,7 +4128,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_d1 = grp_dilate_3x3_fu_479_dst_0_d1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_d1 = grp_erode_3x3_fu_453_dst_0_d1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_d1 = grp_apply_threshold_fu_435_img_out_0_d1;
@@ -4140,7 +4140,7 @@ end
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state33)) begin
         local_out_we1 = grp_dilate_3x3_fu_479_dst_0_we1;
-    end else if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    end else if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         local_out_we1 = grp_erode_3x3_fu_453_dst_0_we1;
     end else if ((1'b1 == ap_CS_fsm_state29)) begin
         local_out_we1 = grp_apply_threshold_fu_435_img_out_0_we1;
@@ -4158,7 +4158,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_10_ce0 = grp_erode_3x3_fu_453_src_10_ce0;
     end else begin
         tmp_10_ce0 = 1'b0;
@@ -4398,7 +4398,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_1_ce0 = grp_erode_3x3_fu_453_src_1_ce0;
     end else begin
         tmp_1_ce0 = 1'b0;
@@ -4470,7 +4470,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_2_ce0 = grp_erode_3x3_fu_453_src_2_ce0;
     end else begin
         tmp_2_ce0 = 1'b0;
@@ -4494,7 +4494,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_3_ce0 = grp_erode_3x3_fu_453_src_3_ce0;
     end else begin
         tmp_3_ce0 = 1'b0;
@@ -4518,7 +4518,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_4_ce0 = grp_erode_3x3_fu_453_src_4_ce0;
     end else begin
         tmp_4_ce0 = 1'b0;
@@ -4542,7 +4542,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_5_ce0 = grp_erode_3x3_fu_453_src_5_ce0;
     end else begin
         tmp_5_ce0 = 1'b0;
@@ -4566,7 +4566,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_6_ce0 = grp_erode_3x3_fu_453_src_6_ce0;
     end else begin
         tmp_6_ce0 = 1'b0;
@@ -4590,7 +4590,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_7_ce0 = grp_erode_3x3_fu_453_src_7_ce0;
     end else begin
         tmp_7_ce0 = 1'b0;
@@ -4614,7 +4614,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_8_ce0 = grp_erode_3x3_fu_453_src_8_ce0;
     end else begin
         tmp_8_ce0 = 1'b0;
@@ -4638,7 +4638,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_9_ce0 = grp_erode_3x3_fu_453_src_9_ce0;
     end else begin
         tmp_9_ce0 = 1'b0;
@@ -4662,7 +4662,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
+    if (((icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state37))) begin
         tmp_ce0 = grp_erode_3x3_fu_453_src_0_ce0;
     end else begin
         tmp_ce0 = 1'b0;
@@ -4746,9 +4746,9 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state15;
         end
         ap_ST_fsm_state15 : begin
-            if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln256_fu_550_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
+            if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln260_fu_550_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
                 ap_NS_fsm = ap_ST_fsm_state28;
-            end else if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln256_fu_550_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+            end else if (((grp_otsu_compute_fu_403_ap_done == 1'b1) & (icmp_ln260_fu_550_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
                 ap_NS_fsm = ap_ST_fsm_state16;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state15;
@@ -4762,7 +4762,7 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state17 : begin
-            if (((icmp_ln269_fu_558_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state17))) begin
+            if (((icmp_ln273_fu_558_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state17))) begin
                 ap_NS_fsm = ap_ST_fsm_state28;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state18;
@@ -4789,14 +4789,14 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state22;
         end
         ap_ST_fsm_state22 : begin
-            if (((icmp_ln293_reg_833 == 1'd1) & (1'b1 == ap_CS_fsm_state22))) begin
+            if (((icmp_ln297_reg_833 == 1'd1) & (1'b1 == ap_CS_fsm_state22))) begin
                 ap_NS_fsm = ap_ST_fsm_state27;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state23;
             end
         end
         ap_ST_fsm_state23 : begin
-            if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state23))) begin
+            if (((grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state23))) begin
                 ap_NS_fsm = ap_ST_fsm_state24;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state23;
@@ -4818,9 +4818,9 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state29;
         end
         ap_ST_fsm_state29 : begin
-            if (((grp_apply_threshold_fu_435_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state29) & (icmp_ln318_fu_685_p2 == 1'd1))) begin
+            if (((grp_apply_threshold_fu_435_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state29) & (icmp_ln322_fu_685_p2 == 1'd1))) begin
                 ap_NS_fsm = ap_ST_fsm_state37;
-            end else if (((grp_apply_threshold_fu_435_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state29) & (icmp_ln318_fu_685_p2 == 1'd0))) begin
+            end else if (((grp_apply_threshold_fu_435_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state29) & (icmp_ln322_fu_685_p2 == 1'd0))) begin
                 ap_NS_fsm = ap_ST_fsm_state30;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state29;
@@ -4840,9 +4840,9 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state33;
         end
         ap_ST_fsm_state33 : begin
-            if (((grp_dilate_3x3_fu_479_ap_done == 1'b1) & (icmp_ln256_reg_814 == 1'd0) & (1'b1 == ap_CS_fsm_state33))) begin
+            if (((grp_dilate_3x3_fu_479_ap_done == 1'b1) & (icmp_ln260_reg_814 == 1'd0) & (1'b1 == ap_CS_fsm_state33))) begin
                 ap_NS_fsm = ap_ST_fsm_state37;
-            end else if (((grp_dilate_3x3_fu_479_ap_done == 1'b1) & (icmp_ln256_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state33))) begin
+            end else if (((grp_dilate_3x3_fu_479_ap_done == 1'b1) & (icmp_ln260_reg_814 == 1'd1) & (1'b1 == ap_CS_fsm_state33))) begin
                 ap_NS_fsm = ap_ST_fsm_state34;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state33;
@@ -4984,7 +4984,7 @@ assign ap_CS_fsm_state41 = ap_CS_fsm[32'd40];
 assign ap_CS_fsm_state46 = ap_CS_fsm[32'd45];
 
 always @ (*) begin
-    ap_block_state37_on_subcall_done = ((grp_erode_3x3_fu_453_ap_done == 1'b0) & (icmp_ln256_reg_814 == 1'd1));
+    ap_block_state37_on_subcall_done = ((grp_erode_3x3_fu_453_ap_done == 1'b0) & (icmp_ln260_reg_814 == 1'd1));
 end
 
 always @ (*) begin
@@ -5003,7 +5003,7 @@ assign grp_erode_3x3_fu_453_ap_start = grp_erode_3x3_fu_453_ap_start_reg;
 
 assign grp_fu_539_p0 = grp_fu_539_p00;
 
-assign grp_fu_539_p00 = sub_ln305_reg_842;
+assign grp_fu_539_p00 = sub_ln309_reg_842;
 
 assign grp_fu_539_p1 = 51'd6871947674;
 
@@ -5019,35 +5019,35 @@ assign grp_otsu_threshold_top_Pipeline_SUM_MEAN_fu_416_ap_start = grp_otsu_thres
 
 assign grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start = grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_ap_start_reg;
 
-assign grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start = grp_otsu_threshold_top_Pipeline_VITIS_LOOP_295_1_fu_429_ap_start_reg;
+assign grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start = grp_otsu_threshold_top_Pipeline_VITIS_LOOP_299_1_fu_429_ap_start_reg;
 
 assign grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_start = grp_otsu_threshold_top_Pipeline_WRITE_OUT_fu_521_ap_start_reg;
 
-assign icmp_ln256_fu_550_p2 = ((mode_read_reg_753 == 8'd2) ? 1'b1 : 1'b0);
+assign icmp_ln260_fu_550_p2 = ((mode_read_reg_753 == 8'd2) ? 1'b1 : 1'b0);
 
-assign icmp_ln269_fu_558_p2 = ((grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_fg_count_out > 32'd13107) ? 1'b1 : 1'b0);
+assign icmp_ln273_fu_558_p2 = ((grp_otsu_threshold_top_Pipeline_COUNT_FG_fu_408_fg_count_out > 32'd13107) ? 1'b1 : 1'b0);
 
-assign icmp_ln293_fu_591_p2 = ((s_fu_581_p4 == 32'd0) ? 1'b1 : 1'b0);
+assign icmp_ln297_fu_591_p2 = ((s_fu_581_p4 == 32'd0) ? 1'b1 : 1'b0);
 
-assign icmp_ln306_fu_658_p2 = ((tmp_22_fu_648_p4 != 8'd0) ? 1'b1 : 1'b0);
+assign icmp_ln310_fu_658_p2 = ((tmp_22_fu_648_p4 != 8'd0) ? 1'b1 : 1'b0);
 
-assign icmp_ln308_fu_672_p2 = ((strict_t_1_reg_857 == 8'd0) ? 1'b1 : 1'b0);
+assign icmp_ln312_fu_672_p2 = ((strict_t_1_reg_857 == 8'd0) ? 1'b1 : 1'b0);
 
-assign icmp_ln318_fu_685_p2 = ((mode_read_reg_753 == 8'd0) ? 1'b1 : 1'b0);
+assign icmp_ln322_fu_685_p2 = ((mode_read_reg_753 == 8'd0) ? 1'b1 : 1'b0);
 
-assign p_shl_fu_611_p3 = {{trunc_ln305_fu_607_p1}, {2'd0}};
+assign p_shl_fu_611_p3 = {{trunc_ln309_fu_607_p1}, {2'd0}};
 
-assign result_o = {{{{{{{tmp_23_fu_699_p4}, {mode_read_reg_753}}, {8'd0}}, {zext_ln347_fu_717_p1}}, {trunc_ln347_fu_731_p1}}, {tmp_25_fu_721_p4}}, {thr_1_reg_377}};
+assign result_o = {{{{{{{tmp_23_fu_699_p4}, {mode_read_reg_753}}, {8'd0}}, {zext_ln351_fu_717_p1}}, {trunc_ln351_fu_731_p1}}, {tmp_25_fu_721_p4}}, {thr_1_reg_377}};
 
 assign s_fu_581_p4 = {{grp_otsu_threshold_top_Pipeline_SUM_VAR_fu_422_var_sum_out[47:16]}};
 
-assign strict_t_1_fu_664_p3 = ((icmp_ln306_fu_658_p2[0:0] == 1'b1) ? 8'd255 : trunc_ln305_1_fu_644_p1);
+assign strict_t_1_fu_664_p3 = ((icmp_ln310_fu_658_p2[0:0] == 1'b1) ? 8'd255 : trunc_ln309_1_fu_644_p1);
 
-assign strict_t_fu_639_p2 = (ap_phi_mux_phi_ln305_phi_fu_370_p4 + conv44_reg_837);
+assign strict_t_fu_639_p2 = (ap_phi_mux_phi_ln309_phi_fu_370_p4 + conv44_reg_837);
 
-assign sub_ln305_fu_619_p2 = (p_shl_fu_611_p3 - zext_ln298_fu_603_p1);
+assign sub_ln309_fu_619_p2 = (p_shl_fu_611_p3 - zext_ln302_fu_603_p1);
 
-assign thr_2_fu_677_p3 = ((icmp_ln308_fu_672_p2[0:0] == 1'b1) ? 8'd1 : strict_t_1_reg_857);
+assign thr_2_fu_677_p3 = ((icmp_ln312_fu_672_p2[0:0] == 1'b1) ? 8'd1 : strict_t_1_reg_857);
 
 assign tmp_22_fu_648_p4 = {{strict_t_fu_639_p2[15:8]}};
 
@@ -5057,15 +5057,15 @@ assign tmp_24_fu_709_p3 = grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_
 
 assign tmp_25_fu_721_p4 = {{result_i[31:8]}};
 
-assign trunc_ln305_1_fu_644_p1 = strict_t_fu_639_p2[7:0];
+assign trunc_ln309_1_fu_644_p1 = strict_t_fu_639_p2[7:0];
 
-assign trunc_ln305_fu_607_p1 = s_2_loc_fu_160[29:0];
+assign trunc_ln309_fu_607_p1 = s_2_loc_fu_160[29:0];
 
-assign trunc_ln347_fu_731_p1 = grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_out[15:0];
+assign trunc_ln351_fu_731_p1 = grp_otsu_threshold_top_Pipeline_COUNT_FINAL_fu_505_fg_out[15:0];
 
-assign zext_ln298_fu_603_p1 = s_2_loc_fu_160;
+assign zext_ln302_fu_603_p1 = s_2_loc_fu_160;
 
-assign zext_ln347_fu_717_p1 = tmp_24_fu_709_p3;
+assign zext_ln351_fu_717_p1 = tmp_24_fu_709_p3;
 
 always @ (posedge ap_clk) begin
     conv44_reg_837[15:8] <= 8'b00000000;
