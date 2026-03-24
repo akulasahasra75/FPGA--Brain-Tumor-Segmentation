@@ -157,12 +157,14 @@ if { $hls_ip_vlnv ne "" } {
     puts "WARNING: HLS Otsu IP not found in catalog – add it to ip_repo/ and re-run."
 }
 
-# ---- AXI SmartConnect (merges HLS m_axi_gmem0 + gmem1 → BRAM) ----
-create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 axi_smartconnect_0
+# ---- AXI Interconnect (merges HLS m_axi_gmem0 + gmem1 → BRAM) ----
+#   Replaces SmartConnect: AXI Interconnect handles AXI3↔AXI4 protocol
+#   conversion natively (HLS m_axi emits 2-bit xLOCK / 64-bit ADDR).
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_1
 set_property -dict [list \
     CONFIG.NUM_SI {2} \
     CONFIG.NUM_MI {1} \
-] [get_bd_cells axi_smartconnect_0]
+] [get_bd_cells axi_interconnect_1]
 
 # ---- AXI BRAM Controller A (MicroBlaze → shared image BRAM, port A) ----
 create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0
@@ -258,11 +260,12 @@ if { $hls_ip_vlnv ne "" } {
     # AXI-Lite slave: control_r (img_in, img_out pointers)
     connect_bd_intf_net [get_bd_intf_pins axi_interconnect_0/M04_AXI] \
                         [get_bd_intf_pins hls_otsu_0/s_axi_control_r]
-    # AXI4 masters: image memory access → SmartConnect → BRAM
+    # AXI4 masters: image memory access → AXI Interconnect → BRAM
+    #   AXI Interconnect handles AXI3↔AXI4 conversion (2-bit LOCK, 64-bit ADDR)
     connect_bd_intf_net [get_bd_intf_pins hls_otsu_0/m_axi_gmem0] \
-                        [get_bd_intf_pins axi_smartconnect_0/S00_AXI]
+                        [get_bd_intf_pins axi_interconnect_1/S00_AXI]
     connect_bd_intf_net [get_bd_intf_pins hls_otsu_0/m_axi_gmem1] \
-                        [get_bd_intf_pins axi_smartconnect_0/S01_AXI]
+                        [get_bd_intf_pins axi_interconnect_1/S01_AXI]
     # Clock & reset for HLS IP
     connect_bd_net $sys_clk [get_bd_pins hls_otsu_0/ap_clk]
     connect_bd_net $periph_rst [get_bd_pins hls_otsu_0/ap_rst_n]
@@ -272,8 +275,8 @@ if { $hls_ip_vlnv ne "" } {
 connect_bd_intf_net [get_bd_intf_pins axi_interconnect_0/M05_AXI] \
                     [get_bd_intf_pins axi_bram_ctrl_0/S_AXI]
 
-# ---- SmartConnect → Image BRAM Controller B (HLS side) ----
-connect_bd_intf_net [get_bd_intf_pins axi_smartconnect_0/M00_AXI] \
+# ---- AXI Interconnect 1 → Image BRAM Controller B (HLS side) ----
+connect_bd_intf_net [get_bd_intf_pins axi_interconnect_1/M00_AXI] \
                     [get_bd_intf_pins axi_bram_ctrl_1/S_AXI]
 
 # ---- BRAM Controllers → Shared Image BRAM ----
@@ -298,9 +301,15 @@ foreach cell {axi_uartlite_0 axi_gpio_0 axi_timer_0 axi_bram_ctrl_0 axi_bram_ctr
     connect_bd_net $sys_clk    [get_bd_pins $cell/s_axi_aclk]
     connect_bd_net $periph_rst [get_bd_pins $cell/s_axi_aresetn]
 }
-# SmartConnect
-connect_bd_net $sys_clk    [get_bd_pins axi_smartconnect_0/aclk]
-connect_bd_net $periph_rst [get_bd_pins axi_smartconnect_0/aresetn]
+# AXI Interconnect 1 (HLS → BRAM) – needs per-port clk/rst like axi_interconnect_0
+connect_bd_net $sys_clk    [get_bd_pins axi_interconnect_1/ACLK]
+connect_bd_net $ic_rst     [get_bd_pins axi_interconnect_1/ARESETN]
+foreach port {S00_ACLK S01_ACLK M00_ACLK} {
+    connect_bd_net $sys_clk [get_bd_pins axi_interconnect_1/$port]
+}
+foreach port {S00_ARESETN S01_ARESETN M00_ARESETN} {
+    connect_bd_net $periph_rst [get_bd_pins axi_interconnect_1/$port]
+}
 
 # ---- UART external ports ----
 connect_bd_net [get_bd_ports uart_rxd] [get_bd_pins axi_uartlite_0/rx]

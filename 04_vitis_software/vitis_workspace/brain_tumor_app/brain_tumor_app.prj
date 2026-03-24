@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="brain_tumor_app" location="C:/Users/akula/OneDrive/Documents/FPGA-Project/FPGA--Brain-Tumor-Segmentation/04_vitis_software/vitis_workspace/brain_tumor_app" platform="C:/Users/akula/OneDrive/Documents/FPGA-Project/FPGA--Brain-Tumor-Segmentation/04_vitis_software/vitis_workspace/brain_tumor_platform/export/brain_tumor_platform/brain_tumor_platform.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="brain_tumor_app_system" sysConfig="brain_tumor_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="969a035f5d25cb12004eca69eec388ff">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.217026876" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1583721873" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

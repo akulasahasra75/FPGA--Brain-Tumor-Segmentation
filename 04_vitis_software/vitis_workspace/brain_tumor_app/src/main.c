@@ -50,25 +50,11 @@ static void hls_start(uint8_t mode)
     REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_LO, IMG_OUTPUT_BASE);
     REG_WRITE(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_HI, 0);
 
-    /* Verify pointers written correctly */
-    uint32_t rb_in  = REG_READ(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_IN_LO);
-    uint32_t rb_out = REG_READ(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_LO);
-    uart_print_hex("  DBG img_in  readback: 0x", rb_in);
-    uart_print_hex("  DBG img_out readback: 0x", rb_out);
-
     /* Set processing mode via s_axi_control */
     REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_MODE, mode);
 
-    /* Read control reg before start */
-    uint32_t ctrl_pre = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL);
-    uart_print_hex("  DBG ctrl BEFORE start: 0x", ctrl_pre);
-
     /* Start accelerator (ap_start = bit 0) via s_axi_control */
     REG_WRITE(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL, 0x01);
-
-    /* Read control reg after start */
-    uint32_t ctrl_post = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL);
-    uart_print_hex("  DBG ctrl AFTER  start: 0x", ctrl_post);
 }
 
 static int hls_is_done(void)
@@ -77,25 +63,10 @@ static int hls_is_done(void)
     return (ctrl >> 1) & 0x01;   /* ap_done = bit 1 */
 }
 
-#define HLS_TIMEOUT 50000000U  /* ~500 ms at 100 MHz with loop overhead */
-
-static int hls_wait_done(void)
+static void hls_wait_done(void)
 {
-    for (uint32_t i = 0; i < HLS_TIMEOUT; i++) {
-        if (hls_is_done())
-            return 0;  /* success */
-    }
-    /* Timeout — dump diagnostic registers */
-    uint32_t ctrl = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL);
-    uint32_t mode = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_MODE);
-    uint32_t in_lo = REG_READ(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_IN_LO);
-    uint32_t out_lo = REG_READ(XPAR_HLS_OTSU_0_R_BASEADDR, HLS_OTSU_IMG_OUT_LO);
-    uart_print("  *** HLS TIMEOUT ***\r\n");
-    uart_print_hex("  CTRL reg:  0x", ctrl);
-    uart_print_hex("  MODE reg:  0x", mode);
-    uart_print_hex("  IMG_IN:    0x", in_lo);
-    uart_print_hex("  IMG_OUT:   0x", out_lo);
-    return -1;  /* timeout */
+    while (!hls_is_done())
+        ;
 }
 
 static uint8_t hls_get_threshold(void)
@@ -136,32 +107,35 @@ static void process_image(const char *name,
     adaptive_print_decision(&stats, mode);
     led_set_mode(mode);
 
-    /* ---- Step 3: SW Otsu (HLS bypassed — MDM missing from Vivado design,
-     *       so we use the software baseline for the full pipeline demo) ---- */
-    uart_print("  Running SW Otsu baseline (HLS bypassed)...\r\n");
-    uint32_t sw_cycles = energy_sw_baseline(img_data,
-                                            (uint8_t *)IMG_OUTPUT_BASE);
+    /* ---- Step 3: Run HLS accelerator (timed) ---- */
+    uart_print("  Starting HLS accelerator...\r\n");
+    energy_timer_start();
+    hls_start(mode);
+    hls_wait_done();
+    uint32_t hw_cycles = energy_timer_stop();
 
-    /* Count foreground pixels in the output */
-    uint32_t fg_pixels = 0;
-    const volatile uint8_t *out = (const volatile uint8_t *)IMG_OUTPUT_BASE;
-    for (uint32_t i = 0; i < IMG_SIZE; i++) {
-        if (out[i] > 0) fg_pixels++;
-    }
+    /* Read HLS results */
+    uint8_t  threshold  = hls_get_threshold();
+    uint32_t fg_pixels  = hls_get_fg_pixels();
+    uint8_t  mode_used  = hls_get_mode_used();
 
-    uart_print_uint("  SW Cycles:      ", sw_cycles);
+    uart_print_uint("  Threshold:      ", threshold);
     uart_print_uint("  FG pixels:      ", fg_pixels);
-    uart_print_uint("  Mode selected:  ", mode);
+    uart_print_uint("  Mode used:      ", mode_used);
 
-    /* ---- Step 4: SW watershed directly on output in image BRAM ---- */
+    /* ---- Step 4: SW watershed directly on HLS output in image BRAM ---- */
     uart_print("  Running watershed segmentation...\r\n");
     static WatershedResult ws;
     watershed_segment((const uint8_t *)IMG_OUTPUT_BASE, &ws);
     watershed_print_summary(&ws);
 
-    /* ---- Step 5: Energy report (SW-only, no HLS comparison) ---- */
+    /* ---- Step 5: SW baseline for comparison ---- */
+    uart_print("  Running SW baseline for comparison...\r\n");
+    uint32_t sw_cycles = energy_sw_baseline(img_data, (uint8_t *)SW_MASK_BASE);
+
+    /* ---- Step 6: Energy report ---- */
     EnergyReport report;
-    energy_compute_report(sw_cycles, sw_cycles, &report);
+    energy_compute_report(hw_cycles, sw_cycles, &report);
     energy_print_report(&report);
 
     /* Done LED on */
