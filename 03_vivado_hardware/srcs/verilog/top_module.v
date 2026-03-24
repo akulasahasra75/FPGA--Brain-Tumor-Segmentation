@@ -90,15 +90,16 @@ module top_module (
     wire processing_done_wire;
     wire [1:0] current_mode_wire;
 
-    // NOTE: Uncomment and adjust once block design is generated:
-    // microblaze_system_wrapper u_system (
-    //     .clk_100mhz         (sys_clk),
-    //     .reset               (sys_rst),
-    //     .uart_rxd            (uart_rxd),
-    //     .uart_txd            (uart_txd),
-    //     .processing_done     (processing_done_wire),
-    //     .current_mode        (current_mode_wire)
-    // );
+    // NOTE: Uncomment and adjust once block design is generated.
+    // The block design wrapper must be generated in Vivado before synthesis.
+    microblaze_system_wrapper u_system (
+        .clk_100mhz         (sys_clk),
+        .reset              (sys_rst),
+        .uart_rxd           (uart_rxd),
+        .uart_txd           (uart_txd),
+        .processing_done    (processing_done_wire),
+        .current_mode       (current_mode_wire)
+    );
 
     // Latch status signals from block design
     always @(posedge sys_clk or posedge sys_rst) begin

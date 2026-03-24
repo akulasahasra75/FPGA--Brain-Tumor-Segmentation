@@ -11,7 +11,7 @@ Usage:
     python convert_to_bin.py --from-phase1        # use Phase 1 test images
 
 Output:
-    bin/          – raw 256×256 uint8 binary files
+    bin/          – raw 128×128 uint8 binary files
     c_headers/    – C header files with uint8_t arrays
 """
 
@@ -25,8 +25,8 @@ import numpy as np
 
 
 # ---- Constants ----
-IMG_WIDTH = 256
-IMG_HEIGHT = 256
+IMG_WIDTH = 128
+IMG_HEIGHT = 128
 IMG_SIZE = IMG_WIDTH * IMG_HEIGHT
 
 
@@ -37,7 +37,7 @@ def convert_image(input_path: str, bin_dir: str, header_dir: str) -> bool:
         print(f"  ERROR: Cannot read {input_path}")
         return False
 
-    # Resize to 256×256
+    # Resize to 128×128
     if img.shape != (IMG_HEIGHT, IMG_WIDTH):
         img = cv2.resize(img, (IMG_WIDTH, IMG_HEIGHT),
                          interpolation=cv2.INTER_AREA)

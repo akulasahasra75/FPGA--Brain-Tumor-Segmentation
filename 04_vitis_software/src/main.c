@@ -125,7 +125,8 @@ static void process_image(const char *name,
 
     /* ---- Step 4: SW watershed directly on HLS output in image BRAM ---- */
     uart_print("  Running watershed segmentation...\r\n");
-    static WatershedResult ws;
+    WatershedResult ws;
+    memset(&ws, 0, sizeof(ws));
     watershed_segment((const uint8_t *)IMG_OUTPUT_BASE, &ws);
     watershed_print_summary(&ws);
 
