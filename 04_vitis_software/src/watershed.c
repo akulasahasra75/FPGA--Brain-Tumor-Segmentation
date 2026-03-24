@@ -25,8 +25,17 @@ static uint32_t q_head, q_tail;
 
 static void q_reset(void)        { q_head = q_tail = 0; }
 static int  q_empty(void)        { return q_head == q_tail; }
-static void q_push(uint16_t v)   { QUEUE_BUF[q_tail++ % QUEUE_CAP] = v; }
-static uint16_t q_pop(void)      { return QUEUE_BUF[q_head++ % QUEUE_CAP]; }
+static int  q_full(void)         { return (q_tail - q_head) >= QUEUE_CAP; }
+static void q_push(uint16_t v)   {
+    if (q_full()) return;  /* silently drop if full */
+    QUEUE_BUF[q_tail % QUEUE_CAP] = v;
+    q_tail++;
+}
+static uint16_t q_pop(void)      {
+    uint16_t v = QUEUE_BUF[q_head % QUEUE_CAP];
+    q_head++;
+    return v;
+}
 
 /* ------------------------------------------------------------------ */
 void watershed_segment(const uint8_t *mask, WatershedResult *result)

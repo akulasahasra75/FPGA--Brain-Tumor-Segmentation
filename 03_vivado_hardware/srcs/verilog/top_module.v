@@ -46,7 +46,19 @@ module top_module (
 
     // Use the 100 MHz input directly (no PLL needed for this clock rate)
     assign sys_clk = clk_100mhz;
-    assign sys_rst = ~reset_n;       // Convert active-low to active-high
+
+    // Two-stage synchronizer to prevent metastability on async reset
+    reg reset_sync_1, reset_sync_2;
+    always @(posedge sys_clk or negedge reset_n) begin
+        if (~reset_n) begin
+            reset_sync_1 <= 1'b1;
+            reset_sync_2 <= 1'b1;
+        end else begin
+            reset_sync_1 <= 1'b0;
+            reset_sync_2 <= reset_sync_1;
+        end
+    end
+    assign sys_rst = reset_sync_2;
 
     // =========================================================================
     // LED Status Indicators
@@ -90,15 +102,16 @@ module top_module (
     wire processing_done_wire;
     wire [1:0] current_mode_wire;
 
-    // NOTE: Uncomment and adjust once block design is generated:
-    // microblaze_system_wrapper u_system (
-    //     .clk_100mhz         (sys_clk),
-    //     .reset               (sys_rst),
-    //     .uart_rxd            (uart_rxd),
-    //     .uart_txd            (uart_txd),
-    //     .processing_done     (processing_done_wire),
-    //     .current_mode        (current_mode_wire)
-    // );
+    // NOTE: Uncomment and adjust once block design is generated.
+    // The block design wrapper must be generated in Vivado before synthesis.
+    microblaze_system_wrapper u_system (
+        .clk_100mhz         (sys_clk),
+        .reset              (sys_rst),
+        .uart_rxd           (uart_rxd),
+        .uart_txd           (uart_txd),
+        .processing_done    (processing_done_wire),
+        .current_mode       (current_mode_wire)
+    );
 
     // Latch status signals from block design
     always @(posedge sys_clk or posedge sys_rst) begin
