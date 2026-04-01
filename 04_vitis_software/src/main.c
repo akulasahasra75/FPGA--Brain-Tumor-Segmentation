@@ -71,17 +71,22 @@ static void hls_wait_done(void)
 
 static uint8_t hls_get_threshold(void)
 {
-    return (uint8_t)REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_THRESH);
+    /* threshold is byte 0 of result word 0 */
+    uint32_t word0 = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_WORD0);
+    return (uint8_t)(word0 & 0xFF);
 }
 
 static uint32_t hls_get_fg_pixels(void)
 {
-    return REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_FG_PIX);
+    /* foreground_pixels is result word 1 */
+    return REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_WORD1);
 }
 
 static uint8_t hls_get_mode_used(void)
 {
-    return (uint8_t)REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_MODE_USED);
+    /* mode_used is byte 1 of result word 0 */
+    uint32_t word0 = REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_RESULT_WORD0);
+    return (uint8_t)((word0 >> 8) & 0xFF);
 }
 
 /* ---- Process one image end-to-end ---- */
@@ -155,7 +160,7 @@ int main(void)
     uart_print("\r\n");
     uart_print("========================================\r\n");
     uart_print(" Brain Tumor Segmentation – FPGA SoC\r\n");
-    uart_print(" Nexys A7-100T / Artix-7 / MicroBlaze\r\n");
+    uart_print(" Nexys 4 DDR / Artix-7 / MicroBlaze\r\n");
     uart_print("========================================\r\n");
     uart_print("\r\n");
 

@@ -2,7 +2,7 @@
  * platform_config.h
  * ------------------
  * Hardware base addresses and system-wide constants for the Brain Tumor
- * Segmentation SoC running on Nexys A7-100T (Artix-7).
+ * Segmentation SoC running on Nexys 4 DDR (Artix-7).
  *
  * These addresses must match the Vivado block design address map
  * (see 03_vivado_hardware/build.tcl, Step 5).
@@ -26,19 +26,36 @@
 /* =====================================================================
  * HLS Otsu accelerator – s_axi_control register offsets
  * (mode, result, ap_ctrl – from xotsu_threshold_top_hw.h)
+ *
+ * NOTE: These offsets must match the generated HLS driver header.
+ * After re-synthesizing HLS, verify offsets in:
+ *   otsu_hls/solution1/impl/ip/drivers/otsu_threshold_top_v1_0/src/xotsu_threshold_top_hw.h
  * ===================================================================*/
 #define HLS_OTSU_CONTROL          0x00  /* ap_ctrl: bit0=start, bit1=done, bit2=idle */
 #define HLS_OTSU_GIE              0x04  /* global interrupt enable          */
 #define HLS_OTSU_IER              0x08  /* interrupt enable register        */
 #define HLS_OTSU_ISR              0x0C  /* interrupt status register        */
 #define HLS_OTSU_MODE             0x10  /* mode (bits 7:0, R/W)             */
-#define HLS_OTSU_RESULT_I_0       0x20  /* result input word 0 (R/W)        */
-#define HLS_OTSU_RESULT_I_1       0x24  /* result input word 1 (R/W)        */
-#define HLS_OTSU_RESULT_I_2       0x28  /* result input word 2 (R/W)        */
-#define HLS_OTSU_RESULT_THRESH    0x30  /* result_o word 0: threshold (R/O) */
-#define HLS_OTSU_RESULT_FG_PIX    0x34  /* result_o word 1: fg_pixels (R/O) */
-#define HLS_OTSU_RESULT_MODE_USED 0x38  /* result_o word 2: mode_used (R/O) */
-#define HLS_OTSU_RESULT_VLD       0x3C  /* result_o valid flag (R/COR)      */
+
+/*
+ * Result struct layout (after our fix):
+ *   Byte 0: threshold (uint8)
+ *   Byte 1: mode_used (uint8)
+ *   Byte 2-3: reserved padding
+ *   Byte 4-7: foreground_pixels (uint32)
+ *
+ * HLS maps this to s_axilite as two 32-bit registers:
+ *   Word 0: [7:0]=threshold, [15:8]=mode_used, [31:16]=reserved
+ *   Word 1: foreground_pixels
+ */
+#define HLS_OTSU_RESULT_WORD0     0x30  /* result word 0: threshold + mode_used */
+#define HLS_OTSU_RESULT_WORD1     0x34  /* result word 1: foreground_pixels     */
+#define HLS_OTSU_RESULT_VLD       0x3C  /* result valid flag (R/COR)            */
+
+/* Legacy aliases for backwards compatibility */
+#define HLS_OTSU_RESULT_THRESH    HLS_OTSU_RESULT_WORD0
+#define HLS_OTSU_RESULT_FG_PIX    HLS_OTSU_RESULT_WORD1
+#define HLS_OTSU_RESULT_MODE_USED HLS_OTSU_RESULT_WORD0  /* mode_used is in byte 1 */
 
 /* =====================================================================
  * HLS Otsu accelerator – s_axi_control_r register offsets

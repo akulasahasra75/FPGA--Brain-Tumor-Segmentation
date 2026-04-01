@@ -1,7 +1,7 @@
 ################################################################################
 # artix7.xdc
 # -----------
-# Constraints for Nexys A7-100T board (Artix-7 xc7a100tcsg324-1)
+# Constraints for Nexys 4 DDR board (Artix-7 xc7a100tcsg324-1)
 #
 # Active pins:
 #   - 100 MHz oscillator
@@ -14,15 +14,16 @@
 # Clock – 100 MHz oscillator
 # ==============================================================================
 set_property -dict { PACKAGE_PIN E3   IOSTANDARD LVCMOS33 } [get_ports clk_100mhz]
-create_clock -add -name sys_clk_pin -period 10.20 -waveform {0 5.1} [get_ports clk_100mhz]
+create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk_100mhz]
 
 # ==============================================================================
-# Reset – active-low CPU_RESETN (dedicated reset button on Nexys A7)
+# Reset – active-low CPU_RESETN (dedicated reset button on Nexys 4 DDR)
 # ==============================================================================
 set_property -dict { PACKAGE_PIN C12  IOSTANDARD LVCMOS33 } [get_ports reset_n]
 
 # ==============================================================================
 # UART over USB (directly connected to FTDI chip)
+# From Nexys 4 DDR manual section 7: TXD/RXD on FPGA pins C4 and D4
 # ==============================================================================
 set_property -dict { PACKAGE_PIN C4   IOSTANDARD LVCMOS33 } [get_ports uart_rxd]
 set_property -dict { PACKAGE_PIN D4   IOSTANDARD LVCMOS33 } [get_ports uart_txd]
@@ -39,8 +40,8 @@ set_property -dict { PACKAGE_PIN K15  IOSTANDARD LVCMOS33 } [get_ports {led[1]}]
 set_property -dict { PACKAGE_PIN J13  IOSTANDARD LVCMOS33 } [get_ports {led[2]}]
 set_property -dict { PACKAGE_PIN N14  IOSTANDARD LVCMOS33 } [get_ports {led[3]}]
 
-# Done LED = LD4 (active-high)
-set_property -dict { PACKAGE_PIN R18  IOSTANDARD LVCMOS33 } [get_ports done_led]
+# Done LED = LD4 (active-high) - NOTE: mapped as led[4] in block design
+set_property -dict { PACKAGE_PIN R18  IOSTANDARD LVCMOS33 } [get_ports {led[4]}]
 
 # ==============================================================================
 # Configuration
