@@ -71,12 +71,13 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
 
     /* --- Otsu threshold (same algorithm as HLS) --- */
     uint32_t total = IMG_SIZE;
-    uint32_t sum = 0;
+    uint64_t sum = 0;
     for (uint16_t t = 0; t < 256; t++) {
-        sum += t * hist[t];
+        sum += (uint64_t)t * hist[t];  /* Cast to prevent overflow */
     }
 
-    uint32_t sum_b = 0, w_b = 0;
+    uint64_t sum_b = 0;
+    uint32_t w_b = 0;
     uint64_t best_var = 0;
     uint8_t  threshold = 0;
 
@@ -86,17 +87,20 @@ uint32_t energy_sw_baseline(const uint8_t *img, uint8_t *mask_out)
         uint32_t w_f = total - w_b;
         if (w_f == 0) break;
 
-        sum_b += t * hist[t];
-        uint32_t sum_f = sum - sum_b;
+        sum_b += (uint64_t)t * hist[t];  /* Cast to prevent overflow */
+        uint64_t sum_f = sum - sum_b;
 
         /* Use integer math to avoid overflow:
          * between-class variance ∝ w_b * w_f * (mean_b - mean_f)^2
          * Compute means via integer division first */
-        uint32_t mean_b = sum_b / w_b;
-        uint32_t mean_f = sum_f / w_f;
-        uint32_t diff = (mean_b > mean_f) ? (mean_b - mean_f) : (mean_f - mean_b);
+        uint32_t mean_b = (uint32_t)(sum_b / w_b);
+        uint32_t mean_f = (uint32_t)(sum_f / w_f);
+        int32_t diff = (int32_t)mean_b - (int32_t)mean_f;
+        uint32_t diff_sq = (uint32_t)(diff * diff);
 
-        uint64_t var = (uint64_t)w_b * w_f * diff * diff;
+        /* wt_prod can be up to 16384*16384 = 2^28, fits in uint64 safely */
+        uint64_t wt_prod = (uint64_t)w_b * (uint64_t)w_f;
+        uint64_t var = wt_prod * diff_sq;
         if (var > best_var) {
             best_var  = var;
             threshold = (uint8_t)t;
