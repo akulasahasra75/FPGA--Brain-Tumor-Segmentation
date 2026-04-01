@@ -160,7 +160,7 @@ int main(void)
     uart_print("\r\n");
     uart_print("========================================\r\n");
     uart_print(" Brain Tumor Segmentation – FPGA SoC\r\n");
-    uart_print(" Nexys A7-100T / Artix-7 / MicroBlaze\r\n");
+    uart_print(" Nexys 4 DDR / Artix-7 / MicroBlaze\r\n");
     uart_print("========================================\r\n");
     uart_print("\r\n");
 

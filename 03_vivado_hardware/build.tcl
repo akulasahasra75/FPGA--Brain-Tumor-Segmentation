@@ -35,7 +35,7 @@ cd $SCRIPT_DIR
 set project_name   "brain_tumor_soc"
 set project_dir    "./vivado_project"
 set part           "xc7a100tcsg324-1"
-set board_part     "digilentinc.com:nexys-a7-100t:part0:1.3"
+set board_part     "digilentinc.com:nexys4_ddr:part0:1.1"
 set ip_repo_path   "./ip_repo"
 set rtl_dir        "./srcs/verilog"
 set xdc_file       "./constraints/artix7.xdc"
