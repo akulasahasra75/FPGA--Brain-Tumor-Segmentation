@@ -1,8 +1,8 @@
 // ==============================================================
-// Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
-// Tool Version Limit: 2023.05
+// Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2025.1 (64-bit)
+// Tool Version Limit: 2025.05
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+// Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // 
 // ==============================================================
 `timescale 1ns/1ps
@@ -33,15 +33,16 @@ module otsu_threshold_top_control_s_axi
     input  wire                          RREADY,
     output wire                          interrupt,
     output wire [7:0]                    mode,
-    output wire [95:0]                   result_i,
-    input  wire [95:0]                   result_o,
-    input  wire                          result_o_ap_vld,
+    input  wire [63:0]                   result,
+    input  wire                          result_ap_vld,
     output wire                          ap_start,
     input  wire                          ap_done,
     input  wire                          ap_ready,
     input  wire                          ap_idle
 );
 //------------------------Address Info-------------------
+// Protocol Used: ap_ctrl_hs
+//
 // 0x00 : Control signals
 //        bit 0  - ap_start (Read/Write/COH)
 //        bit 1  - ap_done (Read/COR)
@@ -65,47 +66,33 @@ module otsu_threshold_top_control_s_axi
 //        bit 7~0 - mode[7:0] (Read/Write)
 //        others  - reserved
 // 0x14 : reserved
-// 0x20 : Data signal of result_i
-//        bit 31~0 - result_i[31:0] (Read/Write)
-// 0x24 : Data signal of result_i
-//        bit 31~0 - result_i[63:32] (Read/Write)
-// 0x28 : Data signal of result_i
-//        bit 31~0 - result_i[95:64] (Read/Write)
-// 0x2c : reserved
-// 0x30 : Data signal of result_o
-//        bit 31~0 - result_o[31:0] (Read)
-// 0x34 : Data signal of result_o
-//        bit 31~0 - result_o[63:32] (Read)
-// 0x38 : Data signal of result_o
-//        bit 31~0 - result_o[95:64] (Read)
-// 0x3c : Control signal of result_o
-//        bit 0  - result_o_ap_vld (Read/COR)
+// 0x18 : Data signal of result
+//        bit 31~0 - result[31:0] (Read)
+// 0x1c : Data signal of result
+//        bit 31~0 - result[63:32] (Read)
+// 0x20 : Control signal of result
+//        bit 0  - result_ap_vld (Read/COR)
 //        others - reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 //------------------------Parameter----------------------
 localparam
-    ADDR_AP_CTRL         = 6'h00,
-    ADDR_GIE             = 6'h04,
-    ADDR_IER             = 6'h08,
-    ADDR_ISR             = 6'h0c,
-    ADDR_MODE_DATA_0     = 6'h10,
-    ADDR_MODE_CTRL       = 6'h14,
-    ADDR_RESULT_I_DATA_0 = 6'h20,
-    ADDR_RESULT_I_DATA_1 = 6'h24,
-    ADDR_RESULT_I_DATA_2 = 6'h28,
-    ADDR_RESULT_I_CTRL   = 6'h2c,
-    ADDR_RESULT_O_DATA_0 = 6'h30,
-    ADDR_RESULT_O_DATA_1 = 6'h34,
-    ADDR_RESULT_O_DATA_2 = 6'h38,
-    ADDR_RESULT_O_CTRL   = 6'h3c,
-    WRIDLE               = 2'd0,
-    WRDATA               = 2'd1,
-    WRRESP               = 2'd2,
-    WRRESET              = 2'd3,
-    RDIDLE               = 2'd0,
-    RDDATA               = 2'd1,
-    RDRESET              = 2'd2,
+    ADDR_AP_CTRL       = 6'h00,
+    ADDR_GIE           = 6'h04,
+    ADDR_IER           = 6'h08,
+    ADDR_ISR           = 6'h0c,
+    ADDR_MODE_DATA_0   = 6'h10,
+    ADDR_MODE_CTRL     = 6'h14,
+    ADDR_RESULT_DATA_0 = 6'h18,
+    ADDR_RESULT_DATA_1 = 6'h1c,
+    ADDR_RESULT_CTRL   = 6'h20,
+    WRIDLE             = 2'd0,
+    WRDATA             = 2'd1,
+    WRRESP             = 2'd2,
+    WRRESET            = 2'd3,
+    RDIDLE             = 2'd0,
+    RDDATA             = 2'd1,
+    RDRESET            = 2'd2,
     ADDR_BITS                = 6;
 
 //------------------------Local signal-------------------
@@ -121,7 +108,7 @@ localparam
     wire                          ar_hs;
     wire [ADDR_BITS-1:0]          raddr;
     // internal registers
-    reg                           int_ap_idle;
+    reg                           int_ap_idle = 1'b0;
     reg                           int_ap_ready = 1'b0;
     wire                          task_ap_ready;
     reg                           int_ap_done = 1'b0;
@@ -136,9 +123,8 @@ localparam
     reg  [1:0]                    int_ier = 2'b0;
     reg  [1:0]                    int_isr = 2'b0;
     reg  [7:0]                    int_mode = 'b0;
-    reg  [95:0]                   int_result_i = 'b0;
-    reg                           int_result_o_ap_vld;
-    reg  [95:0]                   int_result_o = 'b0;
+    reg                           int_result_ap_vld;
+    reg  [63:0]                   int_result = 'b0;
 
 //------------------------Instantiation------------------
 
@@ -146,8 +132,8 @@ localparam
 //------------------------AXI write fsm------------------
 assign AWREADY = (wstate == WRIDLE);
 assign WREADY  = (wstate == WRDATA);
-assign BRESP   = 2'b00;  // OKAY
 assign BVALID  = (wstate == WRRESP);
+assign BRESP   = 2'b00;  // OKAY
 assign wmask   = { {8{WSTRB[3]}}, {8{WSTRB[2]}}, {8{WSTRB[1]}}, {8{WSTRB[0]}} };
 assign aw_hs   = AWVALID & AWREADY;
 assign w_hs    = WVALID & WREADY;
@@ -174,7 +160,7 @@ always @(*) begin
             else
                 wnext = WRDATA;
         WRRESP:
-            if (BREADY)
+            if (BREADY & BVALID)
                 wnext = WRIDLE;
             else
                 wnext = WRRESP;
@@ -187,7 +173,7 @@ end
 always @(posedge ACLK) begin
     if (ACLK_EN) begin
         if (aw_hs)
-            waddr <= AWADDR[ADDR_BITS-1:0];
+            waddr <= {AWADDR[ADDR_BITS-1:2], {2{1'b0}}};
     end
 end
 
@@ -251,26 +237,14 @@ always @(posedge ACLK) begin
                 ADDR_MODE_DATA_0: begin
                     rdata <= int_mode[7:0];
                 end
-                ADDR_RESULT_I_DATA_0: begin
-                    rdata <= int_result_i[31:0];
+                ADDR_RESULT_DATA_0: begin
+                    rdata <= int_result[31:0];
                 end
-                ADDR_RESULT_I_DATA_1: begin
-                    rdata <= int_result_i[63:32];
+                ADDR_RESULT_DATA_1: begin
+                    rdata <= int_result[63:32];
                 end
-                ADDR_RESULT_I_DATA_2: begin
-                    rdata <= int_result_i[95:64];
-                end
-                ADDR_RESULT_O_DATA_0: begin
-                    rdata <= int_result_o[31:0];
-                end
-                ADDR_RESULT_O_DATA_1: begin
-                    rdata <= int_result_o[63:32];
-                end
-                ADDR_RESULT_O_DATA_2: begin
-                    rdata <= int_result_o[95:64];
-                end
-                ADDR_RESULT_O_CTRL: begin
-                    rdata[0] <= int_result_o_ap_vld;
+                ADDR_RESULT_CTRL: begin
+                    rdata[0] <= int_result_ap_vld;
                 end
             endcase
         end
@@ -285,7 +259,6 @@ assign task_ap_done      = (ap_done && !auto_restart_status) || auto_restart_don
 assign task_ap_ready     = ap_ready && !int_auto_restart;
 assign auto_restart_done = auto_restart_status && (ap_idle && !int_ap_idle);
 assign mode              = int_mode;
-assign result_i          = int_result_i;
 // int_interrupt
 always @(posedge ACLK) begin
     if (ARESET)
@@ -358,7 +331,7 @@ always @(posedge ACLK) begin
         int_auto_restart <= 1'b0;
     else if (ACLK_EN) begin
         if (w_hs && waddr == ADDR_AP_CTRL && WSTRB[0])
-            int_auto_restart <=  WDATA[7];
+            int_auto_restart <= WDATA[7];
     end
 end
 
@@ -428,55 +401,25 @@ always @(posedge ACLK) begin
     end
 end
 
-// int_result_i[31:0]
+// int_result
 always @(posedge ACLK) begin
     if (ARESET)
-        int_result_i[31:0] <= 0;
+        int_result <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_RESULT_I_DATA_0)
-            int_result_i[31:0] <= (WDATA[31:0] & wmask) | (int_result_i[31:0] & ~wmask);
+        if (result_ap_vld)
+            int_result <= result;
     end
 end
 
-// int_result_i[63:32]
+// int_result_ap_vld
 always @(posedge ACLK) begin
     if (ARESET)
-        int_result_i[63:32] <= 0;
+        int_result_ap_vld <= 1'b0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_RESULT_I_DATA_1)
-            int_result_i[63:32] <= (WDATA[31:0] & wmask) | (int_result_i[63:32] & ~wmask);
-    end
-end
-
-// int_result_i[95:64]
-always @(posedge ACLK) begin
-    if (ARESET)
-        int_result_i[95:64] <= 0;
-    else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_RESULT_I_DATA_2)
-            int_result_i[95:64] <= (WDATA[31:0] & wmask) | (int_result_i[95:64] & ~wmask);
-    end
-end
-
-// int_result_o
-always @(posedge ACLK) begin
-    if (ARESET)
-        int_result_o <= 0;
-    else if (ACLK_EN) begin
-        if (result_o_ap_vld)
-            int_result_o <= result_o;
-    end
-end
-
-// int_result_o_ap_vld
-always @(posedge ACLK) begin
-    if (ARESET)
-        int_result_o_ap_vld <= 1'b0;
-    else if (ACLK_EN) begin
-        if (result_o_ap_vld)
-            int_result_o_ap_vld <= 1'b1;
-        else if (ar_hs && raddr == ADDR_RESULT_O_CTRL)
-            int_result_o_ap_vld <= 1'b0; // clear on read
+        if (result_ap_vld)
+            int_result_ap_vld <= 1'b1;
+        else if (ar_hs && raddr == ADDR_RESULT_CTRL)
+            int_result_ap_vld <= 1'b0; // clear on read
     end
 end
 

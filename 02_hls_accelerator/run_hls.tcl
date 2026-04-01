@@ -60,22 +60,14 @@ create_clock -period ${CLOCK_PERIOD} -name default
 set_clock_uncertainty ${CLOCK_UNCERTAINTY}
 
 # =============================================================================
-# HLS CONFIGURATION - Performance Optimization
+# HLS CONFIGURATION - Performance Optimization (Vitis 2025.1 compatible)
 # =============================================================================
 
-# Enable aggressive optimizations
+# Enable aggressive loop pipelining
 config_compile -pipeline_loops 1
-config_schedule -effort high
-config_bind -effort high
 
-# AXI interface optimization
-config_interface -m_axi_conservative_mode=0
-config_interface -m_axi_max_widen_bitwidth 64
-config_interface -m_axi_addr64
-
-# Array optimizations
+# Array optimizations - note: throughput_driven needs =true in 2025.1
 config_array_partition -complete_threshold 256
-config_array_partition -throughput_driven
 
 # =============================================================================
 # STEP 1: C Simulation  (compile + run testbench on desktop)

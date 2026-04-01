@@ -1,0 +1,100 @@
+{
+    "versionMajor": "0",
+    "versionMinor": "0",
+    "usesPR": "false",
+    "platformState": "pre_synth",
+    "topModuleName": "microblaze_soc_wrapper",
+    "acceleratorBinaryFormat": "xclbin2",
+    "acceleratorBinaryContent": "bitstream",
+    "validAcceleratorBinaryContentValues": "dcp,bitstream",
+    "dcpFunctionStripped": "false",
+    "dcpEncrypted": "false",
+    "defaultOutputType": "hw_export",
+    "designIntent": {
+        "dataCenter": {
+            "value": "false",
+            "explicit": "false"
+        },
+        "embedded": {
+            "value": "false",
+            "explicit": "false"
+        },
+        "externalHost": {
+            "value": "false",
+            "explicit": "false"
+        },
+        "serverManaged": {
+            "value": "false",
+            "explicit": "false"
+        }
+    },
+    "devices": [
+        {
+            "name": "fpga0",
+            "type": "8",
+            "fpgaPart": "artix7:xc7a100t:csg324:-1",
+            "part": {
+                "name": "xc7a100tcsg324-1",
+                "architecture": "artix7",
+                "device": "xc7a100t",
+                "package": "csg324",
+                "speedGrade": "-1"
+            },
+            "numSLRs": "1",
+            "core": {
+                "name": "OCL_REGION_0",
+                "type": "clc_region",
+                "numComputeUnits": "60",
+                "availableResources": {
+                    "bramCount": "19",
+                    "dspCount": "97",
+                    "lutCount": "40841",
+                    "registerCount": "104003"
+                }
+            }
+        }
+    ],
+    "files": [
+        {
+            "name": "brain_tumor_soc.bit",
+            "type": "FULL_BIT"
+        },
+        {
+            "name": "brain_tumor_soc.mmi",
+            "type": "MMI"
+        },
+        {
+            "name": "brain_tumor_soc.nts",
+            "type": "NOC_TRAFFIC"
+        }
+    ],
+    "vendor": "xilinx",
+    "description": "Vivado generated Hardware Platform",
+    "uniqueName": "xilinx:::0.0",
+    "fpgaPart": "artix7",
+    "fpgaDevice": "xc7a100t",
+    "unifiedPlatform": "true",
+    "expandablePlatform": "false",
+    "hardware": "true",
+    "softwareEmulation": "true",
+    "hardwareEmulation": "false",
+    "hardwareEmuPlatform": "false",
+    "usesNIFD": "false",
+    "generatedName": "Vivado",
+    "generatedVersion": "2025.1",
+    "generatedChangeList": "6140274",
+    "generatedIpChangeList": "6138677",
+    "generatedSharedDataChangeList": "6139179",
+    "generatedTimestamp": "Mon Mar  2 21:44:43 2026",
+    "idCode": "03631093",
+    "designIDs": {
+        "designID": "1593361485"
+    },
+    "resources": [
+        {
+            "type": "REG",
+            "count": "104003"
+        }
+    ]
+}
+

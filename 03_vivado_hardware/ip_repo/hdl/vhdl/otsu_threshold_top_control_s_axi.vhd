@@ -1,8 +1,8 @@
 -- ==============================================================
--- Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
--- Tool Version Limit: 2023.05
+-- Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2025.1 (64-bit)
+-- Tool Version Limit: 2025.05
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
--- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- 
 -- ==============================================================
 library IEEE;
@@ -36,9 +36,8 @@ port (
     RREADY                :in   STD_LOGIC;
     interrupt             :out  STD_LOGIC;
     mode                  :out  STD_LOGIC_VECTOR(7 downto 0);
-    result_i              :out  STD_LOGIC_VECTOR(95 downto 0);
-    result_o              :in   STD_LOGIC_VECTOR(95 downto 0);
-    result_o_ap_vld       :in   STD_LOGIC;
+    result                :in   STD_LOGIC_VECTOR(63 downto 0);
+    result_ap_vld         :in   STD_LOGIC;
     ap_start              :out  STD_LOGIC;
     ap_done               :in   STD_LOGIC;
     ap_ready              :in   STD_LOGIC;
@@ -47,6 +46,8 @@ port (
 end entity otsu_threshold_top_control_s_axi;
 
 -- ------------------------Address Info-------------------
+-- Protocol Used: ap_ctrl_hs
+--
 -- 0x00 : Control signals
 --        bit 0  - ap_start (Read/Write/COH)
 --        bit 1  - ap_done (Read/COR)
@@ -70,21 +71,12 @@ end entity otsu_threshold_top_control_s_axi;
 --        bit 7~0 - mode[7:0] (Read/Write)
 --        others  - reserved
 -- 0x14 : reserved
--- 0x20 : Data signal of result_i
---        bit 31~0 - result_i[31:0] (Read/Write)
--- 0x24 : Data signal of result_i
---        bit 31~0 - result_i[63:32] (Read/Write)
--- 0x28 : Data signal of result_i
---        bit 31~0 - result_i[95:64] (Read/Write)
--- 0x2c : reserved
--- 0x30 : Data signal of result_o
---        bit 31~0 - result_o[31:0] (Read)
--- 0x34 : Data signal of result_o
---        bit 31~0 - result_o[63:32] (Read)
--- 0x38 : Data signal of result_o
---        bit 31~0 - result_o[95:64] (Read)
--- 0x3c : Control signal of result_o
---        bit 0  - result_o_ap_vld (Read/COR)
+-- 0x18 : Data signal of result
+--        bit 31~0 - result[31:0] (Read)
+-- 0x1c : Data signal of result
+--        bit 31~0 - result[63:32] (Read)
+-- 0x20 : Control signal of result
+--        bit 0  - result_ap_vld (Read/COR)
 --        others - reserved
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
@@ -93,22 +85,22 @@ architecture behave of otsu_threshold_top_control_s_axi is
     signal wstate  : states := wrreset;
     signal rstate  : states := rdreset;
     signal wnext, rnext: states;
-    constant ADDR_AP_CTRL         : INTEGER := 16#00#;
-    constant ADDR_GIE             : INTEGER := 16#04#;
-    constant ADDR_IER             : INTEGER := 16#08#;
-    constant ADDR_ISR             : INTEGER := 16#0c#;
-    constant ADDR_MODE_DATA_0     : INTEGER := 16#10#;
-    constant ADDR_MODE_CTRL       : INTEGER := 16#14#;
-    constant ADDR_RESULT_I_DATA_0 : INTEGER := 16#20#;
-    constant ADDR_RESULT_I_DATA_1 : INTEGER := 16#24#;
-    constant ADDR_RESULT_I_DATA_2 : INTEGER := 16#28#;
-    constant ADDR_RESULT_I_CTRL   : INTEGER := 16#2c#;
-    constant ADDR_RESULT_O_DATA_0 : INTEGER := 16#30#;
-    constant ADDR_RESULT_O_DATA_1 : INTEGER := 16#34#;
-    constant ADDR_RESULT_O_DATA_2 : INTEGER := 16#38#;
-    constant ADDR_RESULT_O_CTRL   : INTEGER := 16#3c#;
+    constant ADDR_AP_CTRL       : INTEGER := 16#00#;
+    constant ADDR_GIE           : INTEGER := 16#04#;
+    constant ADDR_IER           : INTEGER := 16#08#;
+    constant ADDR_ISR           : INTEGER := 16#0c#;
+    constant ADDR_MODE_DATA_0   : INTEGER := 16#10#;
+    constant ADDR_MODE_CTRL     : INTEGER := 16#14#;
+    constant ADDR_RESULT_DATA_0 : INTEGER := 16#18#;
+    constant ADDR_RESULT_DATA_1 : INTEGER := 16#1c#;
+    constant ADDR_RESULT_CTRL   : INTEGER := 16#20#;
     constant ADDR_BITS         : INTEGER := 6;
 
+    signal AWREADY_t           : STD_LOGIC;
+    signal WREADY_t            : STD_LOGIC;
+    signal ARREADY_t           : STD_LOGIC;
+    signal RVALID_t            : STD_LOGIC;
+    signal BVALID_t            : STD_LOGIC;
     signal waddr               : UNSIGNED(ADDR_BITS-1 downto 0);
     signal wmask               : UNSIGNED(C_S_AXI_DATA_WIDTH-1 downto 0);
     signal aw_hs               : STD_LOGIC;
@@ -116,10 +108,6 @@ architecture behave of otsu_threshold_top_control_s_axi is
     signal rdata_data          : UNSIGNED(C_S_AXI_DATA_WIDTH-1 downto 0);
     signal ar_hs               : STD_LOGIC;
     signal raddr               : UNSIGNED(ADDR_BITS-1 downto 0);
-    signal AWREADY_t           : STD_LOGIC;
-    signal WREADY_t            : STD_LOGIC;
-    signal ARREADY_t           : STD_LOGIC;
-    signal RVALID_t            : STD_LOGIC;
     -- internal registers
     signal int_ap_idle         : STD_LOGIC := '0';
     signal int_ap_ready        : STD_LOGIC := '0';
@@ -136,9 +124,8 @@ architecture behave of otsu_threshold_top_control_s_axi is
     signal int_ier             : UNSIGNED(1 downto 0) := (others => '0');
     signal int_isr             : UNSIGNED(1 downto 0) := (others => '0');
     signal int_mode            : UNSIGNED(7 downto 0) := (others => '0');
-    signal int_result_i        : UNSIGNED(95 downto 0) := (others => '0');
-    signal int_result_o_ap_vld : STD_LOGIC;
-    signal int_result_o        : UNSIGNED(95 downto 0) := (others => '0');
+    signal int_result_ap_vld   : STD_LOGIC;
+    signal int_result          : UNSIGNED(63 downto 0) := (others => '0');
 
 
 begin
@@ -150,8 +137,9 @@ begin
     AWREADY   <=  AWREADY_t;
     WREADY_t  <=  '1' when wstate = wrdata else '0';
     WREADY    <=  WREADY_t;
+    BVALID_t  <=  '1' when wstate = wrresp else '0';
+    BVALID    <=  BVALID_t;
     BRESP     <=  "00";  -- OKAY
-    BVALID    <=  '1' when wstate = wrresp else '0';
     wmask     <=  (31 downto 24 => WSTRB(3), 23 downto 16 => WSTRB(2), 15 downto 8 => WSTRB(1), 7 downto 0 => WSTRB(0));
     aw_hs     <=  AWVALID and AWREADY_t;
     w_hs      <=  WVALID and WREADY_t;
@@ -168,7 +156,7 @@ begin
         end if;
     end process;
 
-    process (wstate, AWVALID, WVALID, BREADY)
+    process (wstate, AWVALID, WVALID, BREADY, BVALID_t)
     begin
         case (wstate) is
         when wridle =>
@@ -184,7 +172,7 @@ begin
                 wnext <= wrdata;
             end if;
         when wrresp =>
-            if (BREADY = '1') then
+            if (BREADY = '1' and BVALID_t = '1') then
                 wnext <= wridle;
             else
                 wnext <= wrresp;
@@ -199,7 +187,7 @@ begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
                 if (aw_hs = '1') then
-                    waddr <= UNSIGNED(AWADDR(ADDR_BITS-1 downto 0));
+                    waddr <= UNSIGNED(AWADDR(ADDR_BITS-1 downto 2) & (1 downto 0 => '0'));
                 end if;
             end if;
         end if;
@@ -269,20 +257,12 @@ begin
                         rdata_data(1 downto 0) <= int_isr;
                     when ADDR_MODE_DATA_0 =>
                         rdata_data <= RESIZE(int_mode(7 downto 0), 32);
-                    when ADDR_RESULT_I_DATA_0 =>
-                        rdata_data <= RESIZE(int_result_i(31 downto 0), 32);
-                    when ADDR_RESULT_I_DATA_1 =>
-                        rdata_data <= RESIZE(int_result_i(63 downto 32), 32);
-                    when ADDR_RESULT_I_DATA_2 =>
-                        rdata_data <= RESIZE(int_result_i(95 downto 64), 32);
-                    when ADDR_RESULT_O_DATA_0 =>
-                        rdata_data <= RESIZE(int_result_o(31 downto 0), 32);
-                    when ADDR_RESULT_O_DATA_1 =>
-                        rdata_data <= RESIZE(int_result_o(63 downto 32), 32);
-                    when ADDR_RESULT_O_DATA_2 =>
-                        rdata_data <= RESIZE(int_result_o(95 downto 64), 32);
-                    when ADDR_RESULT_O_CTRL =>
-                        rdata_data(0) <= int_result_o_ap_vld;
+                    when ADDR_RESULT_DATA_0 =>
+                        rdata_data <= RESIZE(int_result(31 downto 0), 32);
+                    when ADDR_RESULT_DATA_1 =>
+                        rdata_data <= RESIZE(int_result(63 downto 32), 32);
+                    when ADDR_RESULT_CTRL =>
+                        rdata_data(0) <= int_result_ap_vld;
                     when others =>
                         NULL;
                     end case;
@@ -298,7 +278,6 @@ begin
     task_ap_ready        <= ap_ready and not int_auto_restart;
     auto_restart_done    <= auto_restart_status and (ap_idle and not int_ap_idle);
     mode                 <= STD_LOGIC_VECTOR(int_mode);
-    result_i             <= STD_LOGIC_VECTOR(int_result_i);
 
     process (ACLK)
     begin
@@ -473,7 +452,9 @@ begin
     process (ACLK)
     begin
         if (ACLK'event and ACLK = '1') then
-            if (ACLK_EN = '1') then
+            if (ARESET = '1') then
+                int_mode(7 downto 0) <= (others => '0');
+            elsif (ACLK_EN = '1') then
                 if (w_hs = '1' and waddr = ADDR_MODE_DATA_0) then
                     int_mode(7 downto 0) <= (UNSIGNED(WDATA(7 downto 0)) and wmask(7 downto 0)) or ((not wmask(7 downto 0)) and int_mode(7 downto 0));
                 end if;
@@ -484,31 +465,11 @@ begin
     process (ACLK)
     begin
         if (ACLK'event and ACLK = '1') then
-            if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_RESULT_I_DATA_0) then
-                    int_result_i(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_result_i(31 downto 0));
-                end if;
-            end if;
-        end if;
-    end process;
-
-    process (ACLK)
-    begin
-        if (ACLK'event and ACLK = '1') then
-            if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_RESULT_I_DATA_1) then
-                    int_result_i(63 downto 32) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_result_i(63 downto 32));
-                end if;
-            end if;
-        end if;
-    end process;
-
-    process (ACLK)
-    begin
-        if (ACLK'event and ACLK = '1') then
-            if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_RESULT_I_DATA_2) then
-                    int_result_i(95 downto 64) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_result_i(95 downto 64));
+            if (ARESET = '1') then
+                int_result <= (others => '0');
+            elsif (ACLK_EN = '1') then
+                if (result_ap_vld = '1') then
+                    int_result <= UNSIGNED(result);
                 end if;
             end if;
         end if;
@@ -518,25 +479,12 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ARESET = '1') then
-                int_result_o <= (others => '0');
+                int_result_ap_vld <= '0';
             elsif (ACLK_EN = '1') then
-                if (result_o_ap_vld = '1') then
-                    int_result_o <= UNSIGNED(result_o);
-                end if;
-            end if;
-        end if;
-    end process;
-
-    process (ACLK)
-    begin
-        if (ACLK'event and ACLK = '1') then
-            if (ARESET = '1') then
-                int_result_o_ap_vld <= '0';
-            elsif (ACLK_EN = '1') then
-                if (result_o_ap_vld = '1') then
-                    int_result_o_ap_vld <= '1';
-                elsif (ar_hs = '1' and raddr = ADDR_RESULT_O_CTRL) then
-                    int_result_o_ap_vld <= '0'; -- clear on read
+                if (result_ap_vld = '1') then
+                    int_result_ap_vld <= '1';
+                elsif (ar_hs = '1' and raddr = ADDR_RESULT_CTRL) then
+                    int_result_ap_vld <= '0'; -- clear on read
                 end if;
             end if;
         end if;
