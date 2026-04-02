@@ -1,0 +1,138 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║          FPGA DEPLOYMENT - COMMAND CHEAT SHEET                       ║
+║          Nexys 4 DDR Brain Tumor Segmentation                        ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ BEFORE CONNECTING FPGA (Do Once)                                    │
+└──────────────────────────────────────────────────────────────────────┘
+
+  cd C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation\04_vitis_software
+  build_software.bat
+
+  ⏱️  Wait 3-5 minutes for build to complete
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ WHEN FPGA CONNECTED (Quick Method)                                  │
+└──────────────────────────────────────────────────────────────────────┘
+
+  cd C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation
+  xsct program_fpga.tcl
+
+  ⏱️  Wait ~30 seconds
+  👁️  Watch for LD0 to start blinking
+  📟  Open serial terminal at 115200 baud
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ MANUAL PROGRAMMING (Step by Step)                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Step 1: Start XSCT
+  ─────────────────────────────────────────────────────────────────────
+    xsct
+
+  Step 2: In XSCT console, run these commands:
+  ─────────────────────────────────────────────────────────────────────
+    connect
+    targets -set -filter {name =~ "xc7a*"}
+    fpga 03_vivado_hardware/vivado_project/brain_tumor_soc.runs/impl_1/top_module.bit
+    after 2000
+    targets -set -filter {name =~ "*MicroBlaze*"}
+    rst -processor
+    dow 04_vitis_software/vitis_workspace/brain_tumor_app/Debug/brain_tumor_app.elf
+    con
+    disconnect
+    exit
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ SERIAL TERMINAL SETUP                                                │
+└──────────────────────────────────────────────────────────────────────┘
+
+  PuTTY:
+    Connection type: Serial
+    Serial line: COMx  (check Device Manager)
+    Speed: 115200
+
+  TeraTerm:
+    Setup → Serial Port → COMx
+    Baud: 115200, Data: 8, Parity: None, Stop: 1
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ WHAT TO EXPECT                                                       │
+└──────────────────────────────────────────────────────────────────────┘
+
+  ✅ LD0 blinks at 1 Hz (heartbeat)
+  ✅ Serial shows:
+       "Brain Tumor Segmentation System v1.0"
+       Processing results for 3 images
+       Hardware time: ~1.2ms per image
+       Software time: ~45ms per image
+       Speedup: ~35-40×
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+  Problem: "No targets found"
+  Fix: Check USB cable, install Digilent drivers, verify board power
+
+  Problem: ELF not found
+  Fix: Run build_software.bat first
+
+  Problem: No serial output
+  Fix: Check COM port in Device Manager, verify 115200 baud
+
+  Problem: LEDs not working
+  Fix: Reprogram bitstream, press reset button
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ FILE LOCATIONS (Copy-Paste Ready)                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+  BITSTREAM:
+  C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation\03_vivado_hardware\vivado_project\brain_tumor_soc.runs\impl_1\top_module.bit
+
+  ELF FILE:
+  C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation\04_vitis_software\vitis_workspace\brain_tumor_app\Debug\brain_tumor_app.elf
+
+  XSCT SCRIPT:
+  C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation\program_fpga.tcl
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ COMPLETE REBUILD (If You Change Code)                               │
+└──────────────────────────────────────────────────────────────────────┘
+
+  cd C:\Users\anees\Documents\Projects\FPGA--Brain-Tumor-Segmentation
+  BUILD_ALL.bat
+
+  ⏱️  Warning: Takes 30-60 minutes!
+
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ QUICK STATUS CHECK                                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+  ✅ Bitstream ready:   top_module.bit exists
+  ✅ XSA ready:         brain_tumor_soc.xsa exists
+  ✅ Test images:       3 × brain_XX.bin files ready
+  ⚠️  Software build:   Run build_software.bat first
+  ⏳ FPGA hardware:     Waiting for board to arrive
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║  🎯 YOU'RE READY! Just build software, then plug in your FPGA       ║
+║                                                                      ║
+║  📖 Full guide: DEPLOY_ON_HARDWARE.md                               ║
+║  📊 Status: STATUS_REPORT.md                                        ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝

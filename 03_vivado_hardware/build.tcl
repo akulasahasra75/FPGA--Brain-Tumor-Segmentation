@@ -356,10 +356,11 @@ set_property top ${bd_name}_wrapper [current_fileset]
 update_compile_order -fileset sources_1
 
 # ==============================================================================
-# Step 7 – Synthesis
+# Step 7 – Synthesis (reduced parallelism for low-memory systems)
 # ==============================================================================
 puts "INFO: Starting synthesis..."
-launch_runs synth_1 -jobs 4
+# Use -jobs 1 to prevent out-of-memory errors on systems with <16GB RAM
+launch_runs synth_1 -jobs 1
 wait_on_run synth_1
 if { [get_property STATUS [get_runs synth_1]] ne "synth_design Complete!" } {
     puts "ERROR: Synthesis failed."
@@ -368,10 +369,10 @@ if { [get_property STATUS [get_runs synth_1]] ne "synth_design Complete!" } {
 puts "INFO: Synthesis complete."
 
 # ==============================================================================
-# Step 8 – Implementation
+# Step 8 – Implementation (reduced parallelism for low-memory systems)
 # ==============================================================================
 puts "INFO: Starting implementation..."
-launch_runs impl_1 -jobs 4
+launch_runs impl_1 -jobs 1
 wait_on_run impl_1
 if { [get_property STATUS [get_runs impl_1]] ne "route_design Complete!" } {
     puts "ERROR: Implementation failed."
@@ -383,7 +384,7 @@ puts "INFO: Implementation complete."
 # Step 9 – Bitstream
 # ==============================================================================
 puts "INFO: Generating bitstream..."
-launch_runs impl_1 -to_step write_bitstream -jobs 4
+launch_runs impl_1 -to_step write_bitstream -jobs 1
 wait_on_run impl_1
 puts "INFO: Bitstream generated at:"
 puts "  $project_dir/$project_name.runs/impl_1/${bd_name}_wrapper.bit"
