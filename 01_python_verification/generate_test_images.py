@@ -9,7 +9,18 @@ EXPECTED_DIR = os.path.join(OUT_DIR, "expected_results")
 os.makedirs(EXPECTED_DIR, exist_ok=True)
 
 
-def make_mri_like(shape=(256, 256), n_blobs=1, noise_level=12, seed=None):
+def make_mri_like(shape=(128, 128), n_blobs=1, noise_level=12, seed=None):
+    """Generate synthetic MRI-like brain image with tumor blobs.
+    
+    Args:
+        shape: Image dimensions (height, width). Default 128x128 to match HLS.
+        n_blobs: Number of tumor blobs to generate.
+        noise_level: Gaussian noise standard deviation.
+        seed: Random seed for reproducibility.
+    
+    Returns:
+        Tuple of (image, mask) as numpy arrays.
+    """
     if seed is not None:
         np.random.seed(seed)
     img = np.zeros(shape, dtype=np.uint8)
@@ -48,15 +59,16 @@ def make_mri_like(shape=(256, 256), n_blobs=1, noise_level=12, seed=None):
 
 
 def main():
+    """Generate test images at 128x128 resolution (matching HLS/FPGA requirements)."""
     seeds = [10, 23, 99]
     blobs = [1, 2, 1]
     for i, (s, b) in enumerate(zip(seeds, blobs), start=1):
-        img, mask = make_mri_like(n_blobs=b, seed=s)
+        img, mask = make_mri_like(shape=(128, 128), n_blobs=b, seed=s)
         fname = f"brain_{i:02d}.png"
         mname = f"brain_{i:02d}_mask.png"
         cv2.imwrite(os.path.join(OUT_DIR, fname), img)
         cv2.imwrite(os.path.join(EXPECTED_DIR, mname), mask)
-        print("Saved", fname, "and", mname)
+        print(f"Saved {fname} ({img.shape[1]}x{img.shape[0]}) and {mname}")
 
 
 if __name__ == "__main__":

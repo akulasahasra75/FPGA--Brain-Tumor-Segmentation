@@ -1,125 +1,50 @@
-################################################################################
-# run_hls.tcl
-# -------------
-# Vitis HLS script for the Otsu threshold accelerator.
-#
-# Usage (Vitis HLS 2023.x / 2024.x / 2025.x):
-#   vitis_hls -f run_hls.tcl
-#
-# Target: Xilinx Artix-7 (xc7a100tcsg324-1, Nexys A7-100T)
-# Clock : 100 MHz (10 ns period)
-#
-# ============================================================================
-# PERFORMANCE OPTIMIZATION NOTES
-# ============================================================================
-# This script configures HLS for production-level synthesis:
-#   - Aggressive loop pipelining (II=1 target)
-#   - Complete histogram partitioning (8K FFs for zero bank conflicts)
-#   - Line-buffer morphology (minimal BRAM bandwidth)
-#   - AXI burst optimization (max burst length 64)
-#
-# Expected synthesis results:
-#   - MODE_FAST latency:    ~35K cycles (0.35 ms @ 100 MHz)
-#   - MODE_NORMAL latency:  ~72K cycles (0.72 ms)
-#   - MODE_CAREFUL latency: ~125K cycles (1.25 ms)
-#   - Resource: ~15% BRAM, ~10% FF, ~13% LUT, ~6% DSP
-# ============================================================================
-################################################################################
+set SCRIPT_DIR [file dirname [file normalize [info script]]]
+cd $SCRIPT_DIR
 
-# --- Project settings --------------------------------------------------------
-set PROJECT_NAME  "otsu_hls"
+set PROJECT_NAME "otsu_hls"
 set SOLUTION_NAME "solution1"
-set TOP_FUNCTION  "otsu_threshold_top"
-set PART          "xc7a100tcsg324-1"
-set CLOCK_PERIOD  10
-set CLOCK_UNCERTAINTY 1.25
+set TOP_FUNCTION "otsu_threshold_top"
+set PART "xc7a100tcsg324-1"
+set CLOCK_PERIOD 10
 
-# --- Create / open project ---------------------------------------------------
-open_project ${PROJECT_NAME} -reset
+set IP_REPO_DIR "../03_vivado_hardware/ip_repo"
 
-# --- Source files -------------------------------------------------------------
+puts "INFO: Creating HLS project: ${PROJECT_NAME}"
+open_project -reset ${PROJECT_NAME}
+
 add_files otsu_threshold.cpp
 add_files otsu_threshold.h
 add_files image_stats.cpp
 add_files image_stats.h
-
-# --- Testbench files ----------------------------------------------------------
 add_files -tb test_otsu.cpp
 
-# --- Set top function ---------------------------------------------------------
 set_top ${TOP_FUNCTION}
+open_solution -reset ${SOLUTION_NAME}
 
-# --- Create solution ----------------------------------------------------------
-open_solution ${SOLUTION_NAME} -reset
-
-# --- Target FPGA and clock ----------------------------------------------------
 set_part ${PART}
 create_clock -period ${CLOCK_PERIOD} -name default
+set_clock_uncertainty 1.25
 
-# --- Clock uncertainty for timing margin --------------------------------------
-set_clock_uncertainty ${CLOCK_UNCERTAINTY}
-
-# =============================================================================
-# HLS CONFIGURATION - Performance Optimization (Vitis 2025.1 compatible)
-# =============================================================================
-
-# Enable aggressive loop pipelining
+# Performance configurations
 config_compile -pipeline_loops 1
-
-# Array optimizations - note: throughput_driven needs =true in 2025.1
 config_array_partition -complete_threshold 256
 
-# =============================================================================
-# STEP 1: C Simulation  (compile + run testbench on desktop)
-# =============================================================================
 puts "===> Running C Simulation..."
 csim_design -clean
-puts "===> C Simulation complete."
 
-# =============================================================================
-# STEP 2: Synthesis  (convert C++ to RTL)
-# =============================================================================
 puts "===> Running C Synthesis..."
 csynth_design
-puts "===> C Synthesis complete."
 
-# =============================================================================
-# STEP 3: Co-Simulation  (optional – very slow for large images)
-#   Uncomment the next two lines to run RTL co-simulation:
-#   cosim_design -trace_level all
-#   puts "===> Co-Simulation complete."
-# =============================================================================
-
-# =============================================================================
-# STEP 4: Export IP  (package as Vivado IP core)
-# =============================================================================
 puts "===> Exporting IP..."
-export_design -format ip_catalog \
-              -description "Otsu Threshold Accelerator – 3 modes (FAST/NORMAL/CAREFUL) - Performance Optimized" \
-              -vendor "custom" \
-              -library "hls" \
-              -version "2.0" \
-              -display_name "otsu_threshold_v2"
-puts "===> IP Export complete."
+# File copy approach requires ensuring dir exists
+file mkdir $IP_REPO_DIR
 
-# =============================================================================
-# STEP 5: Generate Synthesis Report Summary
-# =============================================================================
-puts ""
-puts "=============================================="
-puts "  HLS Synthesis Results Summary"
-puts "=============================================="
-puts ""
-puts "Project: ${PROJECT_NAME}"
-puts "Solution: ${SOLUTION_NAME}"
-puts "Target: ${PART} @ [expr {1000.0/${CLOCK_PERIOD}}] MHz"
-puts ""
-puts "IP core location: ${PROJECT_NAME}/${SOLUTION_NAME}/impl/ip"
-puts ""
-puts "To view detailed reports:"
-puts "  - Synthesis: ${PROJECT_NAME}/${SOLUTION_NAME}/syn/report"
-puts "  - Timing:    ${PROJECT_NAME}/${SOLUTION_NAME}/impl/report"
-puts ""
-puts "=============================================="
+export_design -format ip_catalog -display_name "otsu_threshold_v2" -description "Otsu Threshold Accelerator" -vendor "custom" -version "2.0" -output $IP_REPO_DIR
 
-exit
+if {![file exists "$IP_REPO_DIR/component.xml"]} {
+    puts "ERROR: IP Export failed! component.xml not found in $IP_REPO_DIR"
+    exit 1
+}
+
+puts "INFO: HLS Build and IP Export Successful."
+exit 0
