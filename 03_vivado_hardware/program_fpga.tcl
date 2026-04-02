@@ -9,7 +9,7 @@
 ################################################################################
 
 set SCRIPT_DIR [file dirname [file normalize [info script]]]
-set BIT_FILE "$SCRIPT_DIR/vivado_project/brain_tumor_soc.runs/impl_1/microblaze_soc_wrapper.bit"
+set BIT_FILE "$SCRIPT_DIR/vivado_project/brain_tumor_soc.runs/impl_1/top_module.bit"
 
 if { ![file exists $BIT_FILE] } {
     puts "ERROR: Bitstream not found at: $BIT_FILE"

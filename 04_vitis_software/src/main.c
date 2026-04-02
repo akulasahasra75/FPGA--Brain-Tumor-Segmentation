@@ -63,10 +63,20 @@ static int hls_is_done(void)
     return (ctrl >> 1) & 0x01;   /* ap_done = bit 1 */
 }
 
-static void hls_wait_done(void)
+/* Timeout value: ~10ms at 100 MHz = 1,000,000 cycles */
+#define HLS_TIMEOUT_CYCLES 1000000
+
+static int hls_wait_done(void)
 {
-    while (!hls_is_done())
-        ;
+    uint32_t timeout = HLS_TIMEOUT_CYCLES;
+    while (!hls_is_done()) {
+        if (--timeout == 0) {
+            uart_print("ERROR: HLS accelerator timeout!\r\n");
+            uart_print_uint("  ap_ctrl = ", REG_READ(XPAR_HLS_OTSU_0_BASEADDR, HLS_OTSU_CONTROL));
+            return -1;  /* Timeout error */
+        }
+    }
+    return 0;  /* Success */
 }
 
 static uint8_t hls_get_threshold(void)
@@ -114,10 +124,20 @@ static void process_image(const char *name,
 
     /* ---- Step 3: Run HLS accelerator (timed) ---- */
     uart_print("  Starting HLS accelerator...\r\n");
+    uart_print_uint("    Input addr:  0x", IMG_INPUT_BASE);
+    uart_print_uint("    Output addr: 0x", IMG_OUTPUT_BASE);
+    uart_print_uint("    Mode:        ", mode);
+    
     energy_timer_start();
     hls_start(mode);
-    hls_wait_done();
+    int hls_status = hls_wait_done();
     uint32_t hw_cycles = energy_timer_stop();
+    
+    if (hls_status != 0) {
+        uart_print("  HLS FAILED - skipping rest of processing\r\n");
+        led_set(LED_HEARTBEAT);  /* Clear processing LED */
+        return;
+    }
 
     /* Read HLS results */
     uint8_t  threshold  = hls_get_threshold();
