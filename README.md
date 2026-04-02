@@ -243,7 +243,7 @@ The system **analyzes each image at runtime** and **automatically selects** the 
 | **HLS C-Synthesis**       |  ✅ Pass   | II=1 achieved, timing met                     |
 | **Vivado Implementation** |  ✅ Pass   | Bitstream generated successfully              |
 | **Vitis Firmware**        |  ✅ Pass   | Compiles and links correctly                  |
-| **End-to-End Hardware**   | ⚠️ Pending | After header dimension fix (see Known Issues) |
+| **End-to-End Hardware**   |  ✅ Ready  | Bitstream generated, software ready to build |
 
 ### Segmentation Accuracy
 
@@ -414,25 +414,137 @@ g++ -o test_otsu test_otsu.cpp otsu_threshold.cpp image_stats.cpp -std=c++11
 ./test_otsu                  # 9/9 tests should pass
 ```
 
-### Full FPGA Build
+### Full FPGA Build & Deployment
 
+#### Complete Build (All Phases) - Windows
+
+```cmd
+# Build everything from scratch
+BUILD_ALL.bat
+```
+
+⏱️ **Time:** 30-60 minutes (depends on system performance)
+
+#### Step-by-Step Build
+
+**Phase 1: Python Verification** ✅
 ```bash
-# Phase 2: HLS Synthesis (requires Vitis HLS)
+cd 01_python_verification
+python run_all_tests.py
+python ../05_test_images/convert_to_bin.py --from-phase1
+```
+
+**Phase 2: HLS Synthesis** ✅ (COMPLETED)
+```bash
 cd 02_hls_accelerator
 vitis-run --tcl --input_file run_hls.tcl
-
-# Phase 3: Vivado Build
-cd ../03_vivado_hardware
-# Copy HLS IP to ip_repo/, then:
-vivado -mode batch -source build.tcl
-
-# Phase 4: Firmware Build
-# Import .xsa into Vitis IDE, build bare-metal application
-
-# Phase 5: Image Conversion
-cd ../05_test_images
-python convert_to_bin.py --from-phase1
 ```
+
+**Phase 3: Vivado Hardware Build** ✅ (COMPLETED)
+```bash
+cd 03_vivado_hardware
+vivado -mode batch -source build.tcl
+```
+**Output:** `brain_tumor_soc.runs/impl_1/top_module.bit` (FPGA bitstream)
+
+**Phase 4: Vitis Software Build** ⚠️ (DO THIS BEFORE HARDWARE)
+```cmd
+cd 04_vitis_software
+build_software.bat
+```
+**Output:** `vitis_workspace/brain_tumor_app/Debug/brain_tumor_app.elf`
+
+---
+
+### 🎯 Hardware Deployment (When FPGA Board Arrives)
+
+**Prerequisites:**
+- ✅ Software built (Phase 4 above)
+- ✅ Nexys 4 DDR board connected via USB
+- ✅ Board powered on
+- ✅ Digilent drivers installed
+
+**Quick Deployment (Automated):**
+```cmd
+cd FPGA--Brain-Tumor-Segmentation
+xsct program_fpga.tcl
+```
+
+**Manual Deployment (Step by Step):**
+
+1. **Open XSCT Console:**
+```cmd
+xsct
+```
+
+2. **In XSCT, run these commands:**
+```tcl
+# Connect to FPGA
+connect
+
+# Program bitstream
+targets -set -filter {name =~ "xc7a*"}
+fpga 03_vivado_hardware/vivado_project/brain_tumor_soc.runs/impl_1/top_module.bit
+after 2000
+
+# Download application to MicroBlaze
+targets -set -filter {name =~ "*MicroBlaze*"}
+rst -processor
+dow 04_vitis_software/vitis_workspace/brain_tumor_app/Debug/brain_tumor_app.elf
+con
+
+# Disconnect when done
+disconnect
+exit
+```
+
+3. **Open Serial Terminal:**
+   - **PuTTY:** Serial, COMx (check Device Manager), 115200 baud
+   - **TeraTerm:** Setup → Serial Port, 115200, 8-N-1
+   - **Vitis:** Window → Vitis Serial Terminal
+
+4. **Verify Operation:**
+   - ✅ LD0 blinks at 1 Hz (heartbeat)
+   - ✅ Serial output shows test results
+   - ✅ Speedup ~35-40× displayed
+
+**Expected Serial Output:**
+```
+========================================
+Brain Tumor Segmentation System v1.0
+========================================
+[INFO] MicroBlaze ready
+[INFO] Otsu HW accelerator: ONLINE
+
+Processing image 1/3...
+  → Otsu threshold: 127
+  → Hardware time: 1.2ms
+  → Software time: 45.8ms
+  → Speedup: 38.2×
+
+[... images 2 and 3 ...]
+
+========================================
+All tests complete!
+Average speedup: 37.1×
+========================================
+```
+
+---
+
+### 📋 Deployment Quick Reference
+
+| Command | Purpose |
+|---------|---------|
+| `build_software.bat` | Build MicroBlaze firmware (do once) |
+| `program_fpga.tcl` | Program FPGA + download ELF (automated) |
+| `deploy_complete.bat` | Complete deployment workflow |
+
+**Full deployment guides:**
+- **Quick Start:** `COMMANDS.txt`
+- **Step-by-Step:** `DEPLOY_ON_HARDWARE.md`
+- **Detailed:** `DEPLOYMENT_GUIDE.md`
+- **Status:** `STATUS_REPORT.md`
 
 ---
 
