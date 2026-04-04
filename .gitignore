@@ -149,6 +149,7 @@ dist/
 build/
 *.egg
 .venv/
+.venv-*/
 venv/
 ENV/
 
